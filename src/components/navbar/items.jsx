@@ -4,7 +4,7 @@ function Items({ value, icon }) {
     return (
         <div className='flex flex-1 flex-col justify-center items-center text-gray-500'>
             {icon}
-            <span className='text-sm'>{value}</span>
+            <span className='text-xs'>{value}</span>
         </div>
     );
 }

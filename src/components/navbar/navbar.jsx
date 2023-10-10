@@ -4,7 +4,7 @@ import Items from './items'
 
 function NavBar() {
     return (
-        <div className='fixed flex flex-row justify-between bottom-0 w-full pl-2 pr-2 pt-1 pb-1'>
+        <div className='fixed flex flex-row justify-between bottom-0 w-full pl-2 pr-2 pt-2 pb-1 bg-white'>
            <Items value='Inicio' icon={<FontAwesomeIcon icon={faHouseChimney} />} />
            <Items value='Mi red' icon={<FontAwesomeIcon icon={faGlobe} />} />
            <Items value='Publicar' icon={<FontAwesomeIcon icon={faSquarePlus} />} />
