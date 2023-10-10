@@ -1,15 +1,29 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimney, faGlobe, faSquarePlus, faBell, faSuitcase } from '@fortawesome/free-solid-svg-icons'
+/* eslint-disable react/prop-types */
 import Items from './items'
+import home from '../../assets/homeIcon.svg'
+import red from '../../assets/redIcon.svg'
+import post from '../../assets/postIcon.svg'
+import noti from '../../assets/notiIcon.svg'
+import jobs from '../../assets/empleosIcon.svg'
 
-function NavBar() {
+function NavBar({setView}) {
     return (
-        <div className='fixed flex flex-row justify-between bottom-0 w-full pl-2 pr-2 pt-2 pb-1 bg-white'>
-           <Items value='Inicio' icon={<FontAwesomeIcon icon={faHouseChimney} />} />
-           <Items value='Mi red' icon={<FontAwesomeIcon icon={faGlobe} />} />
-           <Items value='Publicar' icon={<FontAwesomeIcon icon={faSquarePlus} />} />
-           <Items value='Publicaciones' icon={<FontAwesomeIcon icon={faBell} />} />
-           <Items value='Empleos' icon={<FontAwesomeIcon icon={faSuitcase} />} /> 
+        <div className='fixed flex flex-row justify-between bottom-0 w-full pl-8 pr-8 pt-2 pb-1 bg-white'>
+            <button onClick={()=>setView("home")}>
+                <Items value='Inicio' icon={home} />
+            </button>
+            <button onClick={()=>setView('red')}>
+                <Items value='Mi red' icon={red} />
+            </button>
+            <button onClick={()=>setView('post')}>
+                <Items value='Publicar' icon={post} />
+            </button>
+            <button onClick={()=>setView('noti')}>
+                <Items value='Notificaciones' icon={noti} />
+            </button>
+            <button onClick={()=>setView('jobs')}>
+                <Items value='Empleos' icon={jobs} />
+            </button>
         </div>
     )
 }

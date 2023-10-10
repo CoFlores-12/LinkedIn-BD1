@@ -11,8 +11,6 @@
     left:2px;
     transform: translateY(-50%);
   }
-  .input {
-    height: 50px;
-    box-sizing:border-box;
-    padding-left: 1.5rem;
-  }
+.Hdr_nav_search_input:focus + .Hdr_nav_search_box{
+  display: none;
+    }
