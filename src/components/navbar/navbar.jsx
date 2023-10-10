@@ -8,20 +8,20 @@ import jobs from '../../assets/empleosIcon.svg'
 
 function NavBar({setView}) {
     return (
-        <div className='fixed flex flex-row justify-between bottom-0 w-full pl-8 pr-8 pt-2 pb-1 bg-white'>
-            <button onClick={()=>setView("home")}>
+        <div className='fixed flex flex-row bottom-0 w-full pl-1 pr-1 pt-2 pb-1 bg-white text-color-text-low-emphasis'>
+            <button className='flex-1' onClick={()=>setView("home")}>
                 <Items value='Inicio' icon={home} />
             </button>
-            <button onClick={()=>setView('red')}>
+            <button className='flex-1' onClick={()=>setView('red')}>
                 <Items value='Mi red' icon={red} />
             </button>
-            <button onClick={()=>setView('post')}>
+            <button className='flex-1' onClick={()=>setView('post')}>
                 <Items value='Publicar' icon={post} />
             </button>
-            <button onClick={()=>setView('noti')}>
+            <button className='flex-1' onClick={()=>setView('noti')}>
                 <Items value='Notificaciones' icon={noti} />
             </button>
-            <button onClick={()=>setView('jobs')}>
+            <button className='flex-1' onClick={()=>setView('jobs')}>
                 <Items value='Empleos' icon={jobs} />
             </button>
         </div>

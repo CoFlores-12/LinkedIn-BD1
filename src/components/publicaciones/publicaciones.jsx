@@ -12,11 +12,11 @@ function Publicaciones({empresa, seguidores, tiempo, contenido, imagen, logo, li
     const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
     return (
         <div className="flex flex-col w-full mt-1 mb-2 bg-white">
-            <div className="flex flex-row pr-3 pl-3 pt-2">
+            <div className="flex flex-row pr-3 pl-3 pt-2" style={{textOverflow: 'ellipsis', overflow:'hidden', whiteSpace:'nowrap'}}>
                 <img className="h-12 aspect-square" src={logo} alt="" />
-                <div className="flex flex-col ml-2">
-                    <span className="text-black text-base">{empresa}</span>
-                    <span className="text-sm text-gray-600">{seguidores} seguidores</span>
+                <div className="flex flex-col ml-2 text-color-text-low-emphasis">
+                    <span className="text-black text-base" style={{textOverflow: 'ellipsis', overflow:'hidden', whiteSpace:'nowrap'}}>{empresa}</span>
+                    <span className="text-xs text-gray-600">{seguidores} seguidores</span>
                     <span className="text-xs text-gray-600">{diff} dias <FontAwesomeIcon className='ml-1' icon={faEarthAmericas} /></span>
                 </div>
             </div>
