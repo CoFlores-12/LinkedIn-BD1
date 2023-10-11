@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.bg-pri {
+    background-color: #0a66c2;
+}
+.txt-pri {
+    color: #0a66c2;
+}
+.nav__button-secondary {
+    border: 1px solid #0a66c2;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
