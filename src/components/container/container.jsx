@@ -1,12 +1,19 @@
 /* eslint-disable react/prop-types */
-import PropTypes from 'prop-types';
 import Publicaciones from "../publicaciones/publicaciones";
+import { useEffect } from 'react';
+import React from 'react';
 
-function Container({publicaciones = [], view}) {
+function Container({ view}) {
+    const [data, setData] = React.useState([])
+    useEffect(() => {   
+        fetch('/api/publicaciones')
+            .then((response) => response.json())
+            .then((data) => setData(data))
+    }, [])
     const selectView = (view) => {
         switch (view) {
             case 'home':
-                return publicaciones.map((publicacion) => {
+                return data.map((publicacion) => {
                     return <Publicaciones key={publicacion.id} {...publicacion} />
                 })
             case 'red':
@@ -22,14 +29,10 @@ function Container({publicaciones = [], view}) {
         }
     }
     return (
-        <div className='container pb-9' style={{background: '#E9E5DF'}}>
+        <div className='container pb-9 w-full' style={{background: '#E9E5DF'}}>
             {selectView(view)}
         </div>
     )
 }
-
-Container.propTypes = {
-    publicaciones: PropTypes.array
-};
 
 export default Container;
