@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
 import PropTypes from 'prop-types';
-import likeImg from '../../assets/likeIMG.svg';
-import likeLogo from '../../assets/like.svg';
-import comment from '../../assets/comment.svg';
-import share from '../../assets/share.svg';
+import likeImg from '../../../src/assets/likeIMG.svg';
+import likeLogo from '../../../src/assets/like.svg';
+import comment from '../../../src/assets/comment.svg';
+import share from '../../../src/assets/share.svg';
 
 function Publicaciones({empresa, seguidores, tiempo, contenido, imagen, logo, likes}) {
     const fecha = new Date(tiempo);

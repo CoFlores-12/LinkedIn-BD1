@@ -1,6 +1,6 @@
 import './toolbar.css'
-import search from '../assets/searchIcon.svg';
-import mess from '../assets/menssageIcon.svg'
+import search from '../../src/assets/searchIcon.svg';
+import mess from '../../src/assets/menssageIcon.svg'
 
 function ToolBar() {
     return (
