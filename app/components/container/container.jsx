@@ -3,12 +3,16 @@ import Publicaciones from "../publicaciones/publicaciones";
 import { useEffect } from 'react';
 import React from 'react';
 
-function Container({ view}) {
+function Container({view}) {
+    const [loading, setLoading] = React.useState(true)
     const [data, setData] = React.useState([])
     useEffect(() => {   
         fetch('/api/getdata')
             .then((response) => response.json())
-            .then((data) => setData(data))
+            .then((data) => {
+                setData(data)
+                setLoading(false)
+            })
     }, [])
     const selectView = (view) => {
         switch (view) {
@@ -29,8 +33,8 @@ function Container({ view}) {
         }
     }
     return (
-        <div className='W pb-9 w-full flex items-center flex-col' style={{background: '#E9E5DF'}}>
-            {selectView(view)}
+        <div className='W h-full pb-9 w-full flex items-center flex-col' style={{background: '#E9E5DF'}}>
+            {loading ? <h1>Cargando...</h1> : selectView(view)}
         </div>
     )
 }
