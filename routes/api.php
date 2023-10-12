@@ -17,10 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', function () {
     return 'Hello World';
 });
+
 Route::get('/user/{id}', function ($id) {
     return 'Hello user '.$id;
 });
-Route::post('test', function(Request $request) {
+
+Route::post('/test', function(Request $request) {
     return $request;
 });
+
+Route::get('/publicaciones/{id}', function ($id) {
+    $sql = "SELECT posts.content, posts.media, posts.date, users.name, users.photo\n"
+    . "FROM posts\n"
+    . "INNER JOIN users ON posts.user_id = users.id;";
+    return 'Publicacion '.$id;
+});
+
 Route::apiResource('v1/posts', App\Http\Controllers\Api\V1\PostController::class)->middleware('api');
