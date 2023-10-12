@@ -1,0 +1,19 @@
+.wrapper {
+    position:relative;
+  }
+.icon {
+    height: 1.5rem;
+    width: 1.5rem;
+    padding: 4px;
+    position: absolute;
+    box-sizing:border-box;
+    top:50%;
+    left:2px;
+    transform: translateY(-50%);
+  }
+.Hdr_nav_search_input:focus + .Hdr_nav_search_box{
+  display: none;
+    }
+body, html {
+  min-height: 100%;
+}
