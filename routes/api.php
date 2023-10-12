@@ -23,3 +23,4 @@ Route::get('/user/{id}', function ($id) {
 Route::post('test', function(Request $request) {
     return $request;
 });
+Route::apiResource('v1/posts', App\Http\Controllers\Api\V1\PostController::class)->middleware('api');
