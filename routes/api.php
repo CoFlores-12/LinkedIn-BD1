@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;  
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,26 +16,17 @@ use App\Http\Controllers\UsersController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+
+//############ AUTH ROUTES ############
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+
 //############ USERS ROUTES ############
 
-Route::post('/login', function (Request $request) {
-    return usersController::class::loginUser($request->email, $request->password);
-});
-
-Route::post('/register', function (Request $request) {
-    return UsersController::class::createUser($request->name, $request->email, $request->password);
-});
-
-Route::get('/user/{id}', function ($id) {
-    return usersController::class::getUser($id);
-});
+//Route::get('/profile/{id}', usersController::class::getUser());
 
 //############ POSTS ROUTES ############
 
-Route::get('/posts', function () {
-    return PostController::class::getAll();
-});
+//Route::get('/posts',  PostController::class::getAll());
 
-Route::get('/post/{id}', function ($id) {
-    return PostController::class::getPost($id);
-});
+//Route::get('/post/{id}', PostController::class::getPost());

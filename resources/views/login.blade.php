@@ -7,15 +7,30 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" href="{{ URL::asset('css/login.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .txt-pri{
+        cursor: pointer;
+        padding: 5px 3px;
+        border-radius: 10px;
+      }
+      .txt-pri:hover{
+        background-color: #0a66c20F;
+        outline: 1px solid #0a66c2;
+      }
+    </style>
 </head>
 <body>
     <div  id="main">
 
     </div>
-
-  
   <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const viewParam = Boolean( urlParams.get('signin') )
     let viewState = 'login'
+    if (viewParam) {
+      viewState = 'register'
+    }
     let mainCOnt = document.getElementById('main');
     const login = `<div class='p-5 pt-9'>
     <img src="assets/logo.svg" alt="" width={50} height={50} class='w-[105px] mb-4' />
@@ -77,7 +92,7 @@
 
       fetch('/api/login', options)
         .then(response => response.json())
-        .then(response => alert(response))
+        .then(response => setCookie('token', response.token, 7))
         .catch(err => console.error(err));
     }
 
@@ -95,9 +110,16 @@
       const options = {method: 'POST', body: formData};
 
       fetch('/api/register', options)
-      .then(response => response.json())
-        .then(response => alert(response))
+        .then(response => response.json())
+        .then(response => setCookie('token', response.token, 7))
         .catch(err => console.error(err));
+    }
+    function setCookie(cname, cvalue, exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires="+ d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+      window.location.href = '/home'
     }
   </script>
 </body>
