@@ -22,11 +22,6 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 //############ USERS ROUTES ############
-
-//Route::get('/profile/{id}', usersController::class::getUser());
-
+Route::get('/me', [UsersController::class, 'getProfile']);
 //############ POSTS ROUTES ############
 
-//Route::get('/posts',  PostController::class::getAll());
-
-//Route::get('/post/{id}', PostController::class::getPost());

@@ -1,6 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for(let i = 0; i <ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        const token = getCookie('token');
+        if (token === '') {
+            window.location.href = '/login'
+        }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedIn | Home</title>
@@ -8,11 +29,14 @@
     <link rel="stylesheet" href="{{ URL::asset('css/home.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/1e8824e8c2.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <nav class="flex flex-row items-center p-3 sticky">
         <div class='rounded-full overflow-hidden'>
-            <img src="https://media.licdn.com/dms/img/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_400_400/0/1660002666757?e=1697518800&v=beta&t=qdw2xxM80VEEH30yxKzFs4I78J8C77w4oSRNqOz8wcQ" alt="logo" class="w-8 aspect-square" />
+            <a id="profileimg" href="/in/">
+            <img src="" alt="logo" class="w-8 aspect-square" />
+            </a>
         </div>
         <div class='flex-3 w-full ml-2 mr-3 wrapper text-gray-500' >
             <div class="icon flex flex-row items-center Hdr_nav_search_box">
@@ -32,6 +56,7 @@
             
         </div>
     <script>
+
         const container = document.getElementById('container');
         const btnsNav = document.getElementById('btnsNav');
         const publicacion = (name, followers, date, content, media, likes, logo) => {
@@ -106,7 +131,15 @@
         changeView('Inicio');
         (()=>{
             btnsNav.innerHTML = btnNavBar('Inicio', 'homeIcon') + btnNavBar('Mi red', 'redIcon') + btnNavBar('Publicar', 'postIcon') + btnNavBar('Notificaciones', 'notiIcon')+ btnNavBar('Empleos', 'empleosIcon') ;
+            fetch('/api/me', {method: 'GET'})
+                .then(response => response.json())
+                .then(response => {
+                    document.getElementById('profileimg').href = `/in/${response.id}`;
+                    document.getElementById('profileimg').innerHTML = `<img src="${response.photo}" alt="logo" class="w-8 aspect-square" />`;
+                })
+                .catch(err => console.error(err));
         })();
+        
     </script>
 </body>
 </html>

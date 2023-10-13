@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,4 @@ Route::get('/login', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/in/{id}', [UsersController::class, 'viewProfile']);
