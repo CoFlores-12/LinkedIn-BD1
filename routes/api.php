@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;  
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,24 +15,26 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
+//############ USERS ROUTES ############
 
-Route::get('/login', function () {
-    return 'Hello World';
+Route::post('/login', function (Request $request) {
+    return usersController::class::loginUser($request->email, $request->password);
+});
+
+Route::post('/register', function (Request $request) {
+    return UsersController::class::createUser($request->name, $request->email, $request->password);
 });
 
 Route::get('/user/{id}', function ($id) {
-    return 'Hello user '.$id;
+    return usersController::class::getUser($id);
 });
 
-Route::post('/test', function(Request $request) {
-    return $request;
+//############ POSTS ROUTES ############
+
+Route::get('/posts', function () {
+    return PostController::class::getAll();
 });
 
-Route::get('/publicaciones/{id}', function ($id) {
-    $sql = "SELECT posts.content, posts.media, posts.date, users.name, users.photo\n"
-    . "FROM posts\n"
-    . "INNER JOIN users ON posts.user_id = users.id;";
-    return 'Publicacion '.$id;
+Route::get('/post/{id}', function ($id) {
+    return PostController::class::getPost($id);
 });
-
-Route::apiResource('v1/posts', App\Http\Controllers\Api\V1\PostController::class)->middleware('api');

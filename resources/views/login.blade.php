@@ -9,7 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <div id="main">
+    <div  id="main">
 
     </div>
 
@@ -28,10 +28,10 @@
             <label htmlFor="name" class="form__label"> Email or phone </label>
         </div>
         <div class="form__group">
-            <input type="text" id='13' class="form__field w-100" placeholder="Input text" />
+            <input type="password" id='13' class="form__field w-100" placeholder="Input text" />
             <label htmlFor="name" class="form__label"> Password </label>
         </div>
-        <a class='btnIni' href="/home"><button >Inicia sesion</button></a>
+        <a class='btnIni' onclick="loginF()" href="#"><button >Inicia sesion</button></a>
         <span class='mt-5'>¿Estás empezando a usar LinkedIn? <span class='txt-pri' onClick="view()">Unirse ahora</span></span>
       </div>
     </div>
@@ -42,14 +42,18 @@
         <h1 class='headerS'>Saca el máximo partido a tu vida profesional</h1>
       <div class='flex flex-col w-full sm:w-[60%]'>
         <div class="form__group">
-            <input type="text" class="form__field w-100" placeholder="Input text" />
+            <input type="text" id='14' class="form__field w-100" placeholder="Input text" />
+            <label htmlFor="name" class="form__label"> Name </label>
+        </div>
+        <div class="form__group">
+            <input type="text" id='15' class="form__field w-100" placeholder="Input text" />
             <label htmlFor="name" class="form__label"> Email or phone </label>
         </div>
         <div class="form__group">
-            <input type="text" class="form__field w-100" placeholder="Input text" />
-            <label htmlFor="name" class="form__label"> Password </label>
+            <input type="password" id='16' class="form__field w-100" placeholder="Input text" />
+            <label htmlFor="password" class="form__label"> Password </label>
         </div>
-        <a class='btnIni' href="/home/"><button >Aceptar y unirse</button></a>
+        <a class='btnIni'  onclick="registerF()" href="#"><button >Aceptar y unirse</button></a>
         <span class='mt-5'>¿Ya estás LinkedIn? <span class='txt-pri' onClick="view()">Iniciar sesión</span></span>
       </div>
     </div>
@@ -58,6 +62,42 @@
     function view() {
         viewState = viewState === 'login' ? 'register' : 'login'
         mainCOnt.innerHTML = viewState === 'login' ? login : register
+    }
+
+    function loginF() {
+      const email = document.getElementById('12').value;
+      const password = document.getElementById('13').value;
+      if (email=="" || password=="") {
+        return
+      }
+      let formData = new FormData();
+      formData.append('email', email);
+      formData.append('password', password);
+      const options = {method: 'POST', body: formData};
+
+      fetch('/api/login', options)
+        .then(response => response.json())
+        .then(response => alert(response))
+        .catch(err => console.error(err));
+    }
+
+    function registerF(){
+      const name = document.getElementById('14').value;
+      const email = document.getElementById('15').value;
+      const password = document.getElementById('16').value;
+      if (name=="" || email=="" || password=="") {
+        return
+      }
+      let formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('password', password);
+      const options = {method: 'POST', body: formData};
+
+      fetch('/api/register', options)
+      .then(response => response.json())
+        .then(response => alert(response))
+        .catch(err => console.error(err));
     }
   </script>
 </body>
