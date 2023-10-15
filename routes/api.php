@@ -24,4 +24,5 @@ Route::post('login', [AuthController::class, 'login']);
 //############ USERS ROUTES ############
 Route::get('/me', [UsersController::class, 'getProfile']);
 //############ POSTS ROUTES ############
+Route::get('/posts', [PostController::class, 'getPosts']);
 

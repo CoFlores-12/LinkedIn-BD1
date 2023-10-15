@@ -105,7 +105,10 @@
         </div>
     </nav>
     <div id="container" class="h-full pb-9 w-full flex items-center flex-col" style="background-color: #E9E5DF;">
-
+        <div id="postContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
+        <div id="redContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
+        <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
+        <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
     </div>
     <div class='fixed flex flex-row bottom-0 w-full pl-1 pr-1 pt-2 pb-1 bg-white text-color-text-low-emphasis' id="btnsNav">
             
@@ -114,7 +117,11 @@
 
   <script>
     const container = document.getElementById('container');
-const btnsNav = document.getElementById('btnsNav');
+    const postContainer = document.getElementById('postContainer');
+    const redContainer = document.getElementById('redContainer');
+    const notiContainer = document.getElementById('notiContainer');
+    const jobsContainer = document.getElementById('jobsContainer');
+    const btnsNav = document.getElementById('btnsNav');
 
 
 
@@ -162,19 +169,31 @@ const publicacion = (name, followers, date, content, media, likes, logo) => {
 const changeView = (value) => {
     switch (value) {
         case 'Inicio':
-            container.innerHTML = publicacion('Universidad Nacional Autónoma de Honduras (UNAH)', 96174,'10/4/2023', 'El Programa de Educación Continúa en Salud de la Facultad de Ciencias Médicas de la UNAH presenta su oferta de cursos y diplomados en salud a iniciar en octubre.','https://media.licdn.com/dms/image/D4E22AQEOJ48IHnPiNg/feedshare-shrink_800/0/1696370114963?e=1700092800&v=beta&t=M-nAnIphL-ATlnOO2TuWl5SCuCyazd-oPKR7VQ4S7Jw', 47, 'https://media.licdn.com/dms/image/D4E0BAQGTRAHntOfgTg/company-logo_100_100/0/1667698674172?e=1704931200&v=beta&t=e6i4THvej2BCDFqHkx9VL4yeaZx3da023qnhyfMWS-M');
+            postContainer.classList.remove('hidden');
+            redContainer.classList.add('hidden');
+            notiContainer.classList.add('hidden');
+            jobsContainer.classList.add('hidden');
             break;
         case 'Mi red':
-            container.innerHTML = 'Mi red';
+            postContainer.classList.add('hidden');
+            redContainer.classList.remove('hidden');
+            notiContainer.classList.add('hidden');
+            jobsContainer.classList.add('hidden');
             break;
         case 'Empleos':
-            container.innerHTML = 'Empleos';
+            postContainer.classList.add('hidden');
+            redContainer.classList.add('hidden');
+            notiContainer.classList.add('hidden');
+            jobsContainer.classList.remove('hidden');
             break;
         case 'Publicar':
             toggleModalShare();
             break;
         case 'Notificaciones':
-            container.innerHTML = 'Notificaciones';
+            postContainer.classList.add('hidden');
+            redContainer.classList.add('hidden');
+            notiContainer.classList.remove('hidden');
+            jobsContainer.classList.add('hidden');
             break;
         default:
             break;
@@ -204,10 +223,23 @@ const btnNavBar = (value, icon)=>{
         .then(response => response.json())
         .then(response => {
             document.getElementById('profileimg').href = `/in/${response.id}`;
+            document.getElementById('nameShare').innerHTML = response.name;
+            document.getElementById('imgShare').src = response.photo;
             document.getElementById('profileimg').innerHTML = `<img src="${response.photo}" alt="logo" class="w-8 aspect-square" />`;
 
             //callback cascade
-            //TODO: get posts from api
+            fetch('/api/posts', {method: 'GET'})
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                response.forEach(userPost => {
+                    userPost['posts'].forEach(element => {
+                        postContainer.innerHTML += publicacion(element.name, userPost.followers, element.date, element.content, element.media, element.likes, element.photo);
+                    });
+                });
+                document.getElementById('modalLoad').style.display = 'none';
+            })
+            .catch(err => console.log(err));
 
             //TODO: get jobs from api
 
@@ -215,11 +247,19 @@ const btnNavBar = (value, icon)=>{
 
             //TODO: get network from api
 
-            document.getElementById('modalLoad').style.display = 'none';
         })
-        .catch(err => console.error(err));
+        .catch(err => window.location.href = '/login');
 
-    
+    /*
+        fetch('/api/posts', {method: 'GET'})
+            .then(response => response.json())
+            .then(response => {
+                response.forEach(element => {
+                    container.innerHTML += publicacion(element.name, element.followers, element.date, element.content, element.media, element.likes, element.logo);
+                });
+            })
+            .catch(err => window.location.href = '/login');
+    */
 })();
   </script>
 </body>
