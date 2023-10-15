@@ -26,3 +26,12 @@ Route::get('/me', [UsersController::class, 'getProfile']);
 //############ POSTS ROUTES ############
 Route::get('/posts', [PostController::class, 'getPosts']);
 
+Route::get('/sql', function(){
+    $idUSer = 1;
+    $post =  DB::table('posts')
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->select('posts.*', 'users.name', 'users.photo')
+        ->toSql();
+    return $post;
+});
+
