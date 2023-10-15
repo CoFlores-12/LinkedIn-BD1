@@ -278,9 +278,7 @@ const btnNavBar = (value, icon)=>{
             .then(response => {
                 console.log(response);
                 response.forEach(userPost => {
-                    userPost['posts'].forEach(element => {
-                        postContainer.innerHTML += publicacion(element.name, userPost.followers, element.date, element.content, element.media, element.likes, element.photo);
-                    });
+                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo);
                 });
                 document.getElementById('modalLoad').style.display = 'none';
                 //TODO: get jobs from api
