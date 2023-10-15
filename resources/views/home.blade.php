@@ -108,7 +108,27 @@
         <div id="postContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
         <div id="redContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
         <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
-        <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
+        <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #FFF;">
+            <div>Empleos para ti</div>
+            <div id="listJobs" class="w-full">
+               <a href="/job/" class="jobItem p-2">
+                <div class="flex flex-row">
+                        <img width="70" height="70" src="https://media.licdn.com/dms/image/D4D0BAQHrYseFDoK7JQ/company-logo_100_100/0/1688418672408/clevertech_logo?e=1705536000&v=beta&t=BCgdXYPLyX_vuiyWMWDAzxjj2H1z1Ekfa4S3J5kMg34" class="mr-2 ml-2" alt="">
+                        <div>
+                            <h1 class="titleJob">name</h1>
+                            <h3 class="mediumJob">puesto</h3>
+                            <h6 class="infoJob">
+                                <span>location</span>
+                                <span class="dot-separator" aria-hidden="true"></span>
+                                <span>date</span>
+                            </h6>
+                        </div>
+
+                    </div>
+               </a>
+               
+            </div>
+        </div>
     </div>
     <div class='fixed flex flex-row bottom-0 w-full pl-1 pr-1 pt-2 pb-1 bg-white text-color-text-low-emphasis' id="btnsNav">
             
@@ -123,7 +143,23 @@
     const jobsContainer = document.getElementById('jobsContainer');
     const btnsNav = document.getElementById('btnsNav');
 
+const job = (title, farm, location, date, id, logo)=>{
+    return `<a href="/job/${id}" class="jobItem p-2">
+                <div class="flex flex-row">
+                        <img width="70" height="70" src="${logo}" class="mr-2 ml-2" alt="">
+                        <div>
+                            <h1 class="titleJob">${title}</h1>
+                            <h3 class="mediumJob">${farm}</h3>
+                            <h6 class="infoJob">
+                                <span>${location}</span>
+                                <span class="dot-separator" aria-hidden="true"></span>
+                                <span>${date}</span>
+                            </h6>
+                        </div>
 
+                    </div>
+               </a>`
+}
 
 const publicacion = (name, followers, date, content, media, likes, logo) => {
     const fecha = new Date(date);
