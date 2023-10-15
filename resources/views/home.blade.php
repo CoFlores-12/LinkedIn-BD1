@@ -157,7 +157,51 @@ const publicacion = (name, followers, date, content, media, likes, logo) => {
     </div>
 </div>`
 }
-
+const notification = (logo,date,text) => {
+            const fecha = new Date(date);
+            const fechaActual = new Date();
+            const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
+        return ` <div class='containerGroupa'>
+        </div>
+            <div class='containerNoti'>
+            <div class='notifications'>
+                <div class='imagenNoti'>
+                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                </div>
+                <div  class="pl-3 pr-3 text-sm">
+                <span>${text}</span>
+                </div>
+                <div class='dateOptions'>
+                <span class="text-xs text-gray-600">${diff} dias </span>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class='notifications'>
+                <div class='imagenNoti'>
+                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                </div>
+                <div  class="pl-3 pr-3 text-sm">
+                <span>${text}</span>
+                </div>
+                <div class='dateOptions'>
+                <span class="text-xs text-gray-600">${diff} dias </span>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+            <div class='notifications'>
+                <div class='imagenNoti'>
+                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                </div>
+                <div  class="pl-3 pr-3 text-sm">
+                <span>${text}</span>
+                </div>
+                <div class='dateOptions'>
+                <span class="text-xs text-gray-600">${diff} dias </span>
+                    <i class="fa-solid fa-ellipsis"></i>
+                </div>
+            </div>
+        </div>`
+        }
 
 const changeView = (value) => {
     switch (value) {
@@ -174,7 +218,7 @@ const changeView = (value) => {
             toggleModalShare();
             break;
         case 'Notificaciones':
-            container.innerHTML = 'Notificaciones';
+            container.innerHTML =notification('https://media.licdn.com/dms/image/D4E0BAQGTRAHntOfgTg/company-logo_100_100/0/1667698674172?e=1704931200&v=beta&t=e6i4THvej2BCDFqHkx9VL4yeaZx3da023qnhyfMWS-M','10/2/2023', 'En el trabajo no debes darlo todo, conoce la regla del 85%' );
             break;
         default:
             break;
