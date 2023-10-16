@@ -1,0 +1,135 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="44C027C1-53D8-B83F-07C7-0D4A8D8CD039" name="Comments">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:39:20 UTC</createdTime>
+<generatorID>DB4A6A9E-FD9B-8167-3AA2-AC74C61E46F3</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<abbreviation>cmts</abbreviation>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="36707CDA-E324-D0E5-B9A7-19E263D949A6">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:39:20 UTC</createdTime>
+<generatorID>C51BB5EA-3463-9D8B-355E-414345FF154D</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="comment" id="EA13EE68-C013-D902-612A-1B90D526E1AD">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:39:20 UTC</createdTime>
+<generatorID>5C09B77A-29C2-FC16-EA3C-EACB2B87BC31</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_id" id="53BBEA5A-5359-1992-7F73-815EED8896F6">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:48:16 UTC</createdTime>
+<generatorID>70681817-6C4F-4642-6035-C5718AEDAFE9</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F998DD56-90C7-C2CE-603C-F382E677C57B" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="from" id="D8974024-84A2-AB34-3ED1-4D1204560487">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:58:55 UTC</createdTime>
+<generatorID>C96B1B49-C5B4-DFF1-22AE-A494DC945A93</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="to" id="1D33EAD2-956B-99EF-0407-974C6B74318D">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:58:55 UTC</createdTime>
+<generatorID>94E49CAF-9BBA-CCB2-5E2D-D2163D1FDB51</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Posts_id" id="4E3162C0-022B-878D-6B1C-F51583B73306">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:58:55 UTC</createdTime>
+<generatorID>760D638B-5FF5-3D1E-D57F-C038078219DB</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="10B35EA2-AE43-2FDB-044B-9F772D096880" referredColumn="9DC36449-FEE2-455C-AE60-BF40378CD8D7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4A0EC651-373D-1F4B-8E27-258A537F667D" name="Comments_PK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:39:20 UTC</createdTime>
+<generatorID>7D7EEFA9-4B01-6B2A-734D-D0E93B7A697B</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="36707CDA-E324-D0E5-B9A7-19E263D949A6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5864A68A-9A70-5C2A-AEBD-EB4BE2FE081E" name="Comments__IDX">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:48:16 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>9EE8D447-573B-0922-BE57-E3379175ACD0</relationGeneratorID>
+</ind_PK_UK>
+<ind_PK_UK id="7DA66DD7-ABEF-4D49-2576-D8AABA082245" name="Comments_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:48:16 UTC</createdTime>
+<generatorID>3677AA25-6D42-D63B-B88B-6A38CEB7A016</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="53BBEA5A-5359-1992-7F73-815EED8896F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="876BF7FE-B4D4-307B-820F-BE6D2D23857B" name="Comments_Posts_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:58:55 UTC</createdTime>
+<generatorID>4900A06E-146A-9458-2A2A-408C14492F83</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E3162C0-022B-878D-6B1C-F51583B73306"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

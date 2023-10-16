@@ -1,0 +1,169 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B575060C-3DF9-FB0F-207E-E795D941D33A" name="Users">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-11 03:34:48 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id" id="B1227504-53F2-23FD-AF13-ED8ECF528C66">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-11 03:34:55 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="name" id="A24F40D0-65C9-69A6-7490-B3E8352E48A0">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-11 03:35:21 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="photo" id="338D6A4F-F9E3-AFD9-E7E8-4D0327A1B3A1">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:12:57 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400</dataTypeSize>
+<ownDataTypeParameters>400,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="email" id="FB071E54-EBC2-35AE-1076-9AEBD6BDB592">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:13:20 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="password" id="E392C066-8C6F-C5AC-C13D-0D16F9D94F0F">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:14:04 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="info" id="EE54AEEF-7F30-2241-9F29-61E889C54060">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:14:28 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>300</dataTypeSize>
+<ownDataTypeParameters>300,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="banner" id="AF4826F1-A80A-804C-8A71-19D5193D69B8">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:14:57 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200</dataTypeSize>
+<ownDataTypeParameters>200,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="location" id="7220D82D-81C3-B952-7A2F-F8A01D215F77">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:15:18 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D96A0BB7-37C9-3261-4375-FCD16AC522C6" name="Users PK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-11 03:35:06 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B1227504-53F2-23FD-AF13-ED8ECF528C66</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="318813E4-E69E-7673-2BD4-2298B2E026F4" name="Users_email_UNv1">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:18:45 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<newElementsIDs>FB071E54-EBC2-35AE-1076-9AEBD6BDB592</newElementsIDs>
+<usedAttributes>
+<attributeRef>FB071E54-EBC2-35AE-1076-9AEBD6BDB592</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="A444544F-9563-089E-1D27-8551EED76508" name="Users email UN">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:46:03 UTC</createdTime>
+<generatorID>F5E456D8-7463-7A0C-E932-7CB7371DB856</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="false"/>
+</engineerTo>
+<usedAttributes>
+<attributeRef>FB071E54-EBC2-35AE-1076-9AEBD6BDB592</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

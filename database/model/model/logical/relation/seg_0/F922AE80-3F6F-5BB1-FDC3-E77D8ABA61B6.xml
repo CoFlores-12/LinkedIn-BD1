@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Posts Users FK" directorySegmentName="seg_0" id="F922AE80-3F6F-5BB1-FDC3-E77D8ABA61B6">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 02:36:25 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<sourcePk>318813E4-E69E-7673-2BD4-2298B2E026F4</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>B575060C-3DF9-FB0F-207E-E795D941D33A</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>11A02DA1-B349-A7FC-E9A5-290C4C7DE863</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
