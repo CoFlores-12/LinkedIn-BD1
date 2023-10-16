@@ -17,7 +17,7 @@
             }
             return "";
         }
-        const token = getCookie('token');
+        const token = getCookSSSSSSie('token');
         if (token === '') {
             window.location.href = '/login'
         }
@@ -382,11 +382,15 @@ const changeView = (value) => {
 const toggleModalShare = () => {
     const modal = document.getElementById('modalShare');
     modal.classList.toggle('hidden');
+    const container = document.getElementById('container');
+    container.classList.toggle('hidden');
 }
 
 const toggleModalComment = () => {
     const modal = document.getElementById('modalComment');
     modal.classList.toggle('hidden');
+    const container = document.getElementById('container');
+    container.classList.toggle('hidden');
 }
 //init view
 changeView('Inicio');

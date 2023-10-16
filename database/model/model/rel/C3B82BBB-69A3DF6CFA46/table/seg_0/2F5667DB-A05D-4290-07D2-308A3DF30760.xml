@@ -19,7 +19,7 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Users_id_from" id="1F371283-56B3-05E2-C091-A65DBDD84FB2">
+<Column name="Users_id" id="1F371283-56B3-05E2-C091-A65DBDD84FB2">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-16 02:58:55 UTC</createdTime>
 <generatorID>72937F59-AD15-FB4D-4B52-505714B81A09</generatorID>
@@ -34,7 +34,7 @@
 <colAssociation fkAssociation="872CB405-7909-42CF-F64E-4FEAFC491E6D" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
 </associations>
 </Column>
-<Column name="Users_id_to" id="39299B83-DC92-00B2-7208-D8AA54EF7DC4">
+<Column name="Users_id1" id="39299B83-DC92-00B2-7208-D8AA54EF7DC4">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-16 02:58:55 UTC</createdTime>
 <generatorID>DDF9C636-1DEF-EDEC-C2C8-F68B7F647652</generatorID>
@@ -48,6 +48,30 @@
 <associations>
 <colAssociation fkAssociation="3A00BB14-CFA5-80A7-EA85-414A5F143D92" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
 </associations>
+</Column>
+<Column name="from" id="47F4CA42-F3BD-9B02-5DD5-615A7E44E943">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>A7ED61BC-0383-38BC-7F32-5EB47160FA5D</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="to" id="152F97A2-EB69-D53F-B003-A668888D5952">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>038124DE-6985-7C71-CB55-7036C80B51A3</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -85,7 +109,7 @@
 <colUsage columnID="1F371283-56B3-05E2-C091-A65DBDD84FB2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="7A0B951F-3505-789E-DCCD-F573A2780EB4" name="following_Users_FKv3">
+<ind_PK_UK id="7A0B951F-3505-789E-DCCD-F573A2780EB4" name="following_Users_FK">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-16 02:58:55 UTC</createdTime>
 <generatorID>6D92BBBE-F5C1-9E52-1E42-90F84AD82960</generatorID>
@@ -96,7 +120,7 @@
 <colUsage columnID="1F371283-56B3-05E2-C091-A65DBDD84FB2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="E63CE0DF-38C1-D22B-EADF-42BEA20FF411" name="following_Users_FKv4">
+<ind_PK_UK id="E63CE0DF-38C1-D22B-EADF-42BEA20FF411" name="following_Users_FKv1">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-16 02:58:55 UTC</createdTime>
 <generatorID>8F71686A-5400-CB0F-ADE0-62DF0F56D47E</generatorID>

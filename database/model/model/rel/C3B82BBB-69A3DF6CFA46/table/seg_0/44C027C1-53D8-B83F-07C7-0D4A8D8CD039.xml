@@ -87,6 +87,21 @@
 <colAssociation fkAssociation="10B35EA2-AE43-2FDB-044B-9F772D096880" referredColumn="9DC36449-FEE2-455C-AE60-BF40378CD8D7"/>
 </associations>
 </Column>
+<Column name="Comments_id" id="472F40E0-65B1-8F5F-32A3-33CB10836CF0">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>F148C087-AEA0-A3B5-1B2C-14B4F2E7BBE3</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1589831A-DF1D-C831-59CA-A75B367E8708" referredColumn="36707CDA-E324-D0E5-B9A7-19E263D949A6"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="4A0EC651-373D-1F4B-8E27-258A537F667D" name="Comments_PK">
@@ -129,6 +144,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="4E3162C0-022B-878D-6B1C-F51583B73306"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="146CC9B9-099D-6A59-1799-5DC2E193F260" name="Comments_Comments_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>9E870BAA-7D36-1B7F-BE7F-4CBB3E6EBD30</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="472F40E0-65B1-8F5F-32A3-33CB10836CF0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

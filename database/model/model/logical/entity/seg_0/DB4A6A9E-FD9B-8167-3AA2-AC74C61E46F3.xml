@@ -98,6 +98,21 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id2" id="F148C087-AEA0-A3B5-1B2C-14B4F2E7BBE3">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:22 UTC</createdTime>
+<generatorID>9E870BAA-7D36-1B7F-BE7F-4CBB3E6EBD30</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<engineerTo>
+<item key="C3B82BBB-67C1-16DE-DC44-69A3DF6CFA46" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>C51BB5EA-3463-9D8B-355E-414345FF154D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="7D7EEFA9-4B01-6B2A-734D-D0E93B7A697B" name="Comments PK">

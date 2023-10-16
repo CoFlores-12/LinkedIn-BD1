@@ -81,8 +81,20 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_email" id="8895F388-31F3-7783-06AC-1088B1838F74">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="8C91312C-DC81-B3B8-9630-823F801C0163" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+<colAssociation fkAssociation="8C91312C-DC81-B3B8-9630-823F801C0163" referredColumn="522D1521-16E7-7C01-4EBC-00073817AA27"/>
 </associations>
 </Column>
 </columns>
@@ -107,7 +119,7 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="82773C21-B89C-ACA4-5036-E9377BAE5D03"/>
+<colUsage columnID="8895F388-31F3-7783-06AC-1088B1838F74"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

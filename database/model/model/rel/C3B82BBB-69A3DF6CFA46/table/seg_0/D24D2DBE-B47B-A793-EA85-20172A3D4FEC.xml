@@ -124,7 +124,7 @@
 <colUsage columnID="C112A504-4C12-6562-9B35-644307D4FAB2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="41F358DE-4B06-00B9-28CC-52D169B6FA13" name="Users_email_UNv2">
+<ind_PK_UK id="41F358DE-4B06-00B9-28CC-52D169B6FA13" name="Users_email_UNv1">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-16 02:39:20 UTC</createdTime>
 <generatorID>318813E4-E69E-7673-2BD4-2298B2E026F4</generatorID>

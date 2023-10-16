@@ -49,6 +49,30 @@
 <colAssociation fkAssociation="022D30AE-5386-F9DD-8894-B4476EBDDDB3" referredColumn="9DC36449-FEE2-455C-AE60-BF40378CD8D7"/>
 </associations>
 </Column>
+<Column name="from" id="F42E7F81-8EC7-4321-F8BE-2F88B1F99D76">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>BF633027-5BF4-753E-39FB-9C6C0C869CD7</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="to" id="1EFFEF08-748B-CF7C-20DD-050F633FB2E0">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-16 17:23:41 UTC</createdTime>
+<generatorID>58971FC2-87E9-AB97-F068-710E65DCF07D</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="CD1F8C95-8B16-E146-A6D4-D10030FA9EEF" name="Likes_PK">
