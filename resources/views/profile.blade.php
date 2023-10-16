@@ -15,15 +15,18 @@
         
     </nav>
     <div>
-        <img class="w-full" src="{{$user->banner}}" alt="">
-        <div class="pl-3 pt-10 pr-3 relative">
+        <div class="banner">
+            <img class="w-full"  src="{{$user->banner}}" alt="">
+
+        </div>
+        <div class="pl-3 pt-[80px] pr-3 relative">
         <div class="pv-top-card__photo-wrapper ml0">
             <div class="profile-photo-edit pv-top-card__edit-photo">
-                  <img alt="Cesar Flores, #OPEN_TO_WORK" class="profile-photo-edit__camera-plus-frame" src="{{$user->photo}}">
+                  <img alt="" class="profile-photo-edit__camera-plus-frame" src="{{$user->photo}}">
                   </div>
           
-                </div>
-            <h2 class="text-heading-xlarge inline t-24 v-align-middle break-words">{{$user->name}}</h2>
+             </div>
+            <h2 class="text-heading-xlarge inline v-align-middle break-words">{{$user->name}}</h2>
             <h3>{{$user->location}}</h3>
             <p>{{$user->info}}</p>
         </div>

@@ -161,7 +161,7 @@ const job = (title, farm, location, date, id, logo)=>{
                </a>`
 }
 
-const publicacion = (name, followers, date, content, media, likes, logo) => {
+const publicacion = (name, followers, date, content, media, likes, logo, id) => {
     const fecha = new Date(date);
     const fechaActual = new Date();
     const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
@@ -169,7 +169,9 @@ const publicacion = (name, followers, date, content, media, likes, logo) => {
     <div class="flex flex-row pr-3 pl-3 pt-2" style="text-overflow: 'ellipsis'; overflow:'hidden'; white-space:'nowrap'">
         <img class="h-12 aspect-square" src="${logo}" alt="" />
         <div class="flex flex-col ml-2 text-color-text-low-emphasis">
+        <a href="/in/${id}">
             <span class="text-black text-base" style="text-overflow: 'ellipsis'; overflow:'hidden'; white-space:'nowrap'">${name}</span>
+        </a>
             <span class="text-xs text-gray-600">${followers} seguidores</span>
             <span class="text-xs text-gray-600">${diff} dias </span>
         </div>
@@ -314,7 +316,7 @@ const btnNavBar = (value, icon)=>{
             .then(response => {
                 console.log(response);
                 response.forEach(userPost => {
-                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo);
+                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.user_id);
                 });
                 document.getElementById('modalLoad').style.display = 'none';
                 //TODO: get jobs from api
