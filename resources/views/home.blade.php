@@ -36,6 +36,102 @@
         <img src="assets/logo.svg" width="100px" alt="">
         <div class="loader"></div>
     </div>
+    <div class="modal hidden flex flex-col fixed top-0 justify-center items-center left-0" id="modalComment">
+        <div class="relative h-full w-full">
+            <div class="fixed top-0 w-full bg-white pt-2 pl-3">
+            <button id="full-page-header-back-button" onclick='toggleModalComment()' class="h-6 px-2 bg-color-background-container border-none" data-tracking-control-name="back" aria-label="volver" role="link" type="button">
+          
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 text-color-icon lazy-loaded" data-supported-dps="24x24" fill="currentColor" focusable="false" aria-busy="false">
+              <path d="M9 4l-4.87 7H22v2H4.13L9 20H6.56L1 12l5.56-8z"></path>
+            </svg>
+                </button>
+            </div>
+            <div id="commentsList" class="pt-10 pl-4 pr-4">
+            <section class="comment flex grow-1 items-stretch leading-[16px]" data-is-comment-initialized="true">
+        <div>
+          <a href="https://www.linkedin.com/in/sandra-palacios-4a655470?trk=feed-detail_comments-list_comment_actor-image" data-tracking-control-name="feed-detail_comments-list_comment_actor-image" data-tracking-will-navigate="">
+            
+            <img class="inline-block relative rounded-[50%] w-8 h-8 lazy-loaded" data-ghost-classes="bg-color-entity-ghost-background" data-ghost-url="https://static.licdn.com/aero-v1/sc/h/9c8pery4andzj6ohjkjp54ma2" alt="Sandra Palacios" aria-busy="false" src="https://media.licdn.com/dms/image/C5603AQHJ3yDEbO1zZQ/profile-displayphoto-shrink_400_400/0/1517501506231?e=1703116800&amp;v=beta&amp;t=lwAV2iHYci-7XOeEU7Vs92akYghKyPgqAQLfB9n3X0o">
+        
+          </a>
+        </div>
+        <div class="w-full min-w-0">
+          <div class="comment__body ml-0.5 mb-1 pt-1 pr-1.5 pb-1 pl-1.5 rounded-[8px] rounded-tl-none relative">
+            <div class="comment__header flex flex-col">
+                  <a class="text-sm link-styled no-underline leading-open comment__author truncate pr-6" href="https://www.linkedin.com/in/sandra-palacios-4a655470?trk=feed-detail_comments-list_comment_actor-name" data-tracking-control-name="feed-detail_comments-list_comment_actor-name" data-tracking-will-navigate="">
+                    Sandra Palacios
+                  </a>
+                  <p class="!text-xs text-color-text-low-emphasis leading-[1.33333] mb-0.5 truncate comment__author-headline">Subgerente Regional de Inteligencia de la Experiencia</p>
+              
+        <span class="text-xs text-color-text-low-emphasis comment__duration-since absolute right-6 top-1 inline-block">
+      1 semana
+        </span>
+
+            </div>
+            
+  <div class="attributed-text-segment-list__container relative mt-1 mb-1.5 babybear:mt-0 babybear:mb-0.5">
+    <p class="attributed-text-segment-list__content text-color-text !text-sm whitespace-pre-wrap break-words
+         comment__text babybear:mt-0.5" dir="ltr">Muy orgullosa de pertenecer al equipo de Experiencia del cliente, y seguir trabajando por mejorar la experiencia de nuestros clientes 💪 </p>
+<!---->  </div>
+
+            
+<!---->      
+<!---->          </div>
+          
+        <div class="comment__actions flex flex-row flex-wrap items-center ml-2" aria-label="Controles de comentarios">
+
+              <button aria-label="Recomendado" class="comment__action inline-block font-sans text-xs text-color-text-low-emphasis cursor-pointer comment__reaction hidden " data-feed-action-category="UNREACT" data-feed-action="react" data-feed-control="feed-comment_like_toggle" data-feed-action-type="unlikeComment" data-reaction-type="LIKE">
+                
+  <div class="flex flex-row items-center text-color-link">
+    <icon class="action-btn__icon w-2 mr-0.5 lazy-loaded" data-svg-class-name="action-btn__icon--svg" aria-hidden="true" aria-busy="false">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" focusable="false" class="action-btn__icon--svg lazy-loaded" aria-busy="false"><g fill="none" fill-rule="evenodd"><rect width="16" height="16" rx="8"></rect><circle fill="#1485BD" cx="8" cy="8" r="7"></circle><path d="M11.93 7.25h-.55c-.05 0-.15-.19-.4-.46-.37-.4-.78-.91-1.07-1.19a7.18 7.18 0 0 1-1.73-2.24c-.24-.51-.26-.74-.75-.74a.77.77 0 0 0-.67.81c0 .14.07.63.1.8a7.62 7.62 0 0 0 1 2.2h.54-4.28a.87.87 0 0 0-.88.94.91.91 0 0 0 .93.85h.16a.78.78 0 0 0-.76.8.81.81 0 0 0 .74.8.8.8 0 0 0 .33 1.42.79.79 0 0 0-.09.55.86.86 0 0 0 .85.63h2.29c.3 0 .599-.038.89-.11l1.42-.42h1.9c1.02-.04 1.29-4.64.03-4.64z" fill="#E6F7FF"></path><path d="M7.43 6.43H4.11a.88.88 0 0 0-.88 1 .91.91 0 0 0 .93.84h.16a.78.78 0 0 0-.76.8.83.83 0 0 0 .74.81.81.81 0 0 0-.31.63.82.82 0 0 0 .65.8.81.81 0 0 0-.09.56.86.86 0 0 0 .85.62h2.29c.3 0 .599-.038.89-.11l1.42-.47h1.9c1 0 1.27-4.64 0-4.64a5 5 0 0 1-.55 0c-.05 0-.15-.19-.4-.46-.37-.4-.78-.91-1.07-1.19a7.18 7.18 0 0 1-1.7-2.25 2 2 0 0 0-.32-.52.83.83 0 0 0-1.16.09 1.39 1.39 0 0 0-.25.38 1.49 1.49 0 0 0-.09.3 2.38 2.38 0 0 0 .07.84c.064.288.155.569.27.84.188.353.41.688.66 1a.18.18 0 0 1 .07.08" stroke="#004B7C" stroke-linecap="round" stroke-linejoin="round"></path></g></svg></icon>
+    <span class="action-btn__button-text inline-block align-baseline">
+      Recomendado
+    </span>
+  </div>
+
+              </button>
+
+              <button aria-label="Recomendar" class="comment__action inline-block font-sans text-xs text-color-text-low-emphasis cursor-pointer comment__reaction " data-tracking-control-name="feed-detail_comments-list_comment_react" data-feed-action="react" data-feed-control="feed-comment_like_toggle" data-feed-action-category="REACT" data-feed-action-type="likeComment">
+                
+  <div class="flex flex-row items-center ">
+    <icon class="action-btn__icon w-2 mr-0.5 lazy-loaded" data-svg-class-name="action-btn__icon--svg" aria-hidden="true" aria-busy="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" focusable="false" class="action-btn__icon--svg lazy-loaded" aria-busy="false"><path d="M19.5 11l-3.9-3.9c-.8-.8-1.3-1.7-1.7-2.7l-.5-1.5C13 1.8 11.9 1 10.8 1 9.2 1 8 2.2 8 3.8v1.1c0 1 .2 1.9.5 2.8L8.9 9H4.1C3 9 2 10 2 11.1c0 .7.4 1.4.9 1.8-.6.4-.9 1-.9 1.7 0 .9.5 1.6 1.3 2-.2.3-.3.7-.3 1 0 1.1.9 2.1 2 2.1v.1C5 21 6 22 7.1 22h7.5c1.2 0 2.5-.3 3.6-.8l.3-.2H21V11h-1.5zm-.5 8h-1l-.7.4c-.8.4-1.8.6-2.7.6H7.7c-.4 0-.8-.3-1-.7l-.3-.9-.8-.4c-.4-.1-.7-.6-.6-1l.2-1-.8-.7c-.3-.4-.4-.9-.1-1.3l.7-1.1-.7-1.1c-.3-.4-.1-.8.3-.8h7l-1.3-3.9c-.2-.7-.3-1.5-.3-2.2V3.8c0-.5.3-.8.8-.8.3 0 .6.2.7.5L12 5c.4 1.3 1.2 2.5 2.2 3.5l4.5 4.5h.3v6z" fill="currentColor"></path></svg></icon>
+    <span class="action-btn__button-text inline-block align-baseline">
+      Recomendar
+    </span>
+  </div>
+
+              </button>
+
+                <span class="before:middot font-sans text-s text-color-text-low-emphasis"></span>
+                <button aria-label="Responder" class="comment__action inline-block font-sans text-xs text-color-text-low-emphasis cursor-pointer comment__reply" data-feed-action="replyToComment" data-feed-control="comment" data-feed-action-category="expand" data-feed-action-type="replyToComment" data-tracking-control-name="feed-detail_comments-list_comment_reply">
+                  
+  <div class="flex flex-row items-center ">
+    <icon class="action-btn__icon w-2 mr-0.5 lazy-loaded" data-svg-class-name="action-btn__icon--svg" aria-hidden="true" aria-busy="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" focusable="false" class="action-btn__icon--svg lazy-loaded" aria-busy="false"><path d="M7 9h10v1H7V9zm0 4h7v-1H7v1zm16-2c0 2.2-1 4.3-2.8 5.6L12 22v-4H8c-3.9 0-7-3.1-7-7s3.1-7 7-7h8c3.9 0 7 3.1 7 7zm-2 0c0-2.8-2.2-5-5-5H8c-2.8 0-5 2.2-5 5s2.2 5 5 5h6v2.3l5-3.3c1.3-.9 2-2.4 2-4z" fill="currentColor"></path></svg></icon>
+    <span class="action-btn__button-text inline-block align-baseline">
+      Responder
+    </span>
+  </div>
+
+                </button>
+
+<!---->              <span class="comment__reactions-count font-sans text-xs text-color-text-low-emphasis border-l-1 border-solid border-color-border-low-emphasis pl-1 mx-1 hidden">
+                1&nbsp;reacción
+              </span>
+        </div>
+      
+        </div>
+      </section>
+            </div>
+            <div class="absolute w-full bottom-0 left-0 flex flex-row items-center p-2">
+                <img class=" w-[24px] h-[24px] rounded-full mr-3" src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_400_400/0/1660002666757?e=1698080400&v=beta&t=dN5A7ddDxjJ3kM17ncKuGBdCYIo9GzqE5q7Jb6N5cEk" alt="">
+                <input class="flex-1" type="text" placeholder="Añade tu comentario">
+                <button class="btn-sm btn-tertiary-emphasis comment-box__post-btn" disabled="true">Publicar</button>
+            </div>
+        </div>
+    </div>
     <div class="modal hidden  h-full flex flex-col fixed top-0 left-0" id="modalShare">
         <div class="flex pt-2 pl-3 pr-3 felx-row justify-between items-center">
                 <img onclick="toggleModalShare()" class="w-[24px] h-[24px]" src={{URL::asset('assets/xIcon.svg')}} width="100px" alt="">
@@ -161,7 +257,7 @@ const job = (title, farm, location, date, id, logo)=>{
                </a>`
 }
 
-const publicacion = (name, followers, date, content, media, likes, logo, id) => {
+const publicacion = (name, followers, date, content, media, likes, logo, id, idPost) => {
     const fecha = new Date(date);
     const fechaActual = new Date();
     const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
@@ -191,7 +287,7 @@ const publicacion = (name, followers, date, content, media, likes, logo, id) => 
             <button class='text-base text-gray-600 hover:bg-gray-100 p-2 flex flex-row items-center'>
                 <img class='mr-1  w-[24px] h-[24px]' src='assets/like.svg' width={24} height={24} alt="" /> Recomendar
             </button>
-            <button class='text-base text-gray-600 hover:bg-gray-100 p-2 flex flex-row items-center'>
+            <button onclick="toggleModalComment(${idPost})" class='text-base text-gray-600 hover:bg-gray-100 p-2 flex flex-row items-center'>
                 <img class='mr-1 w-[24px] h-[24px]' src='assets/comment.svg' width={24} height={24} alt="" />Comentar
             </button>
             <button class='text-base text-gray-600 hover:bg-gray-100 p-2 flex flex-row items-center'>
@@ -287,6 +383,11 @@ const toggleModalShare = () => {
     const modal = document.getElementById('modalShare');
     modal.classList.toggle('hidden');
 }
+
+const toggleModalComment = () => {
+    const modal = document.getElementById('modalComment');
+    modal.classList.toggle('hidden');
+}
 //init view
 changeView('Inicio');
 const btnNavBar = (value, icon)=>{
@@ -316,7 +417,7 @@ const btnNavBar = (value, icon)=>{
             .then(response => {
                 console.log(response);
                 response.forEach(userPost => {
-                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.user_id);
+                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.user_id, userPost.id);
                 });
                 document.getElementById('modalLoad').style.display = 'none';
                 //TODO: get jobs from api
