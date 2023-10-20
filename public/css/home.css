@@ -194,3 +194,36 @@ body, html {
 .comment__body, .comment__body button {
   background-color: #f3f2ef;
 }
+/*Message*/
+.containerMessage{
+  display: flex;
+  flex-direction: column;
+ 
+}
+.message{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 5px;
+  background-color: #fff;
+
+}
+.imageMessage{
+  width: 25%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rounded-image{
+  border-radius: 50%;
+}
+.infoMessage{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 65%;
+}
+.hourMessage{
+  width: 10%;
+}
