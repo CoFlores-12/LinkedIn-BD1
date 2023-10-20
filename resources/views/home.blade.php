@@ -298,7 +298,7 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
     </div>
 </div>`
 }
-const notification = (logo,date,text) => {
+const notification = (date,text) => {
             const fecha = new Date(date);
             const fechaActual = new Date();
             const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
@@ -307,7 +307,7 @@ const notification = (logo,date,text) => {
             <div class='containerNoti'>
             <div class='notifications'>
                 <div class='imagenNoti'>
-                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
                 </div>
                 <div  class="pl-3 pr-3 text-sm">
                 <span>${text}</span>
@@ -319,7 +319,7 @@ const notification = (logo,date,text) => {
             </div>
             <div class='notifications'>
                 <div class='imagenNoti'>
-                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
                 </div>
                 <div  class="pl-3 pr-3 text-sm">
                 <span>${text}</span>
@@ -331,7 +331,7 @@ const notification = (logo,date,text) => {
             </div>
             <div class='notifications'>
                 <div class='imagenNoti'>
-                <img class="h-12 aspect-square" src="${logo}" alt="" />
+                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
                 </div>
                 <div  class="pl-3 pr-3 text-sm">
                 <span>${text}</span>
