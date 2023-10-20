@@ -343,6 +343,103 @@ const notification = (date,text) => {
             </div>
         </div>`
         }
+      const message=()=>{
+          container.innerHTML=`<div id="conversation-card-ember118" class="msg-conversation-card msg-conversations-container__pillar" data-feedback-redacted="">
+      <a href="#" id="ember119" class="active ember-view msg-conversation-listitem__link msg-conversations-container__convo-item-link pl3">
+        <div class="msg-selectable-entity
+    
+    msg-selectable-entity--4">
+      <div class="msg-facepile-grid--no-facepile msg-facepile-grid
+    msg-facepile-grid--4 msg-selectable-entity__entity">
+<!---->      <img src="https://media.licdn.com/dms/image/C4D03AQHFot31JK1Rhw/profile-displayphoto-shrink_100_100/0/1578354888650?e=1703116800&amp;v=beta&amp;t=3a3ifGcxQxPjDcLMmcMbEkvYstgD2Vh6Q_kxz5kT1Eg" loading="lazy" alt="Franklin Tavarez" id="ember191" class="evi-image lazy-image msg-facepile-grid__img msg-facepile-grid__img--person ember-view">
+</div>
+      <div class="msg-selectable-entity__checkbox-container">
+    <input id="checkbox-msg-selectable-entity__checkbox-ember120" class="ember-checkbox ember-view msg-selectable-entity__input simple-form" type="checkbox">
+    <label class="msg-selectable-entity__checkbox-label ml2" aria-label="Seleccionar conversación" for="checkbox-msg-selectable-entity__checkbox-ember120">
+    </label>
+
+    <div class="msg-selectable-entity__checkbox-circle-container">
+      <div class="msg-selectable-entity__checkbox-circle">
+      </div>
+    </div>
+  </div>
+</div>
+        <div class="msg-conversation-card__content--selectable">
+          <div class="msg-conversation-card__rows">
+            <div class="msg-conversation-card__row msg-conversation-card__title-row">
+              <h3 class="msg-conversation-listitem__participant-names msg-conversation-card__participant-names truncate pr1 t-16 t-black
+                  t-normal">
+                Franklin Tavarez
+              </h3>
+              <div class="msg-conversation-card__mute-icon-holder">
+<!---->              </div>
+                <time class="msg-conversation-listitem__time-stamp t-14 t-black
+                    t-normal
+                    msg-conversation-card__time-stamp">
+                  10 oct
+                </time>
+                <div class="msg-conversation-card__inbox-shortcuts-placeholder">
+                </div>
+            </div>
+
+            <div class="msg-conversation-card__row msg-conversation-card__body-row">
+              <div class="msg-conversation-card__message-snippet-container flex-grow-1">
+<!---->                <p class="msg-conversation-card__message-snippet
+                    
+                    m0 t-14
+                    ">
+<!---->                    <span class="msg-conversation-card__pill t-14
+                        
+                        t-bold pr1">
+                      Oferta de LinkedIn
+                    </span>
+                  ¡Hola, Josue!
+Me llamo Franklin y formo parte del equipo de LinkedIn Premium. ¡Gracias por tu confianza en LinkedIn! Nos gustaría ofrecerte un mes de prueba gratis para Premium.
+                </p>
+              </div>
+              <div class="display-flex">
+                <div class="msg-conversation-card__conversation-status msg-conversation-card__star-icon
+                    " aria-label="Marcar como favorito" role="img">
+                </div>
+              </div>
+            </div>
+        </div>
+        </div>
+        <span class="msg-conversation-listitem__active-text visually-hidden">
+          . Conversación activa
+        </span>
+        <span class="visually-hidden">
+          . Pulsa la tecla return/intro para ir a los detalles de la conversación
+        </span>
+      </a>
+        <div class="msg-conversation-card__inbox-shortcuts">
+    <div id="ember122" class="artdeco-dropdown msg-thread-actions__dropdown artdeco-dropdown--placement-bottom artdeco-dropdown--justification-right ember-view">
+      <button aria-expanded="false" id="ember123" class="msg-thread-actions__control artdeco-button artdeco-button--circle artdeco-button--1 artdeco-button--muted artdeco-button--tertiary artdeco-dropdown__trigger artdeco-dropdown__trigger--placement-bottom ember-view" type="button" tabindex="0">
+        <svg role="none" aria-hidden="true" class="artdeco-button__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" data-supported-dps="16x16" data-test-icon="overflow-web-ios-small">
+    <use href="#overflow-web-ios-small" width="16" height="16"></use>
+</svg>
+
+        <span class="visually-hidden">
+          Abre la lista de opciones en tu conversación con Franklin Tavarez
+        </span>
+      
+</button>
+      <div class="msg-thread-actions__dropdown-container">
+        <div tabindex="-1" aria-hidden="true" id="ember124" class="msg-thread-actions__dropdown-options--inbox-shortcuts artdeco-dropdown__content artdeco-dropdown--is-dropdown-element artdeco-dropdown__content--has-arrow artdeco-dropdown__content--arrow-right artdeco-dropdown__content--justification-right artdeco-dropdown__content--placement-bottom ember-view"><!----></div>
+      </div>
+    </div>
+
+    
+
+    
+    <div>
+   </div>
+  
+ 
+        </div>
+    </div>
+          `;
+        }
 
 const changeView = (value) => {
     switch (value) {
