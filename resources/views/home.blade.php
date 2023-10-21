@@ -197,7 +197,7 @@
             <input class='w-full Hdr_nav_search_input bg-gray-100 rounded p-2' />
         </div>
         <div>
-        <img class='mr-1 w-[24px] h-[24px]' src={{URL::asset('assets/menssageIcon.svg')}} width={24} height={24} alt="" />
+        <button  onclick=message('Cesar')> <img class='mr-1 w-[24px] h-[24px]' src={{URL::asset('assets/menssageIcon.svg')}} width={24} height={24} alt="" /></button>
         </div>
     </nav>
     <div id="container" class="h-full pb-9 w-full flex items-center flex-col" style="background-color: #E9E5DF;">
