@@ -1,0 +1,152 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6186E8EE-7ACF-9405-6A56-B72CDAEADE88" name="Messages">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 18:59:16 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="E2FD9764-88B1-E904-929E-B5616D71C4DF">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:00:28 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="origin" id="8CA94A08-8077-11B6-099E-0C2D951F3A53">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:23:16 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="destination" id="B2E9B9F7-169E-2A0B-FA02-52CF66881A68">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:24:10 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Messages_id" id="32ED2B59-0F37-6F5F-3081-12AB79742B7A">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:28:12 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BC6EC03D-841B-B11D-DCF9-469705A79422" referredColumn="E2FD9764-88B1-E904-929E-B5616D71C4DF"/>
+</associations>
+</Column>
+<Column name="Users_destination_id" id="7D8ECC29-FBBE-E52A-C11E-DD022E802890">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:31:07 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="016E2004-9514-B11C-2232-CC27DD99EDF3" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="Users_origin_id" id="D704F67A-F1C2-B08F-CE70-C9D57205D3E7">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:31:15 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Messages_id1" id="08FF1A93-6C2D-3EDF-4C77-7887C38D2697">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:31:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="15F43F33-77C6-5E5C-AF74-CA22F0E2B4C7" referredColumn="E2FD9764-88B1-E904-929E-B5616D71C4DF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="12A83709-565D-27E7-4345-7EE19A031892" name="Messages_PK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:00:28 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E2FD9764-88B1-E904-929E-B5616D71C4DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FE4EBD7C-D7E4-605A-8B1B-7F0AB1CEB246" name="Messages__IDX">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:24:52 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8CA94A08-8077-11B6-099E-0C2D951F3A53" sortOrder="DESC"/>
+<colUsage columnID="B2E9B9F7-169E-2A0B-FA02-52CF66881A68" sortOrder="DESC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0099FB24-4887-03F5-8D9B-06F59B1CF836" name="Messages_Messages_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:28:12 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="32ED2B59-0F37-6F5F-3081-12AB79742B7A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4B5C96F0-43B1-3031-DB16-ADAB6E56E400" name="Messages_Users_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:31:07 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D8ECC29-FBBE-E52A-C11E-DD022E802890"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="8E5F1D19-5729-E334-D6D0-293B4E89A7D9" name="Messages_Users_FKv2">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:31:15 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08FF1A93-6C2D-3EDF-4C77-7887C38D2697"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,95 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="81FDEAD7-AF92-DD54-EAD0-3FEE10BD659B" name="education">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:20:27 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4F3AAD99-E10A-00DF-BCF6-0B4F66AE6DE6">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:20:58 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="F57943C2-792E-604B-1876-17A574409461">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:20:58 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Curriculum_id" id="DFCE446F-17D1-326C-AF26-1A204B4CF15B">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:27:58 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="00F4F5F4-13C6-1F8D-67E5-247DF4972537" referredColumn="C10B04B0-4EAE-E386-8351-6D1591AFA845"/>
+</associations>
+</Column>
+<Column name="Users_id" id="3DBAE896-4EE6-0211-BF36-1C0E3A1BBABA">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:32:11 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="55E98183-A0BE-7EEC-5DFB-1B76430C6D14" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E2B85780-9F7D-271F-BF79-4AF6B61092FA" name="education_PK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:20:58 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4F3AAD99-E10A-00DF-BCF6-0B4F66AE6DE6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DA14690E-D27C-58FD-E6A5-FCBA6BCFC930" name="education_Curriculum_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:27:58 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DFCE446F-17D1-326C-AF26-1A204B4CF15B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D6FB3DDD-E15E-E355-100E-24CF56E0D50E" name="education_Users_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 23:32:11 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3DBAE896-4EE6-0211-BF36-1C0E3A1BBABA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
