@@ -169,6 +169,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        Yajra\Oci8\Oci8ServiceProvider::class,
     ])->toArray(),
 
     /*

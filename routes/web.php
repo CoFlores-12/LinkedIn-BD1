@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,4 +24,11 @@ Route::get('/login', function () {
 Route::get('/home', function () {
     return view('home');
 });
+Route::get('/test', function () {
+    return view('test');
+});
 Route::get('/in/{id}', [UsersController::class, 'viewProfile']);
+
+Route::get('/pruebaDB', function () {
+    return DB::select('SELECT * FROM HELP');
+});

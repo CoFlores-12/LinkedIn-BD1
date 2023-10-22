@@ -17,7 +17,7 @@
             }
             return "";
         }
-        const token = getCookSSSSSSie('token');
+        const token = getCookie('token');
         if (token === '') {
             window.location.href = '/login'
         }
