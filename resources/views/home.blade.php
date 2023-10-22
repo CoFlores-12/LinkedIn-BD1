@@ -342,6 +342,7 @@ const notification = (date,text) => {
                 </div>
             </div>
         </div>`
+  
         }
       const message=(user)=>{
           container.innerHTML=`<div class="containerMessages">
