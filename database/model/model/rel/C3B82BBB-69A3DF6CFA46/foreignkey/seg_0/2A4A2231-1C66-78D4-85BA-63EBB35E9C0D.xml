@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2A4A2231-1C66-78D4-85BA-63EBB35E9C0D" containerWithKeyObject="CB1F658F-4708-74A1-4373-949FDCC314E6" localFKIndex="252E73DC-FA81-62E3-5AE8-BA05962CBACB" name="Notifications_Posts_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:18:03 UTC</createdTime>
+<generatorID>1AD8E5DC-C035-38B4-D0DA-293DE068D6CD</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<referredTableLongName>Posts</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>BB8AB36A-DCE8-A857-D1A4-CC1E7A3FFE74</referredTableID>
+<keyObject>61BC4ED9-FDD2-43AD-6B83-D3F623E49DBD</keyObject>
+<referredKeyID>61BC4ED9-FDD2-43AD-6B83-D3F623E49DBD</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

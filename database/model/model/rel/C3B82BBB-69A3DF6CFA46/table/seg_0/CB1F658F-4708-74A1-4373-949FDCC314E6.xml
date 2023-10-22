@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CB1F658F-4708-74A1-4373-949FDCC314E6" name="Notifications">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 18:58:27 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="661F3DA8-E463-7A6C-3472-FF2F98DCCA33">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 18:58:47 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="content" id="E6DE274F-5E53-2C6E-F9BC-F54C729608A7">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:10:42 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Posts_id" id="B34C055A-1CEC-5DDB-670B-CED9C39E0161">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:18:03 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2A4A2231-1C66-78D4-85BA-63EBB35E9C0D" referredColumn="9DC36449-FEE2-455C-AE60-BF40378CD8D7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="998A3F57-7323-9665-3725-9DC4EB6122E2" name="Notifications_PK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:01:37 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="661F3DA8-E463-7A6C-3472-FF2F98DCCA33"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="252E73DC-FA81-62E3-5AE8-BA05962CBACB" name="Notifications_Posts_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:18:03 UTC</createdTime>
+<generatorID>1AD8E5DC-C035-38B4-D0DA-293DE068D6CD</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B34C055A-1CEC-5DDB-670B-CED9C39E0161"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

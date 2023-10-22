@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8A58168A-98EF-E838-F435-07382628D108" name="jobs">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:03:02 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_9</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="FA33C5E9-D59A-954E-F638-9A98050071FA">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:03:15 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_id" id="4A68B5A5-C0EB-A47E-BE6A-B1C344CFEF6B">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:09:18 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="688A1AD1-675C-BA45-0598-76B41BEFF299" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="name" id="ACA658ED-5EFB-0B91-60AB-673D1279B695">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 21:17:16 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="3BB1BF4D-300E-BE91-6E94-EE9D7C495897" name="jobs_PK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:03:15 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FA33C5E9-D59A-954E-F638-9A98050071FA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7B5AEDBC-6AB6-2899-6F8A-F130BB00DD2B" name="jobs_Users_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:09:18 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A68B5A5-C0EB-A47E-BE6A-B1C344CFEF6B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

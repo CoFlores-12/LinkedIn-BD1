@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4F0B4C52-609B-D18B-6900-E0B4EA4D0670" name="Curriculum">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:05:32 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="C10B04B0-4EAE-E386-8351-6D1591AFA845">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:07:27 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_id" id="46321232-D5C2-534B-73F8-2656B47A2A6E">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:26:42 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EFD07803-CF2F-0927-44B6-077DEE9B5CB8" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0BFF0EA1-4C6C-C1E3-1AA0-10814E510F82" name="Curriculum_PK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:07:27 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C10B04B0-4EAE-E386-8351-6D1591AFA845"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C680815A-9D57-FDCE-696C-9B7367646BBE" name="Curriculum__IDX">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:27:25 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46321232-D5C2-534B-73F8-2656B47A2A6E" sortOrder="DESC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31D00B95-6729-C881-2F7D-D490CBF86CFD" name="Curriculum_Users_FK">
+<createdBy>Amador</createdBy>
+<createdTime>2023-10-22 19:26:42 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="46321232-D5C2-534B-73F8-2656B47A2A6E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
