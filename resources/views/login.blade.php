@@ -104,7 +104,7 @@
       formData.append('password', password);
       const options = {method: 'POST', body: formData};
 
-      fetch('/api/login', options)
+      fetch('/login', options)
         .then(response => response.json())
         .then(response => setCookie('token', response.token, 7))
         .catch(err => {
@@ -135,7 +135,7 @@
       formData.append('password', password);
       const options = {method: 'POST', body: formData};
 
-      fetch('/api/register', options)
+      fetch('/register', options)
         .then(response => response.json())
         .then(response => setCookie('token', response.token, 7))
         .catch(err => {

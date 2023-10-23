@@ -23,11 +23,11 @@ class AuthController extends Controller
             'password'=>bcrypt($request->password),
         ]);
         $token = JWTAuth::fromUser($user);
+        session()->put('token',$token);
         return response()->json([
             'message'=>'Successfully created user!',
             'token'=>$token,
         ],201);
-
     }
 
     public function login(Request $request){
@@ -37,6 +37,7 @@ class AuthController extends Controller
                 'message'=>'Invalid credentials!'
             ],401);
         }
+        session()->put('token',$token);
         return response()->json([
             'token'=>$token,
         ],200);
