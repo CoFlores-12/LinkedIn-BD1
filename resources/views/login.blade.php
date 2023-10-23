@@ -21,18 +21,7 @@
 </head>
 <body>
     <div  id="main">
-
-    </div>
-  <script>
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const viewParam = Boolean( urlParams.get('signin') )
-    let viewState = 'login'
-    if (viewParam) {
-      viewState = 'register'
-    }
-    let mainCOnt = document.getElementById('main');
-    const login = `<div class='p-5 pt-9'>
+    <div class='p-5 pt-9' id="contLogin">
     <img src="assets/logo.svg" alt="" width={50} height={50} class='w-[105px] mb-4' />
     <div class='flex flex-col w-full justify-center items-center'>
       <div  class='flex flex-col w-full sm:w-[60%]'>
@@ -46,12 +35,12 @@
             <input type="password" id='13' class="form__field w-100" placeholder="Input text" />
             <label htmlFor="name" class="form__label"> Password </label>
         </div>
-        <a class='btnIni' onclick="loginF()" href="#"><button >Inicia sesion</button></a>
+        <button id="logBtn" class='btnIni flex justify-center items-center' onclick="loginF()" >Iniciar sesión</button>
         <span class='mt-5'>¿Estás empezando a usar LinkedIn? <span class='txt-pri' onClick="view()">Unirse ahora</span></span>
       </div>
     </div>
-  </div>`;
-  const register = `<div class='p-5 pt-9'>
+  </div>
+  <div class='p-5 pt-9 hidden' id="signCont">
     <img src="assets/logo.svg" height={50} alt="" width={50} class='w-[105px] mb-4' />
     <div class='flex flex-col w-full justify-center items-center'>
         <h1 class='headerS'>Saca el máximo partido a tu vida profesional</h1>
@@ -68,18 +57,43 @@
             <input type="password" id='16' class="form__field w-100" placeholder="Input text" />
             <label htmlFor="password" class="form__label"> Password </label>
         </div>
-        <a class='btnIni'  onclick="registerF()" href="#"><button >Aceptar y unirse</button></a>
+        <button id="signBtn" class='btnIni flex justify-center items-center' onclick="registerF()" >Aceptar y unirse</button>
         <span class='mt-5'>¿Ya estás LinkedIn? <span class='txt-pri' onClick="view()">Iniciar sesión</span></span>
       </div>
     </div>
-  </div>`
-  mainCOnt.innerHTML = viewState === 'login' ? login : register
+  </div>
+    </div>
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const viewParam = Boolean( urlParams.get('signin') )
+    let viewState = 'login'
+    if (viewParam) {
+      viewState = 'register'
+    }
+    let mainCOnt = document.getElementById('main');
+    let contLogin = document.getElementById('contLogin');
+    let signCont = document.getElementById('signCont');
+    view();
     function view() {
-        viewState = viewState === 'login' ? 'register' : 'login'
-        mainCOnt.innerHTML = viewState === 'login' ? login : register
+        if(viewState === 'login'){
+          contLogin.classList.remove('hidden')
+          signCont.classList.add('hidden')
+          viewState = 'register'
+        }else{
+          signCont.classList.remove('hidden')
+          contLogin.classList.add('hidden')
+          viewState = 'login'
+        }
     }
 
     function loginF() {
+      const logBtn = document.getElementById('logBtn');
+      const signBtn = document.getElementById('signBtn');
+      logBtn.innerHTML = '<span class="loader"></span>'
+      logBtn.disabled = true;
+      signBtn.innerHTML = '<span class="loader"></span>'
+      signBtn.disabled = true;
       const email = document.getElementById('12').value;
       const password = document.getElementById('13').value;
       if (email=="" || password=="") {
@@ -93,10 +107,22 @@
       fetch('/api/login', options)
         .then(response => response.json())
         .then(response => setCookie('token', response.token, 7))
-        .catch(err => console.error(err));
+        .catch(err => {
+          console.error(err)
+          logBtn.innerHTML = 'Iniciar sesión'
+          logBtn.disabled = false;
+          signBtn.innerHTML = 'Aceptar y unirse'
+          signBtn.disabled = false;
+        });
     }
 
     function registerF(){
+      const logBtn = document.getElementById('logBtn');
+      const signBtn = document.getElementById('signBtn');
+      logBtn.innerHTML = '<span class="loader"></span>'
+      logBtn.disabled = true;
+      signBtn.innerHTML = '<span class="loader"></span>'
+      signBtn.disabled = true;
       const name = document.getElementById('14').value;
       const email = document.getElementById('15').value;
       const password = document.getElementById('16').value;
@@ -112,7 +138,13 @@
       fetch('/api/register', options)
         .then(response => response.json())
         .then(response => setCookie('token', response.token, 7))
-        .catch(err => console.error(err));
+        .catch(err => {
+          console.error(err)
+          logBtn.innerHTML = 'Iniciar sesión'
+          logBtn.disabled = false;
+          signBtn.innerHTML = 'Aceptar y unirse'
+          signBtn.disabled = false;
+        });
     }
     function setCookie(cname, cvalue, exdays) {
       const d = new Date();
