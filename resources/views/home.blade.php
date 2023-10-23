@@ -126,7 +126,11 @@
       </section>
             </div>
             <div class="absolute w-full bottom-0 left-0 flex flex-row items-center p-2">
-                <img class=" w-[24px] h-[24px] rounded-full mr-3" src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_400_400/0/1660002666757?e=1698080400&v=beta&t=dN5A7ddDxjJ3kM17ncKuGBdCYIo9GzqE5q7Jb6N5cEk" alt="">
+                @if($user->photo == null)
+                    <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{URL::asset('assets/profile.svg')}}" alt="">
+                @else 
+                    <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{$user->photo}}" alt="">
+                @endif
                 <input class="flex-1" type="text" placeholder="Añade tu comentario">
                 <button class="btn-sm btn-tertiary-emphasis comment-box__post-btn" disabled="true">Publicar</button>
             </div>
@@ -140,8 +144,13 @@
         </div>
         <div class=" pl-3 pr-3 ">
            <div class="flex flex-row mt-8">
-           <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="https://media.licdn.com/dms/image/D5635AQGXW0U7XhrOLA/profile-framedphoto-shrink_400_400/0/1660002666757?e=1697839200&v=beta&t=mUY_Bags3Q813Xs3PVQQFZWkiTWZXMcoPk65yGiX4ng" width="100px" alt="">
-            <span id="nameShare" class="text-sm font-medium leading-open text-color-text line-clamp-1 entity-name">Cesar Flores</span>
+               @if($user->photo == null)
+                 <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="{{URL::asset('assets/profile.svg')}}" width="100px" alt="">
+                @else 
+                <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="{{$user->photo}}" width="100px" alt="">
+                
+            @endif
+            <span id="nameShare" class="text-sm font-medium leading-open text-color-text line-clamp-1 entity-name">{{$user->name}}</span>
            </div>
            <input id="contentPost" class="w-full h-10 mb-10" placeholder="Comparte tus ideas. Añade fotos o hashtags." type="textarea" name="" id="">
         </div>
@@ -186,8 +195,14 @@
     </div>
     <nav class="flex flex-row items-center p-3 sticky">
         <div class='rounded-full overflow-hidden'>
-            <a id="profileimg" href="/in/">
-            <img src="" alt="logo" class="w-8 aspect-square" />
+            <a id="profileimg" href="/in/{{$user->id}}">
+                @if($user->photo == null)
+                <img src="{{URL::asset('assets/profile.svg')}}" alt="logo" class="w-8 aspect-square" />
+            
+            @else 
+            <img src="{{$user->photo}}" alt="logo" class="w-8 aspect-square" />
+                
+            @endif
             </a>
         </div>
         <div class='flex-3 w-full ml-2 mr-3 wrapper text-gray-500' >
@@ -444,15 +459,6 @@ const btnNavBar = (value, icon)=>{
     //init navbar
     btnsNav.innerHTML = btnNavBar('Inicio', 'homeIcon') + btnNavBar('Mi red', 'redIcon') + btnNavBar('Publicar', 'postIcon') + btnNavBar('Notificaciones', 'notiIcon')+ btnNavBar('Empleos', 'empleosIcon') ;
 
-    //get user info
-    fetch('/api/me', {method: 'GET'})
-        .then(response => response.json())
-        .then(response => {
-            document.getElementById('profileimg').href = `/in/${response.id}`;
-            document.getElementById('nameShare').innerHTML = response.name;
-            document.getElementById('imgShare').src = response.photo;
-            document.getElementById('profileimg').innerHTML = `<img src="${response.photo}" alt="logo" class="w-8 aspect-square" />`;
-
             //callback cascade
             fetch('/api/posts', {method: 'GET'})
             .then(response => response.json())
@@ -471,9 +477,6 @@ const btnNavBar = (value, icon)=>{
             })
             .catch(err => console.log(err));
 
-
-        })
-        .catch(err => window.location.href = '/login');
 
     /*
         fetch('/api/posts', {method: 'GET'})

@@ -28,7 +28,13 @@ Route::get('/login', function () {
     return view('login');
 });
 Route::get('/home', function () {
-    return view('home');
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    $res = DB::table('users')
+            ->select('id','name', 'email', 'banner', 'photo', 'info', 'location')
+            ->where('id', $id)->first();
+        
+    return view('home', ['user' => $res]);
 });
 
 Route::get('/test', function (Request $request) {

@@ -77,7 +77,7 @@
       
                 </h4>
 
-                @if( $myID != $user->id ){
+                @if( $myID != $user->id )
                   <div class="top-card-layout__cta-container flex flex-wrap mt-0.5 papabear:mt-0 ml-[-12px]">
     <div class="follow-button inline-flex babybear:flex-auto flex-1" data-entity-urn="urn:li:organization:15094191">
       <button class="follow-button__follow w-full  mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-secondary-emphasis  flex flex-row justify-center items-center" >
@@ -109,7 +109,7 @@
       
               </div>
             </div>
-                }
+                
                 @endif
               
 
