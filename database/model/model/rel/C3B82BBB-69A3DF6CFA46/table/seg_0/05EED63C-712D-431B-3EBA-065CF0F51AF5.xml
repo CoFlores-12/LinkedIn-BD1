@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="05EED63C-712D-431B-3EBA-065CF0F51AF5" name="my_education">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:30:53 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_18</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Users_id" id="8890282F-6093-65F3-319F-259AB18063FE">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:31:34 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="59DF2D6D-B032-1B7D-C4B0-652F5F9E13A5" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="education_id" id="76AFCDD7-3C21-FDB3-C78D-7150D05DC6B8">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:33:31 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5956E64-4016-ACDD-E53A-AAA51BCD9FCA" referredColumn="4F3AAD99-E10A-00DF-BCF6-0B4F66AE6DE6"/>
+</associations>
+</Column>
+<Column name="start_date" id="E0CACE94-F27A-BD45-C546-A8A09C7571D3">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:36:41 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="finish_date" id="18040D41-2ECC-54EA-F154-CBA2D5F42556">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:36:41 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C825784E-310D-DDFC-F90E-5F5DBAAA5310" name="my_education_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:31:34 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8890282F-6093-65F3-319F-259AB18063FE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D37E54E-DF86-4025-DF0C-5CBCF90D458D" name="my_education_education_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:33:31 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="76AFCDD7-3C21-FDB3-C78D-7150D05DC6B8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -110,20 +110,6 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Notifications_id" id="235B8C91-F925-A407-E6BA-96EFF6C23BFE">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 19:02:36 UTC</createdTime>
-<ownerDesignName>model</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="710EBD53-7142-B549-EBE1-E4771A0599ED" referredColumn="661F3DA8-E463-7A6C-3472-FF2F98DCCA33"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="6DF0D3B7-F638-4CCF-0FD2-4CAFEBE11EF7" name="Users_PK">
@@ -157,16 +143,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="522D1521-16E7-7C01-4EBC-00073817AA27"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="67AF24E0-4392-0254-84A5-1D6527A3A49F" name="Users_Notifications_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 19:02:36 UTC</createdTime>
-<ownerDesignName>model</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="235B8C91-F925-A407-E6BA-96EFF6C23BFE"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

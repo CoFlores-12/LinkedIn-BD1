@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EEDC9320-D3C6-F656-5623-30EFBE178DDE" name="Chats">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:37:45 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_19</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4805AC0B-92B0-9CA7-65BE-EA96DC72CDFE">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:03 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_id" id="FEC44755-8E00-8ED8-0EEB-1517F9B81B86">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:12 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="86E1CDB8-F563-1F73-E674-10A0BE9DA6A0" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="Users_id1" id="0BC9D20F-7525-A49B-6E8D-FD61C0A0889B">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:17 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F6DFF701-A46B-60C6-BDD5-9C3DA2DC88C9" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A024B0B0-7248-03A6-B3D9-6D961B607AA5" name="Chats_PK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:03 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4805AC0B-92B0-9CA7-65BE-EA96DC72CDFE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A21F6368-5A87-E609-7E08-A7090AFD81BE" name="Chats_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:12 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FEC44755-8E00-8ED8-0EEB-1517F9B81B86"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9D698089-4A4A-5AB8-B37C-1B8C4F61C186" name="Chats_Users_FKv2">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:17 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0BC9D20F-7525-A49B-6E8D-FD61C0A0889B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

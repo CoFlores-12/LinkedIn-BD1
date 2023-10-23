@@ -29,34 +29,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Curriculum_id" id="B3DEA6DC-A4F0-4543-5D04-C86F822620FC">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:27:46 UTC</createdTime>
-<ownerDesignName>model</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="E774631F-1B57-A9B9-ACAE-C87C02B408C3" referredColumn="C10B04B0-4EAE-E386-8351-6D1591AFA845"/>
-</associations>
-</Column>
-<Column name="Users_id" id="EFD02242-F85B-9F07-EBE7-45193FF0B6F0">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 23:32:23 UTC</createdTime>
-<ownerDesignName>model</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="95945F25-B5C0-7D1F-3803-00F6335B49A3" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="0DB7F2A3-89B8-9E3A-A0BE-5024F7DAF6E7" name="Skills_PK">
@@ -68,27 +40,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="C71E7220-A252-8CD5-B772-5351D7AB1B90"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="15E0B5E4-A00B-1AF5-78C2-88925DFBFF01" name="Skills_Curriculum_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:27:46 UTC</createdTime>
-<ownerDesignName>model</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="B3DEA6DC-A4F0-4543-5D04-C86F822620FC"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="9829F35F-EA5C-E3DA-40FA-75470BC86CBE" name="Skills_Users_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 23:32:23 UTC</createdTime>
-<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
-<ownerDesignName>model</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="EFD02242-F85B-9F07-EBE7-45193FF0B6F0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

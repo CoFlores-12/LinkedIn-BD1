@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="016E2004-9514-B11C-2232-CC27DD99EDF3" containerWithKeyObject="6186E8EE-7ACF-9405-6A56-B72CDAEADE88" localFKIndex="4B5C96F0-43B1-3031-DB16-ADAB6E56E400" name="Messages_Users_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 23:31:07 UTC</createdTime>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2050CEB5-CFD2-D1C5-0BAC-E3435066CDF6" containerWithKeyObject="508359DF-08F2-DDE8-8F83-40EE66E22A63" localFKIndex="B2F703F4-ABE3-71CD-8616-71152F16FDF9" name="notifications_report_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:21:31 UTC</createdTime>
 <generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
 <ownerDesignName>model</ownerDesignName>
 <referredTableLongName>Users</referredTableLongName>

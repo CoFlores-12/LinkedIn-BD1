@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="55E98183-A0BE-7EEC-5DFB-1B76430C6D14" containerWithKeyObject="81FDEAD7-AF92-DD54-EAD0-3FEE10BD659B" localFKIndex="D6FB3DDD-E15E-E355-100E-24CF56E0D50E" name="education_Users_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 23:32:11 UTC</createdTime>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F6DFF701-A46B-60C6-BDD5-9C3DA2DC88C9" containerWithKeyObject="EEDC9320-D3C6-F656-5623-30EFBE178DDE" localFKIndex="9D698089-4A4A-5AB8-B37C-1B8C4F61C186" name="Chats_Users_FKv2">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:38:17 UTC</createdTime>
 <generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
 <ownerDesignName>model</ownerDesignName>
 <referredTableLongName>Users</referredTableLongName>

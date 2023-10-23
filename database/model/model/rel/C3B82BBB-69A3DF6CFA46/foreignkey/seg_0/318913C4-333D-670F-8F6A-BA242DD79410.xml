@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="710EBD53-7142-B549-EBE1-E4771A0599ED" containerWithKeyObject="D24D2DBE-B47B-A793-EA85-20172A3D4FEC" localFKIndex="67AF24E0-4392-0254-84A5-1D6527A3A49F" name="Users_Notifications_FK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 19:02:36 UTC</createdTime>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="318913C4-333D-670F-8F6A-BA242DD79410" containerWithKeyObject="508359DF-08F2-DDE8-8F83-40EE66E22A63" localFKIndex="27D0E112-CBC4-D54B-8F87-91ADF23F7454" name="notifications_report_Notifications_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:20:33 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
 <referredTableLongName>Notifications</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>

@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="830B34E1-ECD1-0653-00C5-269899A864AF" name="my_skills">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:30:45 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Users_id" id="BDCC872D-34CF-8E48-BDA8-F11EE98C5861">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:31:29 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D9F1AFE-887B-E58E-6993-DB45E487D975" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+<Column name="Skills_id" id="E6D5BFA9-38FC-3FB4-737F-A329FD9C242C">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:33:25 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B789BB0C-CBD2-30DB-A8E1-6E8969741F84" referredColumn="C71E7220-A252-8CD5-B772-5351D7AB1B90"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4BC2A153-05AD-0C60-69A4-4972BCBCFFA7" name="my_skills_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:31:29 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BDCC872D-34CF-8E48-BDA8-F11EE98C5861"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F99EFB00-E007-417E-27B6-9F25E6869787" name="my_skills_Skills_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:33:25 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E6D5BFA9-38FC-3FB4-737F-A329FD9C242C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

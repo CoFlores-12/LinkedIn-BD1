@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5F228A14-584A-87A7-77F6-900BA4CA97DE" name="applications">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:26:13 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_15</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="jobs_id" id="3C3A12F6-61FB-A3FE-7CC2-A49A80F2652E">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:28:43 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="47EA5E3F-4E72-7BFD-8B35-FB4C67EB45C7" referredColumn="FA33C5E9-D59A-954E-F638-9A98050071FA"/>
+</associations>
+</Column>
+<Column name="Users_id" id="8DBB4F3D-A293-6C84-D79A-39F7D4E38F82">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:28:52 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="62400663-82F6-811C-7E8C-01AE57BFA49E" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9D3C3FCA-8454-C60B-AC64-6D98D4917F34" name="applications_jobs_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:28:43 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3C3A12F6-61FB-A3FE-7CC2-A49A80F2652E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EF6BA6B0-156D-7CB0-4137-F16674B11F05" name="applications_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:28:52 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8DBB4F3D-A293-6C84-D79A-39F7D4E38F82"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

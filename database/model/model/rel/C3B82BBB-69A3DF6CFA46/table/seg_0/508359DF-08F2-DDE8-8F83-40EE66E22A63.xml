@@ -1,0 +1,86 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="508359DF-08F2-DDE8-8F83-40EE66E22A63" name="notifications_report">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:20:06 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Notifications_id" id="C12D2E0B-88AA-D413-4DB9-582D16CD1FB4">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:20:33 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="318913C4-333D-670F-8F6A-BA242DD79410" referredColumn="661F3DA8-E463-7A6C-3472-FF2F98DCCA33"/>
+</associations>
+</Column>
+<Column name="isSeen" id="691FEDE1-9D5E-4CBE-CBE6-87CC029BA4DB">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:21:23 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT034</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Users_id" id="956D8FDD-C05E-7066-65D3-C08FA20F71C9">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:21:31 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2050CEB5-CFD2-D1C5-0BAC-E3435066CDF6" referredColumn="C112A504-4C12-6562-9B35-644307D4FAB2"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CE7AB4A6-7EFD-1324-EC06-089913ACCDFB" name="notifications_report_PK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:20:25 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C12D2E0B-88AA-D413-4DB9-582D16CD1FB4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="27D0E112-CBC4-D54B-8F87-91ADF23F7454" name="notifications_report_Notifications_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:20:33 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C12D2E0B-88AA-D413-4DB9-582D16CD1FB4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B2F703F4-ABE3-71CD-8616-71152F16FDF9" name="notifications_report_Users_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-23 00:21:31 UTC</createdTime>
+<generatorID>D96A0BB7-37C9-3261-4375-FCD16AC522C6</generatorID>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="956D8FDD-C05E-7066-65D3-C08FA20F71C9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
