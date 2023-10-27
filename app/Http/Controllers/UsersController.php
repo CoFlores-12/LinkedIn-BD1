@@ -15,13 +15,13 @@ class UsersController extends Controller{
               'message' => 'No se encontraron resultados'
             ]);
         }
-        $res = DB::table('users')
+        $user = DB::table('users')
             ->select('id','name', 'email', 'banner', 'photo', 'info', 'location')
             ->where('id', $request->id)->first();
-        
+        $publicaciones = DB::select('SELECT * FROM posts WHERE user_id = ' . $request->id .'');
         $value = session()->get('token');
         $id = JWTAuth::decode(new Token($value))['sub'];
-        return view('profile', ['user' => $res, 'myID' => $id]);
+        return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones]);
     }
 
     public function getProfile(Request $request){

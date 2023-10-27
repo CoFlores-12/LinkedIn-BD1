@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
 
@@ -37,9 +37,11 @@ Route::get('/home', function () {
     return view('home', ['user' => $res]);
 });
 
-Route::get('/test', function (Request $request) {
-    return  session('token');;
+Route::get('/test', function () {
+    $publicaciones = DB::select('SELECT * FROM posts ');
+    return $publicaciones;
 });
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -52,3 +54,5 @@ Route::get('/in/{id}', [UsersController::class, 'viewProfile']);
 Route::get('/pruebaDB', function () {
     return DB::select('SELECT * FROM HELP');
 });
+
+Route::post('/publicacion/crear', [PostController::class, 'crear']);

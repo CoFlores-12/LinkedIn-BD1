@@ -140,7 +140,9 @@
         <div class="flex pt-2 pl-3 pr-3 felx-row justify-between items-center">
                 <img onclick="toggleModalShare()" class="w-[24px] h-[24px]" src={{URL::asset('assets/xIcon.svg')}} width="100px" alt="">
                 <span class='title flex-1'>Compartir</span>
-                <button class="btn-sm btn-tertiary post-button " data-tracking-control-name="post" data-feed-action-category="SHARE" data-feed-action-type="submitReshare" data-feed-control="post" disabled="disabled" aria-disabled="true">Publicar</button>
+                <button class="btn-sm btn-tertiary post-button " 
+                onclick="createPost()"
+                data-tracking-control-name="post" data-feed-action-category="SHARE" data-feed-action-type="submitReshare" data-feed-control="post" aria-disabled="true">Publicar</button>
         </div>
         <div class=" pl-3 pr-3 ">
            <div class="flex flex-row mt-8">
@@ -152,7 +154,7 @@
             @endif
             <span id="nameShare" class="text-sm font-medium leading-open text-color-text line-clamp-1 entity-name">{{$user->name}}</span>
            </div>
-           <input id="contentPost" class="w-full h-10 mb-10" placeholder="Comparte tus ideas. Añade fotos o hashtags." type="textarea" name="" id="">
+           <input id="contentInput" class="w-full h-10 mb-10" placeholder="Comparte tus ideas. Añade fotos o hashtags." type="textarea" name="" id="">
         </div>
         <div class="flex border-t-1 border-solid border-color-divider mt-1 share-actions">
             
@@ -453,6 +455,15 @@ const btnNavBar = (value, icon)=>{
     <img class='mr-1 w-[24px]' src="assets/${icon}.svg" width={24} height={24} alt="" />
     <span class='text-xs'>${value}</span>
 </div>`
+}
+
+
+
+const createPost = ()=>{
+    const content = document.getElementById('contentInput');
+    fetch('/publicacion/crear', {method: 'POST'})
+            .then(toggleModalShare())
+            .catch(err => console.log(err));
 }
 
 (()=>{

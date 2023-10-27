@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-
+use App\Models\Post;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Token;
 use Illuminate\Http\Request;
@@ -57,6 +57,13 @@ class PostController extends Controller
         ->orderBy("posts.created_at","desc")
         ->get();
 
+        return $post;
+    }
+
+    public static function crear(Request $request){
+        $value = session()->get('token');
+        $idUSer = JWTAuth::decode(new Token($value))['sub'];
+        $post = DB::insert("INSERT INTO posts ('idUser') VALUES (?)", [$idUSer]);
         return $post;
     }
 }

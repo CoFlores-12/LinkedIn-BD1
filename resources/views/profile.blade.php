@@ -21,9 +21,9 @@
         <div class="cover-img__image-position absolute top-0 right-0 bottom-0 left-0
             ">
             @if($user->banner == null)
-              <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset('assets/banner1.svg')}}" fetchpriority="auto" data-embed-id="cover-image" alt="" style="width: 543.33px; height: 92px; top: 0px; left: 0px;">
+              <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset('assets/banner1.svg')}}" fetchpriority="auto" data-embed-id="cover-image" alt="" >
             @else 
-              <img class="cover-img__image relative w-full h-full object-cover" src="{{$user->banner}}" fetchpriority="auto" data-embed-id="cover-image" alt="" style="width: 543.33px; height: 92px; top: 0px; left: 0px;">
+              <img class="cover-img__image relative w-full h-full object-cover" src="{{$user->banner}}" fetchpriority="auto" data-embed-id="cover-image" alt="">
             @endif
         </div>
       </div>
@@ -146,6 +146,21 @@
     <section id="publicaciones" class="p-3 mt-3">
       <div class="txt-bold txt-heading">
         Publicaciones
+      </div>
+      <div class="allpubli flex flex-row">
+        @foreach($publicaciones as $publicacion)
+          <div class="publicacion">
+            <div class="infoPubli">
+              {{$publicacion->content}}
+              {{$publicacion->type}}
+            </div>
+            @if($publicacion->type == 'img')
+              <div class="imgpubli">
+                <img src="{{$publicacion->media}}">
+              </div>
+            @endif
+          </div>
+        @endforeach
       </div>
     </section>
 </body>
