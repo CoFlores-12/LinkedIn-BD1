@@ -471,7 +471,7 @@ const createPost = ()=>{
     btnsNav.innerHTML = btnNavBar('Inicio', 'homeIcon') + btnNavBar('Mi red', 'redIcon') + btnNavBar('Publicar', 'postIcon') + btnNavBar('Notificaciones', 'notiIcon')+ btnNavBar('Empleos', 'empleosIcon') ;
 
             //callback cascade
-            fetch('/api/posts', {method: 'GET'})
+            fetch('/posts', {method: 'GET'})
             .then(response => response.json())
             .then(response => {
                 console.log(response);

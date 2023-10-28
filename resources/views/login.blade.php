@@ -106,7 +106,13 @@
 
       fetch('/login', options)
         .then(response => response.json())
-        .then(response => setCookie('token', response.token, 7))
+        .then(response =>  { 
+          if (response.code == 200) {
+            setCookie('token', response.token, 7);
+          }else {
+            alert(response.message);
+            throw new Error(response.statusText);
+          }})
         .catch(err => {
           console.error(err)
           logBtn.innerHTML = 'Iniciar sesión'
@@ -137,7 +143,13 @@
 
       fetch('/register', options)
         .then(response => response.json())
-        .then(response => setCookie('token', response.token, 7))
+        .then(response =>  { 
+          if (response.code == 200) {
+            setCookie('token', response.token, 7);
+          }else {
+            alert(response.message);
+            throw new Error(response.statusText);
+          }})
         .catch(err => {
           console.error(err)
           logBtn.innerHTML = 'Iniciar sesión'

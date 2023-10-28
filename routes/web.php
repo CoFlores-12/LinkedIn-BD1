@@ -27,6 +27,9 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login');
 });
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
 Route::get('/home', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
@@ -38,15 +41,19 @@ Route::get('/home', function () {
 });
 
 Route::get('/test', function () {
-    $publicaciones = DB::select('SELECT * FROM posts ');
-    return $publicaciones;
-});
+    $idUSer = 49;
+    $post = DB::table("posts")
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->select('posts.*',  'users.name', 'users.photo')
+        ->whereIn("user_id", function($query) use ($idUSer) {
+            $query->from("following")
+            ->select("following.to")
+            ->where("following.from", "=", $idUSer);
+        })
+        ->orderBy("posts.datepost","desc")
+        ->get();
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::get('/setCookie', function(Request $request){
-    return session()->put('id',"set_cookie");
+        return $post;
 });
 
 Route::get('/in/{id}', [UsersController::class, 'viewProfile']);
@@ -55,4 +62,8 @@ Route::get('/pruebaDB', function () {
     return DB::select('SELECT * FROM HELP');
 });
 
-Route::post('/publicacion/crear', [PostController::class, 'crear']);
+
+//############ POSTS ROUTES ############
+Route::post('/posts/crear', [PostController::class, 'crear']);
+
+Route::get('/posts', [PostController::class, 'getPosts']);

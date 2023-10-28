@@ -43,9 +43,8 @@ class PostController extends Controller
         Forma 2
         SELECT `posts`.*, `users`.`name`, `users`.`photo`, COUNT(following.to) FROM `posts` JOIN following ON `posts`.`user_id` = `following`.`to` IN (SELECT `following`.`to` FROM `following` WHERE `following`.`from` = 11) INNER JOIN `users` ON `users`.`id` = `posts`.`user_id` WHERE `user_id` IN (SELECT `following`.`to` FROM `following` WHERE `following`.`from` = 11) ORDER BY `posts`.`created_at` DESC;
         */
-        $value = $request->cookie('token');
+        $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
-        
         $post = DB::table("posts")
         ->join('users', 'users.id', '=', 'posts.user_id')
         ->select('posts.*',  'users.name', 'users.photo')
@@ -54,7 +53,7 @@ class PostController extends Controller
             ->select("following.to")
             ->where("following.from", "=", $idUSer);
         })
-        ->orderBy("posts.created_at","desc")
+        ->orderBy("posts.datepost","desc")
         ->get();
 
         return $post;
@@ -63,7 +62,27 @@ class PostController extends Controller
     public static function crear(Request $request){
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
-        $post = DB::insert("INSERT INTO posts ('idUser') VALUES (?)", [$idUSer]);
+
+        $allowedfileExtension=['mp4','jpg','png','pdf'];
+        
+        $file = $request->file('photos');
+
+        $filename = $file->getClientOriginalName();
+        $extension = $file->getClientOriginalExtension();
+
+        $check=in_array($extension,$allowedfileExtension);
+
+        if(!$check){
+            return response()->json(['error'=>'Formato de archivo no permitido'],400);
+        }
+        $media = $file->store('media');
+
+        return $media;
+        $post = new Post();
+        $post->user_id = $idUSer;
+        $post->content = $request->content;
+        $post->media = $media;
+        $post->save();
         return $post;
     }
 }
