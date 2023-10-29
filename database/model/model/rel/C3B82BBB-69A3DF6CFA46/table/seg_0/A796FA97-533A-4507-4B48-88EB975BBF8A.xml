@@ -1,26 +1,26 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="917F3912-114F-BB6C-067B-45AD0F04DF0A" name="Skills">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:18:27 UTC</createdTime>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A796FA97-533A-4507-4B48-88EB975BBF8A" name="categories">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:58:22 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
-<ordsAlias>table_12</ordsAlias>
+<ordsAlias>table_18</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="C71E7220-A252-8CD5-B772-5351D7AB1B90">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:19:04 UTC</createdTime>
+<Column name="id" id="9D1569C6-5B2B-7080-A71A-0B1B5A1A9FC5">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:58:35 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="name" id="CD4D2A0D-436D-A14E-7E9C-B33587983083">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:19:04 UTC</createdTime>
+<Column name="nombre" id="C2DE9658-8B1D-3D12-C739-8347A92F7EA0">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:59:07 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
@@ -32,15 +32,15 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="0DB7F2A3-89B8-9E3A-A0BE-5024F7DAF6E7" name="Skills_PK">
-<createdBy>Amador</createdBy>
-<createdTime>2023-10-22 21:20:07 UTC</createdTime>
+<ind_PK_UK id="C1CE20B3-D2D6-39CA-E0DC-F18FF4C15C31" name="categories_PK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:59:07 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C71E7220-A252-8CD5-B772-5351D7AB1B90"/>
+<colUsage columnID="9D1569C6-5B2B-7080-A71A-0B1B5A1A9FC5"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

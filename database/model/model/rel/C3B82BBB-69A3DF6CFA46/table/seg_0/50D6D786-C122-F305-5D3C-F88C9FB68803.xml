@@ -26,7 +26,9 @@
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-23 00:32:31 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
-<use>0</use>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>

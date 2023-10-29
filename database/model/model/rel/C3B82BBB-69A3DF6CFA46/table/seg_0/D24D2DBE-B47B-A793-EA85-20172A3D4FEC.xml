@@ -110,6 +110,19 @@
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="categories_id" id="7898BB49-6836-B668-FAA6-82BE9E3067D8">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:59:13 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<use>1</use>
+<logicalDatatype>LOGDT027</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7EF7DAD9-89E7-B842-DF87-9F813013BE84" referredColumn="9D1569C6-5B2B-7080-A71A-0B1B5A1A9FC5"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="6DF0D3B7-F638-4CCF-0FD2-4CAFEBE11EF7" name="Users_PK">
@@ -143,6 +156,16 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="522D1521-16E7-7C01-4EBC-00073817AA27"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="09FB0B30-6790-7049-D38A-2EE1432E9DDB" name="Users_categories_FK">
+<createdBy>cofloresf</createdBy>
+<createdTime>2023-10-28 16:59:13 UTC</createdTime>
+<ownerDesignName>model</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7898BB49-6836-B668-FAA6-82BE9E3067D8"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
