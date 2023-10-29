@@ -61,7 +61,7 @@
 <colUsage columnID="C12D2E0B-88AA-D413-4DB9-582D16CD1FB4"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="27D0E112-CBC4-D54B-8F87-91ADF23F7454" name="notifications_report_Notifications_FK">
+<ind_PK_UK id="27D0E112-CBC4-D54B-8F87-91ADF23F7454" name="notifications_report_FK">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-23 00:20:33 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>

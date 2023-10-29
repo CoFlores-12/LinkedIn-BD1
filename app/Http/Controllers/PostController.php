@@ -46,9 +46,9 @@ class PostController extends Controller
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
         $post = DB::table("posts")
-        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->join('users', 'users.id', '=', 'posts.users_id')
         ->select('posts.*',  'users.name', 'users.photo')
-        ->whereIn("user_id", function($query) use ($idUSer) {
+        ->whereIn("users_id", function($query) use ($idUSer) {
             $query->from("following")
             ->select("following.to")
             ->where("following.from", "=", $idUSer);

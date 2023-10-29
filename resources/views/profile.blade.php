@@ -62,7 +62,9 @@
                   {{$user->name}}
                   </h1>
                 <h2 class="top-card-layout__headline break-words font-sans text-md leading-open text-color-text">
-                  category
+                @if($user->nombrecategoria != "usuario")
+                  {{$user->nombrecategoria}}
+                @endif
                 </h2>
 
                 <h3 class="top-card-layout__first-subline font-sans text-md leading-open text-color-text-low-emphasis">

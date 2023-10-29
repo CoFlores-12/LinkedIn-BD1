@@ -21,11 +21,13 @@ class AuthController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>$request->password,
+            'categories_id'=>0
         ]);
         $token = JWTAuth::fromUser($user);
         session()->put('token',$token);
         return response()->json([
             'message'=>'Successfully created user!',
+            "code"=>200,
             'token'=>$token,
         ],200);
     }

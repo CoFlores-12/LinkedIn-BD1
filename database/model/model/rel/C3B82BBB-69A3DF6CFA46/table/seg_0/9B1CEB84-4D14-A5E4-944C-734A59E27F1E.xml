@@ -49,7 +49,7 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="CD298110-08CB-15DC-3B49-8F8FEA8B31FE" name="categories_relations_categories_FK">
+<ind_PK_UK id="CD298110-08CB-15DC-3B49-8F8FEA8B31FE" name="categories_FK">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-28 17:00:45 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>
@@ -59,7 +59,7 @@
 <colUsage columnID="C64DE4A7-5BCD-EF5B-8FD9-5F981A6CCBF4"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="F688E3E5-2E43-56A0-FABB-82EE4188B4F6" name="categories_relations_categories_FKv2">
+<ind_PK_UK id="F688E3E5-2E43-56A0-FABB-82EE4188B4F6" name="categories_FKv2">
 <createdBy>cofloresf</createdBy>
 <createdTime>2023-10-28 17:00:49 UTC</createdTime>
 <ownerDesignName>model</ownerDesignName>

@@ -11,6 +11,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable implements JWTSubject{
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'ID';
+    public $timestamps = false;
     protected $fillable = [
         'name', 'email', 'password'
     ];

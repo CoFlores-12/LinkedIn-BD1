@@ -34,26 +34,18 @@ Route::get('/home', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
     $res = DB::table('users')
-            ->select('id','name', 'email', 'banner', 'photo', 'info', 'location')
+            ->select('users.id','name', 'email', 'banner', 'photo', 'info', 'location')
             ->where('id', $id)->first();
         
     return view('home', ['user' => $res]);
 });
 
 Route::get('/test', function () {
-    $idUSer = 49;
-    $post = DB::table("posts")
-        ->join('users', 'users.id', '=', 'posts.user_id')
-        ->select('posts.*',  'users.name', 'users.photo')
-        ->whereIn("user_id", function($query) use ($idUSer) {
-            $query->from("following")
-            ->select("following.to")
-            ->where("following.from", "=", $idUSer);
-        })
-        ->orderBy("posts.datepost","desc")
-        ->get();
-
-        return $post;
+    $user = DB::table('users')
+            ->join('categories','users.categories_id','=','categories.id')
+            ->select('users.id','users.name', 'users.email', 'users.banner', 'users.photo', 'users.info', 'users.location','categories.nombre as nombreCategoria' )
+            ->where('users.id', 65)->first();
+        return $user;
 });
 
 Route::get('/in/{id}', [UsersController::class, 'viewProfile']);

@@ -16,9 +16,10 @@ class UsersController extends Controller{
             ]);
         }
         $user = DB::table('users')
-            ->select('id','name', 'email', 'banner', 'photo', 'info', 'location')
-            ->where('id', $request->id)->first();
-        $publicaciones = DB::select('SELECT * FROM posts WHERE user_id = ' . $request->id .'');
+            ->join('categories','users.categories_id','=','categories.id')
+            ->select('users.id','users.name', 'users.email', 'users.banner', 'users.photo', 'users.info', 'users.location','categories.nombre as nombreCategoria' )
+            ->where('users.id', 65)->first();
+        $publicaciones = DB::select('SELECT * FROM posts WHERE users_id = ' . $request->id .'');
         $value = session()->get('token');
         $id = JWTAuth::decode(new Token($value))['sub'];
         return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones]);

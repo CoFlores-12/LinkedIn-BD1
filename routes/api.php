@@ -1,13 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\User;
 Route::get('/tosql', function(){
-    $idUSer = 1;
-    $post =  DB::table('posts')
-        ->join('users', 'users.id', '=', 'posts.user_id')
-        ->select('posts.*', 'users.name', 'users.photo')
-        ->toSql();
-    return $post;
+    $user = new User();
+    $user->name = "Juan";
+    $user->email = "<EMAIL>";
+    $user->password = "<PASSWORD>";
+    $user->save();
+    return $user;
 });
 
