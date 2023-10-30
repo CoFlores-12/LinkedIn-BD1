@@ -154,13 +154,23 @@
           <div class="publicacion">
             <div class="infoPubli">
               {{$publicacion->content}}
-              {{$publicacion->type}}
             </div>
-            @if($publicacion->type == 'img')
-              <div class="imgpubli">
-                <img src="{{$publicacion->media}}">
-              </div>
+            <div class="imgpubli">
+            @if($publicacion->type == 'image/png' || $publicacion->type == 'image/jpg')
+                <img src="{{ URL::asset('storage/'.$publicacion->media)}}">
             @endif
+            @if($publicacion->type == 'video/mp4')
+                <video style="width=100%" controls>
+                  <source src="{{ URL::asset('storage/'.$publicacion->media)}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            @endif
+            @if($publicacion->type == 'application/pdf')
+              <object data="{{ URL::asset('storage/'.$publicacion->media)}}" type="application/pdf" width="100%" height="100%">
+                <p>Alternative text - include a link <a href="{{ URL::asset('storage/'.$publicacion->media)}}">to the PDF!</a></p>
+              </object>
+            @endif
+            </div>
           </div>
         @endforeach
       </div>
