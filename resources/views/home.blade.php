@@ -132,7 +132,7 @@
                     <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{$user->photo}}" alt="">
                 @endif
                 <input class="flex-1" type="text" placeholder="Añade tu comentario">
-                <button class="btn-sm btn-tertiary-emphasis comment-box__post-btn" disabled="true">Publicar</button>
+                <button class="btn-sm btn-pu btn-tertiary-emphasis comment-box__post-btn" >Publicar</button>
             </div>
         </div>
     </div>
@@ -140,9 +140,9 @@
         <div class="flex pt-2 pl-3 pr-3 felx-row justify-between items-center">
                 <img onclick="toggleModalShare()" class="w-[24px] h-[24px]" src={{URL::asset('assets/xIcon.svg')}} width="100px" alt="">
                 <span class='title flex-1'>Compartir</span>
-                <button class="btn-sm btn-tertiary post-button " 
+                <button class="btn-sm post-button btn-pu" 
                 onclick="createPost()"
-                data-tracking-control-name="post" data-feed-action-category="SHARE" data-feed-action-type="submitReshare" data-feed-control="post" aria-disabled="true">Publicar</button>
+                >Publicar</button>
         </div>
         <div class=" pl-3 pr-3 ">
            <div class="flex flex-row mt-8">
@@ -156,41 +156,19 @@
            </div>
            <input id="contentInput" class="w-full h-10 mb-10" placeholder="Comparte tus ideas. Añade fotos o hashtags." type="textarea" name="" id="">
         </div>
-        <div class="flex border-t-1 border-solid border-color-divider mt-1 share-actions">
-            
+        <div class="flex border-t-1 border-solid border-color-divider share-actions flex-col">
+            <div class="relative hidden" id="prevCont">
+            <img onclick="deleteImage()" class="w-[24px] h-[24px] absolute r-3 t-2" src={{URL::asset('assets/xIcon.svg')}} width="100px" alt="">
+                <img src="#" class="hidden" id="prevImage" alt="">
+            </div>
   <span data-action="add-image" class="add-image  pl-3 pr-3 mt-0.5 items-center justify-center text-color-text-secondary modal-action" id="image-upload-label">
-    <button class="rounded-full p-1.5 image-upload-btn" data-tracking-control-name="add-image">
-      <icon class="w-3 h-3 text-inherit lazy-loaded" aria-hidden="true" aria-busy="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" focusable="false" class="lazy-loaded" aria-busy="false">
+    <label for="media" class="rounded-full image-upload-btn">
+     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" focusable="false" class="lazy-loaded text-inherit" aria-busy="false">
   <path d="M12 17C14.2091 17 16 15.2091 16 13C16 10.7909 14.2091 9 12 9C9.79086 9 8 10.7909 8 13C8 15.2091 9.79086 17 12 17Z"></path>
   <path d="M19 6H17.7L16.5 3H7.5L6.3 6H5C3.3 6 2 7.3 2 9V20H22V9C22 7.3 20.7 6 19 6ZM12 18C9.2 18 7 15.8 7 13C7 10.2 9.2 8 12 8C14.8 8 17 10.2 17 13C17 15.8 14.8 18 12 18Z"></path>
-</svg></icon>
-      <span class="sr-only">Añadir foto</span>
-    </button>
-    
-              <input multiple="" id="image-upload" class="hidden" accept="image/*" type="file">
-            
-  </span>
-
-            
-  <span data-action="add-mentions" class="add-mention modal-action" data-a11y-text-after-activation="Mención activada, te mostraremos sugerencias al escribir.">
-    <button class="rounded-full p-1.5 " data-tracking-control-name="add-mentions">
-      <icon class="w-3 h-3 text-inherit lazy-loaded" aria-hidden="true" aria-busy="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" focusable="false" class="lazy-loaded" aria-busy="false">
-  <path d="M12 2C6.5 2 2 6 2 12C2 18 6.5 22 12 22C14.3 22 16.1 21.4 17 20.8V18.6C16 19.2 14.3 19.9 12 19.9C7.6 19.9 4 16.8 4 11.9C4 7 7.6 3.9 12 3.9C17.1 3.9 20 6.8 20 11.7C20 13.6 19.4 14.9 18.4 14.9C17.5 14.9 17 14.3 17 13.3V7.2H15V8C14.2 7.4 13.1 7 12 7C9.2 7 7 9.2 7 12C7 14.8 9.2 17 12 17C13.4 17 14.7 16.4 15.6 15.5C16.1 16.4 17.1 17 18.4 17C20.1 17 22 15.5 22 11.8C22 5.8 18.2 2 12 2ZM12 15C10.3 15 9 13.7 9 12C9 10.3 10.3 9 12 9C13.7 9 15 10.3 15 12C15 13.7 13.7 15 12 15Z"></path>
-</svg></icon>
-      <span class="sr-only">Añadir una mención</span>
-    </button>
-    
-  </span>
-
-            
-  <span data-action="add-hashtag-v2" class="add-hashtag modal-action" data-a11y-text-after-activation="Hashtag activado, te mostraremos sugerencias al escribir.">
-    <button class="rounded-full p-1.5 " data-tracking-control-name="add-hashtag-v2">
-      <icon class="w-3 h-3 text-inherit lazy-loaded" aria-hidden="true" aria-busy="false"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" focusable="false" class="lazy-loaded" aria-busy="false">
-  <path d="M21 10V8H16.4L17 3H15L14.4 8H10.4L11 3H9L8.4 8H3V10H8.2L7.8 14H3V16H7.6L7 21H9L9.6 16H13.6L13 21H15L15.6 16H21V14H15.8L16.2 10H21ZM13.8 14H9.8L10.2 10H14.2L13.8 14Z"></path>
-</svg></icon>
-      <span class="sr-only">Añadir un hashtag</span>
-    </button>
-    
+</svg>
+    </label>
+        <input id="media" class="" accept=".png,.jpg,.jpeg,.mp4,.pdf" type="file">  
   </span>
 
           </div>
@@ -459,13 +437,40 @@ const btnNavBar = (value, icon)=>{
 
 
 
+
+const imgInp = document.getElementById('media')
+        const blah = document.getElementById('prevImage')
+        const blahcon = document.getElementById('prevCont')
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                blah.classList.remove('hidden');
+                blahcon.classList.remove('hidden');
+                blah.src = URL.createObjectURL(file);
+            }
+        }
+        const deleteImage = () => {
+            imgInp.files = null;
+            blah.classList.add('hidden');
+            blahcon.classList.add('hidden');
+            blah.src = '';
+        }
 const createPost = ()=>{
     const content = document.getElementById('contentInput');
-    fetch('/publicacion/crear', {method: 'POST'})
-            .then(toggleModalShare())
+    let formData = new FormData();
+      formData.append('content', content.value);
+      formData.append('media', imgInp.files[0]);
+      const options = {method: 'POST', body: formData};
+    fetch('/posts/crear', options)
+            .then((response)=>{
+                if (response.status != 200) {
+                    alert(response)
+                }else{
+                    toggleModalShare();
+                }
+            })
             .catch(err => console.log(err));
 }
-
 (()=>{
     //init navbar
     btnsNav.innerHTML = btnNavBar('Inicio', 'homeIcon') + btnNavBar('Mi red', 'redIcon') + btnNavBar('Publicar', 'postIcon') + btnNavBar('Notificaciones', 'notiIcon')+ btnNavBar('Empleos', 'empleosIcon') ;
@@ -488,6 +493,8 @@ const createPost = ()=>{
             })
             .catch(err => console.log(err));
 
+
+        
 
     /*
         fetch('/api/posts', {method: 'GET'})

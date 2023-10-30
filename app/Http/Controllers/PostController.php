@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 use App\Models\Post;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Token;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -60,28 +60,47 @@ class PostController extends Controller
     }
 
     public static function crear(Request $request){
+        $destinationPath = 'storage';
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
 
-        $allowedfileExtension=['mp4','jpg','png','pdf'];
+        $allowedfileExtension=['mp4','jpg','jpeg','png','pdf'];
         
-        $file = $request->file('photos');
+        $file = $request->file('media');
 
         $filename = $file->getClientOriginalName();
         $extension = $file->getClientOriginalExtension();
 
-        $check=in_array($extension,$allowedfileExtension);
+        $check = in_array($extension,$allowedfileExtension);
 
         if(!$check){
             return response()->json(['error'=>'Formato de archivo no permitido'],400);
         }
-        $media = $file->store('media');
-
-        return $media;
+        $file->move($destinationPath,$file->getClientOriginalName());
+        $type = 'txt';
+        switch ($extension){
+            case'mp4':
+                $type = 'video/mp4';
+                break;
+            case 'jpg':
+                $type = 'image/jpeg';
+                break;
+            case 'jpeg':
+                $type = 'image/jpeg';
+                break;
+            case 'png':
+                $type = 'image/png';
+                break;
+            case 'pdf':
+                $type = 'application/pdf';
+                break;
+        }
         $post = new Post();
-        $post->user_id = $idUSer;
+        $post->users_id = $idUSer;
         $post->content = $request->content;
-        $post->media = $media;
+        $post->media = $filename;
+        $post->type = $type;
+        $post->datepost = date('Y-m-d H:i:s');
         $post->save();
         return $post;
     }

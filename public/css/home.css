@@ -85,6 +85,10 @@ body, html {
   cursor: pointer;
   text-decoration: none;
 }
+.btn-pu {
+  background-color: #0a66c2;
+  color: #fff;
+}
 .btn-sm {
   height: min-content;
   min-height: 32px;
@@ -226,4 +230,13 @@ body, html {
 }
 .hourMessage{
   width: 10%;
+}
+#media {
+  /* visibility: hidden etc. wont work */
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
