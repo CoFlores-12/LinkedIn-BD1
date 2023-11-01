@@ -117,3 +117,22 @@
   line-height: 1.25;
   margin-left: 20px;
 }
+.containerLandig{
+  margin-left:5%;
+}
+.forgotPassword{
+  margin-top: 5%;
+  margin-bottom: 5%;
+  color: #0a66c2;
+}
+.forgotPassword:hover{
+  text-decoration: underline;
+}
+.left-right-divider::before, .left-right-divider::after {
+  height: 1px;
+  width: auto;
+  background-color: rgb(0 0 0 / .35);
+  --tw-content: '';
+  content: var(--tw-content);
+  flex-grow: 1;
+}

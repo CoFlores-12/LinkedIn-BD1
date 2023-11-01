@@ -15,7 +15,7 @@
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="antialiased">
-    <div >
+    <div class="containerLandig">
     <div class="navbar flex flex-row justify-between items-center pt-3 pl-2 pr-2">
             <img class="w-[90px] md:w-[128px]" src="assets/logo.svg" alt="logo"/>
             <div class="navbar__session flex flex-row items-center ">
@@ -27,8 +27,8 @@
             </div>
         </div>
      <div class="containera pl-2 pr-2 pt-10 relative">
-        <div class="w-full md:w-[50%]">
-          <h1 style="font-size:'25px'; font-weight:'300'">¡Te damos la bienvenida a tu comunidad profesional!</h1>
+        <div class="containerForm w-full md:w-[50%]">
+          <h1 style="font-size:45px; font-weight:300; color:#8f5849;" class="text-color">¡Te damos la bienvenida a tu comunidad profesional!</h1>
           <div class="form__group mt-4">
               <input type="text" id="12" class="form__field w-100" placeholder="Input text" />
               <label htmlFor="name" class="form__label"> Email or phone </label>
@@ -37,7 +37,13 @@
               <input type="password" id="13" class="form__field w-100" placeholder="Input text" />
               <label htmlFor="name"  class="form__label"> Password </label>
           </div>
+          <div class="forgotPassword"><a href="#">¿Has olvidado tu contraseña?</a></div>
           <button class="btnIni" onClick={login}>Inicia sesion</button>
+        </div>
+        <div class="sign-in-form__divider left-right-divider pt-2 pb-3">
+          <p class="sign-in-form__divider-text font-sans text-sm text-color-text px-2">
+            o
+          </p>
         </div>
         <img class="invisible md:visible flip-rtl block z-[-1] w-[700px] h-[560px] absolute top-10 right-0 flex-shrink babybear:w-[374px] babybear:h-[214px] babybear:static" alt="¡Te damos la bienvenida a tu comunidad profesional!" data-test-id="hero__illustration" src="https://static.licdn.com/aero-v1/sc/h/dxf91zhqd2z6b0bwg85ktm5s4"></img>
     </div>
@@ -47,3 +53,5 @@
                 
     </body>
 </html>
+
+
