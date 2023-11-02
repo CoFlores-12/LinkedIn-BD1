@@ -152,6 +152,7 @@
       <div class="allpubli flex flex-row">
         @foreach($publicaciones as $publicacion)
           <div class="publicacion">
+            <a href="{{route('post.ver', $publicacion->id)}}">
             <div class="infoPubli">
               {{$publicacion->content}}
             </div>
@@ -171,6 +172,7 @@
               </object>
             @endif
             </div>
+            </a>
           </div>
         @endforeach
       </div>

@@ -59,3 +59,5 @@ Route::get('/pruebaDB', function () {
 Route::post('/posts/crear', [PostController::class, 'crear']);
 
 Route::get('/posts', [PostController::class, 'getPosts']);
+
+Route::get('/feed/{id}', [PostController::class, 'getPost'])->name('post.ver');

@@ -26,11 +26,14 @@ class PostController extends Controller
          * select `posts`.*, `users`.`name`, `users`.`photo` from `posts` inner join `users` on `users`.`id` = `posts`.`user_id` where `posts`.`id` = ?
          */
         $post =  DB::table('posts')
-        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->join('users', 'users.id', '=', 'posts.users_id')
         ->select('posts.*', 'users.name', 'users.photo')
         ->where('posts.id', $id)
-        ->get();
-        return $post;
+        ->first();
+        $comments = DB::select('SELECT * FROM comments WHERE comments.posts_id = '.$id);
+        $likes = DB::select('SELECT * FROM likes WHERE likes.posts_id = '.$id);
+        $followers = DB::select('SELECT count(id) as followers FROM following WHERE "TO" = '.$post->users_id);
+        return view('post', compact('post', 'comments', 'likes', 'followers'));
     }
 
     public static function getPosts(Request $request){
