@@ -23,7 +23,7 @@
             @if($user->banner == null)
               <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset('assets/banner1.svg')}}" fetchpriority="auto" data-embed-id="cover-image" alt="" >
             @else 
-              <img class="cover-img__image relative w-full h-full object-cover" src="{{$user->banner}}" fetchpriority="auto" data-embed-id="cover-image" alt="">
+              <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset($user->banner)}}" fetchpriority="auto" data-embed-id="cover-image" alt="">
             @endif
         </div>
       </div>
@@ -35,7 +35,7 @@
             @if($user->photo == null)
               <img class="inline-block rounded-full relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{URL::asset('assets/profile.svg')}}">
             @else 
-              <img class="inline-block relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{$user->photo}}">
+              <img class="inline-block relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{URL::asset($user->photo)}}">
             @endif
      
   
@@ -69,7 +69,7 @@
 
                 <h3 class="top-card-layout__first-subline font-sans text-md leading-open text-color-text-low-emphasis">
                   
-                {{$user->location}} <span class="before:middot"></span>0 seguidores
+                {{$user->location}} <span class="before:middot"></span>{{$followers[0]->followers}}  seguidores
       
                 </h3>
 
@@ -78,7 +78,7 @@
         <span class="line-clamp-2">{{$user->info}}</span>
       
                 </h4>
-
+                
                 @if( $myID != $user->id )
                   <div class="top-card-layout__cta-container flex flex-wrap mt-0.5 papabear:mt-0 ml-[-12px]">
     <div class="follow-button inline-flex babybear:flex-auto flex-1" data-entity-urn="urn:li:organization:15094191">
@@ -111,7 +111,17 @@
       
               </div>
             </div>
-                
+                @else
+                <a href={{route('jobs.create')}}>
+                  <button class="follow-button__follow w-full  mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-secondary-emphasis  flex flex-row justify-center items-center" >
+                        <svg class="lazy-loaded w-[16px] h-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" width="16" height="16" focusable="false" class="lazy-loaded" aria-busy="false">
+                <path d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"></path>
+              </svg>
+                      <span class="follow-button__follow_text">
+                          Crear Trabajo
+                      </span>
+                    </button>
+                </a>
                 @endif
               
 

@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\jobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,27 +33,15 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/home', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
-    $res = DB::table('users')
+    $user = DB::table('users')
             ->select('users.id','name', 'email', 'banner', 'photo', 'info', 'location')
             ->where('id', $id)->first();
-        
-    return view('home', ['user' => $res]);
-});
+    $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id');
+    return view('home', compact('jobs','user'));
+})->name('home');
 
-Route::get('/test', function () {
-    $user = DB::table('users')
-            ->join('categories','users.categories_id','=','categories.id')
-            ->select('users.id','users.name', 'users.email', 'users.banner', 'users.photo', 'users.info', 'users.location','categories.nombre as nombreCategoria' )
-            ->where('users.id', 65)->first();
-        return $user;
-});
-
-Route::get('/in/{id}', [UsersController::class, 'viewProfile']);
-
-Route::get('/pruebaDB', function () {
-    return DB::select('SELECT * FROM HELP');
-});
-
+//############ USERS ROUTES ############
+Route::get('/in/{id}', [UsersController::class, 'viewProfile'])->name('users.viewProfile');
 
 //############ POSTS ROUTES ############
 Route::post('/posts/crear', [PostController::class, 'crear']);
@@ -61,3 +49,11 @@ Route::post('/posts/crear', [PostController::class, 'crear']);
 Route::get('/posts', [PostController::class, 'getPosts']);
 
 Route::get('/feed/{id}', [PostController::class, 'getPost'])->name('post.ver');
+
+
+//############ JOBS ROUTES ############
+Route::get('/jobs/create', [jobsController::class, 'crear'])->name('jobs.create');
+Route::post('/jobs/create', [jobsController::class, 'store'])->name('job.create');
+Route::post('/jobs/get', [jobsController::class, 'get'])->name('job.get');
+
+Route::get('/job/{id}', [jobsController::class, 'view'])->name('job.view');

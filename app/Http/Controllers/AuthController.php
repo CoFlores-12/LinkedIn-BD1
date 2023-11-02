@@ -21,7 +21,9 @@ class AuthController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'password'=>$request->password,
-            'categories_id'=>0
+            'categories_id'=>0,
+            'photo'=>'assets/profile.svg',
+            'banner'=>'assets/banner1.svg'
         ]);
         $token = JWTAuth::fromUser($user);
         session()->put('token',$token);

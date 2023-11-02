@@ -202,21 +202,7 @@
         <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #FFF;">
             <div>Empleos para ti</div>
             <div id="listJobs" class="w-full">
-               <a href="/job/" class="jobItem p-2">
-                <div class="flex flex-row">
-                        <img width="70" height="70" src="https://media.licdn.com/dms/image/D4D0BAQHrYseFDoK7JQ/company-logo_100_100/0/1688418672408/clevertech_logo?e=1705536000&v=beta&t=BCgdXYPLyX_vuiyWMWDAzxjj2H1z1Ekfa4S3J5kMg34" class="mr-2 ml-2" alt="">
-                        <div>
-                            <h1 class="titleJob">name</h1>
-                            <h3 class="mediumJob">puesto</h3>
-                            <h6 class="infoJob">
-                                <span>location</span>
-                                <span class="dot-separator" aria-hidden="true"></span>
-                                <span>date</span>
-                            </h6>
-                        </div>
-
-                    </div>
-               </a>
+               
                
             </div>
         </div>
@@ -232,19 +218,20 @@
     const redContainer = document.getElementById('redContainer');
     const notiContainer = document.getElementById('notiContainer');
     const jobsContainer = document.getElementById('jobsContainer');
+    const jobsList = document.getElementById('listJobs');
     const btnsNav = document.getElementById('btnsNav');
 
-const job = (title, farm, location, date, id, logo)=>{
+const job = (title, farm, location, id, logo)=>{
     return `<a href="/job/${id}" class="jobItem p-2">
                 <div class="flex flex-row">
-                        <img width="70" height="70" src="${logo}" class="mr-2 ml-2" alt="">
+                        <img width="70" height="70" src="http://127.0.0.1:8000/${logo}" class="mr-2 ml-2" alt="">
                         <div>
                             <h1 class="titleJob">${title}</h1>
                             <h3 class="mediumJob">${farm}</h3>
                             <h6 class="infoJob">
                                 <span>${location}</span>
                                 <span class="dot-separator" aria-hidden="true"></span>
-                                <span>${date}</span>
+                                <span></span>
                             </h6>
                         </div>
 
@@ -486,9 +473,16 @@ const createPost = ()=>{
                 });
                 document.getElementById('modalLoad').style.display = 'none';
                 //TODO: get jobs from api
-    
+                fetch('/jobs/get', {method: 'POST'})
+                    .then(response => response.json())
+                    .then(response => {
+                        response.forEach(element => {
+                            jobsList.innerHTML += job(element.name, element.username, element.location, element.id, element.photo)
+                        });
+                    })
+                    .catch(err => console.log(err));
                 //TODO: get notifications from api
-                notiContainer.innerHTML =notification('https://media.licdn.com/dms/image/D4E0BAQGTRAHntOfgTg/company-logo_100_100/0/1667698674172?e=1704931200&v=beta&t=e6i4THvej2BCDFqHkx9VL4yeaZx3da023qnhyfMWS-M','10/2/2023', 'En el trabajo no debes darlo todo, conoce la regla del 85%' );
+                notiContainer.innerHTML = notification('https://media.licdn.com/dms/image/D4E0BAQGTRAHntOfgTg/company-logo_100_100/0/1667698674172?e=1704931200&v=beta&t=e6i4THvej2BCDFqHkx9VL4yeaZx3da023qnhyfMWS-M','10/2/2023', 'En el trabajo no debes darlo todo, conoce la regla del 85%' );
     
                 //TODO: get network from api
             })
