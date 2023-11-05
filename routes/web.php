@@ -22,13 +22,19 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Token;
 
 Route::get('/', function () {
-    return view('welcome');
+    $skills = DB::select('SELECT * FROM skills fetch first 10 rows only');
+    return view('welcome', compact('skills'));
 });
 Route::get('/login', function () {
     return view('login');
 });
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::get('/busqueda/{termino}', function ($busqueda) {
+    return view('busqueda', compact('busqueda'));
+});
+
 
 Route::get('/home', function () {
     $value = session()->get('token');

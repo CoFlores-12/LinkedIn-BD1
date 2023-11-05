@@ -140,16 +140,16 @@ body, html {
 }
 
 .titleJob {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 500;
 }
 
 .mediumJob {
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 400;
 }
 .infoJob {
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.555);
 }
@@ -239,4 +239,113 @@ body, html {
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+.notificacion {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  width: 100%;
+  padding: 1.3rem 1.2rem;
+  background-color: #fff;
+}
+
+.notificacion > img {
+  width: 49px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+.notificacion > p > span {
+  font-weight: 600;
+  
+}
+
+.pendding {
+  background-color: rgb(55 143 233/.2);
+}
+.jobItem {
+  padding: 1.3rem 1.2rem !important;
+  font-size: 0.7rem !important;
+}
+
+#invitaciones, #sugerencias {
+  background-color: #fff;
+  padding: 10px 0px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#sugerencias {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cardUser {
+  border-radius: 10px;
+  overflow: hidden;
+  flex: 1/2;
+  width: 46%;
+  border: 1px solid #eee;
+  margin: 5px 2%;
+}
+
+.cardUser:hover {
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
+}
+
+.bannercard {
+  height: 60px;
+  width: 100%;
+  background-size: cover;
+  margin-bottom: 60px;
+}
+
+#ppcard {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: 10px;
+  right: 50%;
+  transform: translate(50%, 0);
+}
+.artdeco-button, .artdeco-button--2, .peek-carousel-controls__button {
+  border-radius: 1.6rem !important;
+  width: 90%;
+}
+
+.artdeco-button, .peek-carousel-controls__button {
+  min-width: 0;
+}
+.artdeco-button, .peek-carousel-controls__button {
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  transition-duration: 167ms;
+  align-items: center;
+  border: none;
+  border-radius: 2px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  display: inline-flex;
+  justify-content: center;
+  min-width: 6.4rem;
+  max-width: 480px;
+  overflow: hidden;
+  text-align: center;
+  transition-property: background-color,box-shadow,color;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+.artdeco-button, .artdeco-button--2, .peek-carousel-controls__button {
+  font-size: 1rem;
+  min-height: 3.2rem;
+  line-height: 2rem;
+}
+.artdeco-button--secondary, .artdeco-button--secondary:visited, .artdeco-button--secondary:visited:hover, .artdeco-carousel__navigation .artdeco-button--circle, .artdeco-carousel__navigation .artdeco-button--circle:visited, .artdeco-carousel__navigation .artdeco-button--circle:visited:hover, .artdeco-carousel__navigation .peek-carousel-controls__button, .peek-carousel-controls__button, .peek-carousel-controls__button:visited, .peek-carousel-controls__button:visited:hover, a.artdeco-button--secondary {
+  background-color: hsla(0,0%,100%,0);
+  color: #0a66c2;
+  box-shadow: inset 0 0 0 1px #0a66c2;
 }

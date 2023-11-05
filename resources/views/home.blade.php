@@ -186,10 +186,8 @@
             </a>
         </div>
         <div class='flex-3 w-full ml-2 mr-3 wrapper text-gray-500' >
-            <div class="icon flex flex-row items-center Hdr_nav_search_box">
-                <img class='mr-1' src={{URL::asset('assets/searchIcon.svg')}} width={30} height={30} alt="" /> <span class='ml-1'>Buscar</span>
-            </div>
-            <input class='w-full Hdr_nav_search_input bg-gray-100 rounded p-2' />
+            
+            <input id="busquedaInp" class='w-full Hdr_nav_search_input bg-gray-100 rounded p-2' placeholder="Buscar" />
         </div>
         <div>
         <button  onclick=message('Cesar')> <img class='mr-1 w-[24px] h-[24px]' src={{URL::asset('assets/menssageIcon.svg')}} width={24} height={24} alt="" /></button>
@@ -197,8 +195,67 @@
     </nav>
     <div id="container" class="h-full pb-9 w-full flex items-center flex-col" style="background-color: #E9E5DF;">
         <div id="postContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
-        <div id="redContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
-        <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;"></div>
+        <div id="redContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;">
+            <div id="invitaciones" class="w-full">
+                No hay invitaciones pendientes
+            </div>
+            <div id="sugerencias" class="w-full">
+                <div class="cardUser flex flex-col relative">
+                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
+                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
+                    <span>Alejandra</span>
+                    <span>Lic. en psicologia</span>
+                    <footer class="mt2">
+                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
+                            </svg></li-icon>
+                        <span class="artdeco-button__text">
+                            Conectar
+                        </span></button>
+                    </footer>
+                </div>
+                <div class="cardUser flex flex-col relative">
+                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
+                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
+                    <span>Alejandra</span>
+                    <span>Lic. en psicologia</span>
+                    <footer class="mt2">
+                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
+                            </svg></li-icon>
+                        <span class="artdeco-button__text">
+                            Conectar
+                        </span></button>
+                    </footer>
+                </div>
+                <div class="cardUser flex flex-col relative">
+                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
+                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
+                    <span>Alejandra</span>
+                    <span>Lic. en psicologia</span>
+                    <footer class="mt2">
+                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
+                            </svg></li-icon>
+                        <span class="artdeco-button__text">
+                            Conectar
+                        </span></button>
+                    </footer>
+                </div>
+
+         
+
+
+
+
+
+
+
+            </div>
+    </div>
+        <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;">
+            
+    </div>
         <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #FFF;">
             <div>Empleos para ti</div>
             <div id="listJobs" class="w-full">
@@ -222,9 +279,9 @@
     const btnsNav = document.getElementById('btnsNav');
 
 const job = (title, farm, location, id, logo)=>{
-    return `<a href="/job/${id}" class="jobItem p-2">
-                <div class="flex flex-row">
-                        <img width="70" height="70" src="http://127.0.0.1:8000/${logo}" class="mr-2 ml-2" alt="">
+    return `<a href="/job/${id}" class="w-full">
+                <div class="flex flex-row jobItem">
+                        <img width="48" height="48" src="/${logo}" class="mr-2" alt="">
                         <div>
                             <h1 class="titleJob">${title}</h1>
                             <h3 class="mediumJob">${farm}</h3>
@@ -282,50 +339,13 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
     </a>
 </div>`
 }
-const notification = (date,text) => {
-            const fecha = new Date(date);
-            const fechaActual = new Date();
-            const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
-        return ` <div class='containerGroupa'>
-        </div>
-            <div class='containerNoti'>
-            <div class='notifications'>
-                <div class='imagenNoti'>
-                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
+const notification = (idpost, photo, name, desc, pendding) => {
+        return `<a class="w-full" href="/feed/${idpost}">
+                <div class="notificacion ${pendding ? 'pendding' : ''}">
+                    <img src="${photo}" alt="">
+                    <p><span>${name}</span> ${desc}</p>
                 </div>
-                <div  class="pl-3 pr-3 text-sm">
-                <span>${text}</span>
-                </div>
-                <div class='dateOptions'>
-                <span class="text-xs text-gray-600">${diff} dias </span>
-                    <i class="fa-solid fa-ellipsis"></i>
-                </div>
-            </div>
-            <div class='notifications'>
-                <div class='imagenNoti'>
-                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
-                </div>
-                <div  class="pl-3 pr-3 text-sm">
-                <span>${text}</span>
-                </div>
-                <div class='dateOptions'>
-                <span class="text-xs text-gray-600">${diff} dias </span>
-                    <i class="fa-solid fa-ellipsis"></i>
-                </div>
-            </div>
-            <div class='notifications'>
-                <div class='imagenNoti'>
-                <img width="48" src="https://media.licdn.com/media/AAYQAgQJAAgAAQAAAAAAADEfOQH9O48jQmKNtryiizLAHg.png" loading="lazy" height="48" alt="" id="ember58" class="ivm-view-attr__img--centered ivm-view-attr__img   evi-image lazy-image ember-view">
-                </div>
-                <div  class="pl-3 pr-3 text-sm">
-                <span>${text}</span>
-                </div>
-                <div class='dateOptions'>
-                <span class="text-xs text-gray-600">${diff} dias </span>
-                    <i class="fa-solid fa-ellipsis"></i>
-                </div>
-            </div>
-        </div>`
+            </a> `
   
         }
       const message=(user)=>{
@@ -400,7 +420,13 @@ const changeView = (value) => {
             break;
     }
 }
-
+document.getElementById("busquedaInp")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        window.location.href = '/busqueda/'+event.srcElement.value;
+    }
+});
 const toggleModalShare = () => {
     const modal = document.getElementById('modalShare');
     modal.classList.toggle('hidden');
@@ -415,7 +441,7 @@ const toggleModalComment = () => {
     container.classList.toggle('hidden');
 }
 //init view
-changeView('Inicio');
+changeView('Mi red');
 const btnNavBar = (value, icon)=>{
     return `<button class='flex-1' onclick="changeView('${value}')" >
     <div class='flex flex-1 flex-col justify-center items-center text-gray-500'>
@@ -482,7 +508,9 @@ const createPost = ()=>{
                     })
                     .catch(err => console.log(err));
                 //TODO: get notifications from api
-                notiContainer.innerHTML = notification('https://media.licdn.com/dms/image/D4E0BAQGTRAHntOfgTg/company-logo_100_100/0/1667698674172?e=1704931200&v=beta&t=e6i4THvej2BCDFqHkx9VL4yeaZx3da023qnhyfMWS-M','10/2/2023', 'En el trabajo no debes darlo todo, conoce la regla del 85%' );
+                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'mira wow', true );
+                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'visto', false );
+                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'publico algo', false );
     
                 //TODO: get network from api
             })
