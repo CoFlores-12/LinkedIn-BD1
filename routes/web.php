@@ -40,14 +40,39 @@ Route::get('/home', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
     $user = DB::table('users')
-            ->select('users.id','name', 'email', 'banner', 'photo', 'info', 'location')
-            ->where('id', $id)->first();
+            ->select('users.id','name', 'email', 'banner', 'photo', 'info', 'categories.nombre as categoryName', 'locations.location')
+            ->join('categories', 'categories.id','users.categories_id')
+            ->leftjoin('locations', 'locations.id','users.locations_id')
+            ->where('users.id', $id)->first();
     $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id');
     return view('home', compact('jobs','user'));
 })->name('home');
 
 //############ USERS ROUTES ############
 Route::get('/in/{id}', [UsersController::class, 'viewProfile'])->name('users.viewProfile');
+
+Route::get('/editMyProfile', function () {
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    $user = DB::table('users')
+            ->select('users.*', 'categories.nombre as categoryName', 'locations.location')
+            ->join('categories', 'categories.id','users.categories_id')
+            ->leftjoin('locations', 'locations.id','users.locations_id')
+            ->where('users.id', $id)->first();
+    $exp = DB::select('select * from my_experience');
+    $edu = DB::select('select * from my_education');
+    $ski = DB::select('select * from skills join my_skills on skills.id = my_skills.skills_id where my_skills.users_id = '.$id);
+    $skills = DB::select('select * from skills');
+    $categories = DB::select('select * from categories');
+    $insti = DB::select('select * from education');
+    $works = DB::select('select * from work_experience');
+    $locations = DB::select('select * from locations');
+    return view('editProfile', compact('user', 'exp', 'edu', 'ski', 'categories', 'skills', 'insti', 'works', 'locations'));
+})->name('users.editProfile');
+
+
+Route::post('/update', [UsersController::class, 'update'])->name('users.update');
+
 
 //############ POSTS ROUTES ############
 Route::post('/posts/crear', [PostController::class, 'crear']);

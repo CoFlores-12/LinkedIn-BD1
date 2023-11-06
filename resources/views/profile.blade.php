@@ -23,7 +23,7 @@
             @if($user->banner == null)
               <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset('assets/banner1.svg')}}" fetchpriority="auto" data-embed-id="cover-image" alt="" >
             @else 
-              <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset($user->banner)}}" fetchpriority="auto" data-embed-id="cover-image" alt="">
+              <img class="cover-img__image relative w-full h-full object-cover" src="{{URL::asset('storage/'.$user->banner)}}" fetchpriority="auto" data-embed-id="cover-image" alt="">
             @endif
         </div>
       </div>
@@ -35,7 +35,7 @@
             @if($user->photo == null)
               <img class="inline-block rounded-full relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{URL::asset('assets/profile.svg')}}">
             @else 
-              <img class="inline-block relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{URL::asset($user->photo)}}">
+              <img class="inline-block relative w-[96px] h-[96px] top-card-layout__entity-image shadow-color-shadow shadow-[0_4px_12px] border-2 border-solid border-color-surface mt-[-70px] mb-[14px] papabear:border-4 papabear:mt-[-100px] papabear:mb-[18px] lazy-loaded"  src="{{URL::asset('storage/'.$user->photo)}}">
             @endif
      
   
@@ -46,7 +46,7 @@
               @if($myID == $user->id)
               <div class="absolute top-[-30px] right-6">
                 <div>
-                  <a href="editMyProfile" id="ember35" class="ember-view" tabindex="-1" data-ntt-old-href="/in/cesar-flores-988a67276/edit/intro/?profileFormEntryPoint=PROFILE_SECTION">
+                  <a href="{{route('users.editProfile')}}" id="ember35" class="ember-view" tabindex="-1">
                     <button aria-label="Editar presentación" id="ember36" class="artdeco-button artdeco-button--circle artdeco-button--muted artdeco-button--2 artdeco-button--tertiary ember-view mh1" type="button">    <li-icon aria-hidden="true" type="edit" class="artdeco-button__icon" size="large"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-supported-dps="24x24" fill="currentColor" class="mercado-match" width="24" height="24" focusable="false">
                     <path d="M21.13 2.86a3 3 0 00-4.17 0l-13 13L2 22l6.19-2L21.13 7a3 3 0 000-4.16zM6.77 18.57l-1.35-1.34L16.64 6 18 7.35z"></path>
                   </svg></li-icon>
@@ -62,8 +62,8 @@
                   {{$user->name}}
                   </h1>
                 <h2 class="top-card-layout__headline break-words font-sans text-md leading-open text-color-text">
-                @if($user->nombrecategoria != "usuario")
-                  {{$user->nombrecategoria}}
+                @if($user->categoryname != "usuario")
+                  {{$user->categoryname}}
                 @endif
                 </h2>
 

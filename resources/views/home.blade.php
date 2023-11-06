@@ -129,7 +129,7 @@
                 @if($user->photo == null)
                     <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{URL::asset('assets/profile.svg')}}" alt="">
                 @else 
-                    <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{$user->photo}}" alt="">
+                    <img class=" w-[24px] h-[24px] rounded-full mr-3" src="{{URL::asset('storage/'.$user->photo)}}" alt="">
                 @endif
                 <input class="flex-1" type="text" placeholder="Añade tu comentario">
                 <button class="btn-sm btn-pu btn-tertiary-emphasis comment-box__post-btn" >Publicar</button>
@@ -149,7 +149,7 @@
                @if($user->photo == null)
                  <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="{{URL::asset('assets/profile.svg')}}" width="100px" alt="">
                 @else 
-                <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="{{$user->photo}}" width="100px" alt="">
+                <img id="imgShare" class="inline-block relative rounded-[50%] w-12 h-12 lazy-loaded mr-3 ml-1" src="{{URL::asset('storage/'.$user->photo)}}" width="100px" alt="">
                 
             @endif
             <span id="nameShare" class="text-sm font-medium leading-open text-color-text line-clamp-1 entity-name">{{$user->name}}</span>
@@ -180,7 +180,7 @@
                 <img src="{{URL::asset('assets/profile.svg')}}" alt="logo" class="w-8 aspect-square" />
             
             @else 
-            <img src="{{$user->photo}}" alt="logo" class="w-8 aspect-square" />
+            <img src="{{URL::asset('storage/'.$user->photo)}}" alt="logo" class="w-8 aspect-square" />
                 
             @endif
             </a>
@@ -281,7 +281,7 @@
 const job = (title, farm, location, id, logo)=>{
     return `<a href="/job/${id}" class="w-full">
                 <div class="flex flex-row jobItem">
-                        <img width="48" height="48" src="/${logo}" class="mr-2" alt="">
+                        <img width="48" height="48" src="storage/${logo}" class="mr-2" alt="">
                         <div>
                             <h1 class="titleJob">${title}</h1>
                             <h3 class="mediumJob">${farm}</h3>
@@ -303,7 +303,7 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
     return `<div class="flex flex-col w-full mt-1 mb-2 bg-white md:w-[50%] sm:w-[75%]">
     <a href="/feed/${idPOst}">
     <div class="flex flex-row pr-3 pl-3 pt-2" style="text-overflow: 'ellipsis'; overflow:'hidden'; white-space:'nowrap'">
-        <img class="h-12 aspect-square" src="${logo}" alt="" />
+        <img class="h-12 aspect-square" src="storage/${logo}" alt="" />
         <div class="flex flex-col ml-2 text-color-text-low-emphasis">
         <a href="/in/${id}">
             <span class="text-black text-base" style="text-overflow: 'ellipsis'; overflow:'hidden'; white-space:'nowrap'">${name}</span>
@@ -342,7 +342,7 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
 const notification = (idpost, photo, name, desc, pendding) => {
         return `<a class="w-full" href="/feed/${idpost}">
                 <div class="notificacion ${pendding ? 'pendding' : ''}">
-                    <img src="${photo}" alt="">
+                    <img src="storage/${photo}" alt="">
                     <p><span>${name}</span> ${desc}</p>
                 </div>
             </a> `
