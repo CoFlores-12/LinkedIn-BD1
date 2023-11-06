@@ -59,14 +59,18 @@ Route::get('/editMyProfile', function () {
             ->join('categories', 'categories.id','users.categories_id')
             ->leftjoin('locations', 'locations.id','users.locations_id')
             ->where('users.id', $id)->first();
-    $exp = DB::select('select * from my_experience');
-    $edu = DB::select('select * from my_education');
+    $exp = DB::select('select * from work_experience join my_experience on my_experience.work_experience_id = work_experience.id where my_experience.users_id = '.$id);
+
+    $edu = DB::select('select * from education inner join my_education on education.id = my_education.education_id where my_education.users_id = '.$id);
+
     $ski = DB::select('select * from skills join my_skills on skills.id = my_skills.skills_id where my_skills.users_id = '.$id);
+
     $skills = DB::select('select * from skills');
     $categories = DB::select('select * from categories');
     $insti = DB::select('select * from education');
     $works = DB::select('select * from work_experience');
     $locations = DB::select('select * from locations');
+    
     return view('editProfile', compact('user', 'exp', 'edu', 'ski', 'categories', 'skills', 'insti', 'works', 'locations'));
 })->name('users.editProfile');
 

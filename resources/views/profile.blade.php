@@ -137,6 +137,13 @@
       <div class="txt-bold txt-heading">
         Educacion
       </div>
+      @foreach($edu as $ed)
+          <div class="edu">
+            <h1>{{$ed->institute}}</h1>
+            <p>{{$ed->location}}</p>
+            <p>{{$ed->grade}}</p>
+          </div>
+        @endforeach
     </section>
 
 
@@ -145,12 +152,26 @@
       <div class="txt-bold txt-heading">
         Experiencia
       </div>
+      <div>
+        @foreach($exp as $ex)
+          <div class="exp">
+            <h1>{{$ex->company_name}}</h1>
+            <p>{{$ex->location}}</p>
+            <p>{{$ex->occupation}}</p>
+          </div>
+        @endforeach
+      </div>
     </section>
 
 
     <section id="skills" class="p-3 mt-3">
       <div class="txt-bold txt-heading">
         Habilidades
+      </div>
+      <div id="skillscont">
+        @foreach($skills as $skill)
+            <span id="skill-{{$skill->name}}" class="skill">{{$skill->name}}</span>
+        @endforeach
       </div>
     </section>
 

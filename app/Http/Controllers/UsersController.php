@@ -25,10 +25,16 @@ class UsersController extends Controller{
 
         $followers = DB::select('SELECT count(id) as followers FROM following WHERE "TO" = '.$request->id);
 
+        $ski = DB::select('select * from skills join my_skills on skills.id = my_skills.skills_id where my_skills.users_id = '.$request->id);
+
+        $exp = DB::select('select * from work_experience join my_experience on my_experience.work_experience_id = work_experience.id where my_experience.users_id = '.$request->id);
+
+        $edu = DB::select('select * from education inner join my_education on education.id = my_education.education_id where my_education.users_id = '.$request->id);
+
         $value = session()->get('token');
         $id = JWTAuth::decode(new Token($value))['sub'];
         
-        return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones, 'followers'=> $followers]);
+        return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones, 'followers'=> $followers, 'skills' => $ski, 'edu' => $edu, 'exp' => $exp]);
     }
     public function update(Request $request){
         if (!DB::table('users')->where('id', $request->id)->exists()){
@@ -67,9 +73,10 @@ class UsersController extends Controller{
             $banner = $file->getClientOriginalName();
         }
 
+        //skills logic
         $skills = explode(',', $request->skills);
         
-
+        //add new
         foreach ($skills as $skill){
             if($skill == ""){
                 continue;
@@ -80,6 +87,7 @@ class UsersController extends Controller{
             }
         }
 
+        //delete
         $myskills = DB::select('SELECT * FROM my_skills INNER JOIN skills ON skills.id = my_skills.skills_id  WHERE my_skills.users_id = '. $request->id );
 
         foreach ($myskills as $skillf) {
@@ -88,6 +96,41 @@ class UsersController extends Controller{
             }
         }
 
+        //edu logic
+        for ($i=0; $i < $request->countEdu ; $i++) { 
+            $tempvar = "id-institute-".$i;
+            if($request->$tempvar == null){
+                $tempname = "institute-".$i;
+                $templocation = "locationinstitute-".$i;
+                $tempgrade = "grade-".$i;
+                $tempini = "dateIniinstitute-".$i;
+                $tempfin = "datefininstitute-".$i;
+                if (!DB::table('education')->where('institute', $request->$tempname)->where('location', $request->$templocation)->where('grade',$request->$tempgrade)->exists()) {
+                    DB::insert("insert into education(institute, location, grade) values ('?', '?', '?')", array($request->$tempname,$request->$templocation, $request->$tempgrade));
+                }
+                $institute = DB::table('education')->where('institute', $request->$tempname)->where('location', $request->$templocation)->where('grade',$request->$tempgrade)->first();
+
+                DB::insert('insert into my_education(users_id,education_id,start_date,finish_date) values (?, ? , ?, ?)', array( $request->id, $institute->id, $request->$tempini, $request->$tempfin));
+            }
+        }
+
+        //exp logic
+        for ($i=0; $i < $request->countEdu ; $i++) { 
+            $tempvar = "id-company-".$i;
+            if($request->$tempvar == null){
+                $tempname = "company-".$i;
+                $templocation = "locationCompany-".$i;
+                $tempgrade = "occupation-".$i;
+                $tempini = "dateIni-".$i;
+                $tempfin = "datefin-".$i;
+                if (!DB::table('work_experience')->where('company_name', $request->$tempname)->where('location', $request->$templocation)->where('occupation',$request->$tempgrade)->exists()) {
+                    DB::insert("insert into work_experience(company_name, location,occupation) values ('?', '?', '?')", array($request->$tempname,$request->$templocation, $request->$tempgrade));
+                }
+                $comapny = DB::table('work_experience')->where('company_name', $request->$tempname)->where('location', $request->$templocation)->where('occupation',$request->$tempgrade)->first();
+
+                DB::insert('insert into my_experience(users_id,work_experience_id,start_date,finish_date) values (?, ? , ?, ?)', array( $request->id, $comapny->id, $request->$tempini, $request->$tempfin));
+            }
+        }
 
         $user = DB::table('users')
         ->where('id', $request->id)
