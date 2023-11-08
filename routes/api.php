@@ -5,13 +5,17 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\DB;
 Route::get('/tosql', function(){
-    $myskills = DB::select('SELECT skills.name FROM my_skills INNER JOIN skills ON skills.id = my_skills.skills_id  WHERE my_skills.users_id = '. 65 );
-
-    foreach ($myskills as $skillf) {
-        return $skillf->name;
-        if(!in_array($skillf->name,$skills)){
-        }
-    }
+    $idUSer = 65;
+    $myskills =  DB::table("posts")
+    ->join('users', 'users.id', '=', 'posts.users_id')
+    ->select('posts.*',  'users.name', 'users.photo')
+    ->whereIn("users_id", function($query) use ($idUSer) {
+        $query->from("following")
+        ->select("following.to")
+        ->where("following.from", "=", $idUSer);
+    })
+    ->orderBy("posts.datepost","desc")
+    ->tosql();
 
     return $myskills;
 });

@@ -32,9 +32,28 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/busqueda/{termino}', function ($busqueda) {
-    return view('busqueda', compact('busqueda'));
-});
+    $users = DB::select("SELECT users.id, users.photo, users.name, categories.nombre as categoryName FROM users INNER JOIN categories on categories.id = users.categories_id WHERE UPPER(users.email) LIKE UPPER('%".$busqueda."%') OR UPPER(users.name) LIKE UPPER('%".$busqueda."%') OR UPPER(users.info) LIKE UPPER('%".$busqueda."%')");
 
+    $posts = DB::select('select 
+    "POSTS".*, "USERS"."NAME", "USERS"."PHOTO", followers, likes
+from 
+    "POSTS" 
+inner join 
+    "USERS" on "USERS"."ID" = "POSTS"."USERS_ID" 
+left join (
+    SELECT count("FOLLOWING"."TO") as followers, "FOLLOWING"."TO"  as idUser from following group by "FOLLOWING"."TO"
+) on users.id = idUser
+left join (
+    SELECT count(id) as likes, posts_id from likes group by likes.posts_id
+)on posts.id = posts_id
+where 
+    UPPER(posts.content) LIKE UPPER(\'%'.$busqueda.'%\') 
+order by 
+    "POSTS"."DATEPOST" desc');
+
+    $works = DB::select("select jobs.*, users.name as username, users.photo from jobs inner join users on users.id = jobs.users_id WHERE UPPER(jobs.name) LIKE UPPER('%".$busqueda."%') OR UPPER(jobs.description) LIKE UPPER('%".$busqueda."%')");
+    return view('busqueda', compact('busqueda', 'users', 'posts', 'works'));
+});
 
 Route::get('/home', function () {
     $value = session()->get('token');

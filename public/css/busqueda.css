@@ -1,0 +1,115 @@
+.catUser {
+    font-size: 0.7rem;
+    color: #555;
+}
+.nameUser {
+    font-weight: 600;
+}
+.user {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+main {
+    margin-top: 20px;
+}
+body {
+    background-color: #f3f2ef;
+}
+
+.artdeco-button, .artdeco-button--2, .peek-carousel-controls__button {
+    border-radius: 1.6rem !important;
+    width: 90%;
+  }
+  
+  .artdeco-button, .peek-carousel-controls__button {
+    min-width: 0;
+  }
+  .artdeco-button, .peek-carousel-controls__button {
+    transition-timing-function: cubic-bezier(.4,0,.2,1);
+    transition-duration: 167ms;
+    align-items: center;
+    border: none;
+    border-radius: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    display: inline-flex;
+    justify-content: center;
+    min-width: 6.4rem;
+    max-width: 480px;
+    overflow: hidden;
+    text-align: center;
+    transition-property: background-color,box-shadow,color;
+    vertical-align: middle;
+  }
+  .artdeco-button, .artdeco-button--2, .peek-carousel-controls__button {
+    font-size: 0.8rem;
+    line-height: 2rem;
+  }
+  .artdeco-button--secondary, .artdeco-button--secondary:visited, .artdeco-button--secondary:visited:hover, .artdeco-carousel__navigation .artdeco-button--circle, .artdeco-carousel__navigation .artdeco-button--circle:visited, .artdeco-carousel__navigation .artdeco-button--circle:visited:hover, .artdeco-carousel__navigation .peek-carousel-controls__button, .peek-carousel-controls__button, .peek-carousel-controls__button:visited, .peek-carousel-controls__button:visited:hover, a.artdeco-button--secondary {
+    background-color: hsla(0,0%,100%,0);
+    color: #0a66c2;
+    box-shadow: inset 0 0 0 1px #0a66c2;
+  }
+.infoUser {
+    flex: 1;
+}
+nav {
+    background-color: #fff;
+}
+
+.jobItem {
+  padding: 1.2rem 1.1rem !important;
+  font-size: 0.7rem !important;
+  border-bottom: 1px solid #eee;
+}
+.jobItem:hover {
+  background-color: #eee;
+}
+.dot-separator::before {
+  display: inline-block;
+  margin-left: 4px;
+  content: "\00b7\00a0";
+  font-weight: bold;
+}
+
+.dot-separator::before {
+  display: inline-block;
+  margin-left: 4px;
+  content: "\00b7\00a0";
+  font-weight: bold;
+}
+.jobItem > img {
+  width: 48px;
+  height: 48px;
+}
+.titleJob {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.mediumJob {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.infoJob {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.555);
+}
+.collapsablePosts {
+  max-height: 700px;
+  overflow-y: hidden;
+}
+.collapsableUsers {
+  max-height: 195px;
+  overflow-y: hidden;
+}
+.collapsableWorks {
+  max-height: 330px;
+  overflow-y: hidden;
+}
+main {
+  padding-bottom: 20px;
+}
