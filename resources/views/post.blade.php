@@ -16,7 +16,7 @@
         @if($post->photo == null)
               <img class="h-12 aspect-square"  src="{{URL::asset('assets/profile.svg')}}">
             @else 
-              <img class="h-12 aspect-square"  src="{{$post->photo}}">
+              <img class="h-12 aspect-square"  src="/storage/{{$post->photo}}">
             @endif
         <div class="flex flex-col ml-2 text-color-text-low-emphasis">
         <a href="/in/${$post->users_id}">

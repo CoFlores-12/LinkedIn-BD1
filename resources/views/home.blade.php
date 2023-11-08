@@ -32,10 +32,14 @@
     
 </head>
 <body>
+
+<!-- loading modal -->
     <div class="modal flex flex-col fixed top-0 justify-center items-center left-0" id="modalLoad">
         <img src="assets/logo.svg" width="100px" alt="">
         <div class="loader"></div>
     </div>
+
+<!-- comment modal -->
     <div class="modal hidden flex flex-col fixed top-0 justify-center items-center left-0" id="modalComment">
         <div class="relative h-full w-full">
             <div class="fixed top-0 w-full bg-white pt-2 pl-3">
@@ -136,6 +140,9 @@
             </div>
         </div>
     </div>
+<!-- comment finish modal -->
+
+<!-- share modal -->
     <div class="modal hidden  h-full flex flex-col fixed top-0 left-0" id="modalShare">
         <div class="flex pt-2 pl-3 pr-3 felx-row justify-between items-center">
                 <img onclick="toggleModalShare()" class="w-[24px] h-[24px]" src={{URL::asset('assets/xIcon.svg')}} width="100px" alt="">
@@ -173,6 +180,15 @@
 
           </div>
     </div>
+<!-- share finish modal -->
+
+<!-- msg  modal -->
+<div class="modal hidden flex flex-col fixed top-0 justify-center items-center left-0" id="modalMsg">
+        
+    </div>
+<!-- msg finish modal -->
+
+<!-- main page -->
     <nav class="flex flex-row items-center p-3 sticky">
         <div class='rounded-full overflow-hidden'>
             <a id="profileimg" href="/in/{{$user->id}}">
@@ -281,7 +297,7 @@
 const job = (title, farm, location, id, logo)=>{
     return `<a href="/job/${id}" class="w-full">
                 <div class="flex flex-row jobItem">
-                        <img width="48" height="48" src="storage/${logo}" class="mr-2" alt="">
+                        <img width="48" height="48" src="/storage/${logo}" class="mr-2" alt="">
                         <div>
                             <h1 class="titleJob">${title}</h1>
                             <h3 class="mediumJob">${farm}</h3>
@@ -291,17 +307,31 @@ const job = (title, farm, location, id, logo)=>{
                                 <span></span>
                             </h6>
                         </div>
-
                     </div>
                </a>`
 }
 
-const publicacion = (name, followers, date, content, media, likes, logo, id, idPost) => {
+const publicacion = (name, followers, date, content, media, likes, logo, id, idPost, type) => {
+    mediaToShow = '';
+    if (type == "image/png") {
+        mediaToShow = `<img src="/storage/${media}">`
+    }
+    if (type == 'video/mp4') {
+        mediaToShow = `<video style="width=100%" controls>
+                  <source src="/storage/${media}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>`
+    }
+    if (type == 'application/pdf') {
+        mediaToShow = ` <object data="/storage/${media}" type="application/pdf" width="100%" height="100%">
+                <p>Alternative text - include a link <a href="/storage/${media}">to the PDF!</a></p>
+              </object>`
+    }
     const fecha = new Date(date);
     const fechaActual = new Date();
     const diff = parseInt((fechaActual.getTime() - fecha.getTime())/(1000*60*60*24));
     return `<div class="flex flex-col w-full mt-1 mb-2 bg-white md:w-[50%] sm:w-[75%]">
-    <a href="/feed/${idPOst}">
+    <a href="/feed/${idPost}">
     <div class="flex flex-row pr-3 pl-3 pt-2" style="text-overflow: 'ellipsis'; overflow:'hidden'; white-space:'nowrap'">
         <img class="h-12 aspect-square" src="storage/${logo}" alt="" />
         <div class="flex flex-col ml-2 text-color-text-low-emphasis">
@@ -316,12 +346,12 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
         <div  class="pl-3 pr-3 text-sm">
         <span>${content}</span>
         </div>
-        <img class='w-full' src="${media}" alt="" />
+        ${mediaToShow}
     </div>
     <div class='pr-3 pl-3 pt-2 pb-2'>
         <div class=' flex flex-row text-xs'>
         <img alt="" data-reaction-type="LIKE" src='assets/likeIMG.svg' class="lazy-loaded likeIcon mr-1 w-[16px] h-[16px]" />
-            ${likes}
+            ${likes == null ? 0 : likes}
         </div>
         <div class='w-full flex flex-row justify-between items-center'>
             <button class='text-base text-gray-600 hover:bg-gray-100 p-2 flex flex-row items-center'>
@@ -339,16 +369,17 @@ const publicacion = (name, followers, date, content, media, likes, logo, id, idP
     </a>
 </div>`
 }
+
 const notification = (idpost, photo, name, desc, pendding) => {
-        return `<a class="w-full" href="/feed/${idpost}">
-                <div class="notificacion ${pendding ? 'pendding' : ''}">
-                    <img src="storage/${photo}" alt="">
-                    <p><span>${name}</span> ${desc}</p>
-                </div>
-            </a> `
-  
-        }
-      const message=(user)=>{
+    return `<a class="w-full" href="/viewNotification/${idpost}">
+            <div class="notificacion ${pendding ? 'pendding' : ''}">
+                <img src="/storage/${photo}" alt="">
+                <p><span>${name}</span> ${desc}</p>
+            </div>
+        </a> `
+}
+
+const message=(user)=>{
           container.innerHTML=`<div class="containerMessages">
         <div class="message">
             <div class="imageMessage">
@@ -366,26 +397,9 @@ const notification = (idpost, photo, name, desc, pendding) => {
             </div>
             <div class="hourMessage"><span>10 oct</span>
             </div>
-        </div>
-        <div class="message">
-            <div class="imageMessage">
-                <img src="https://media.licdn.com/dms/image/C4D03AQHFot31JK1Rhw/profile-displayphoto-shrink_100_100/0/1578354888650?e=1703116800&amp;v=beta&amp;t=3a3ifGcxQxPjDcLMmcMbEkvYstgD2Vh6Q_kxz5kT1Eg" loading="lazy" alt="Franklin Tavarez" id="ember289" class="evi-image rounded-image  lazy-image msg-facepile-grid__img msg-facepile-grid__img--person ember-view">
-            </div>
-            <div class="infoMessage">
-                <div class="authorMessage"><span>
-                    Franklin Tavarez
-                </span></div>
-                <div class="textMessage"><p>
-                    ¡Hola, Josue!
-                    Me llamo Franklin y formo parte del equipo de LinkedIn Premium. ¡Gracias por tu confianza en LinkedIn! Nos gustaría ofrecerte un mes de prueba gratis para Premium.
-                </p>
-            </div>
-            </div>
-            <div class="hourMessage"><span>10 oct</span>
-            </div>
-        </div>
-    </div>`;
+        </div>`;
         }
+
 const changeView = (value) => {
     switch (value) {
         case 'Inicio':
@@ -417,6 +431,10 @@ const changeView = (value) => {
 
             break;
         default:
+            postContainer.classList.remove('hidden');
+            redContainer.classList.add('hidden');
+            notiContainer.classList.add('hidden');
+            jobsContainer.classList.add('hidden');
             break;
     }
 }
@@ -441,7 +459,7 @@ const toggleModalComment = () => {
     container.classList.toggle('hidden');
 }
 //init view
-changeView('Mi red');
+changeView('Inicio');
 const btnNavBar = (value, icon)=>{
     return `<button class='flex-1' onclick="changeView('${value}')" >
     <div class='flex flex-1 flex-col justify-center items-center text-gray-500'>
@@ -450,26 +468,26 @@ const btnNavBar = (value, icon)=>{
 </div>`
 }
 
-
-
-
 const imgInp = document.getElementById('media')
-        const blah = document.getElementById('prevImage')
-        const blahcon = document.getElementById('prevCont')
-        imgInp.onchange = evt => {
-            const [file] = imgInp.files
-            if (file) {
-                blah.classList.remove('hidden');
-                blahcon.classList.remove('hidden');
-                blah.src = URL.createObjectURL(file);
-            }
-        }
-        const deleteImage = () => {
-            imgInp.files = null;
-            blah.classList.add('hidden');
-            blahcon.classList.add('hidden');
-            blah.src = '';
-        }
+const blah = document.getElementById('prevImage')
+const blahcon = document.getElementById('prevCont')
+
+imgInp.onchange = evt => {
+    const [file] = imgInp.files
+    if (file) {
+        blah.classList.remove('hidden');
+        blahcon.classList.remove('hidden');
+        blah.src = URL.createObjectURL(file);
+    }
+}
+
+const deleteImage = () => {
+    imgInp.files = null;
+    blah.classList.add('hidden');
+    blahcon.classList.add('hidden');
+    blah.src = '';
+}
+
 const createPost = ()=>{
     const content = document.getElementById('contentInput');
     let formData = new FormData();
@@ -495,9 +513,9 @@ const createPost = ()=>{
             .then(response => response.json())
             .then(response => {
                 response.forEach(userPost => {
-                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.user_id, userPost.id);
+                    postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.date, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.user_id, userPost.id, userPost.type);
                 });
-                document.getElementById('modalLoad').style.display = 'none';
+                
                 //TODO: get jobs from api
                 fetch('/jobs/get', {method: 'POST'})
                     .then(response => response.json())
@@ -505,12 +523,18 @@ const createPost = ()=>{
                         response.forEach(element => {
                             jobsList.innerHTML += job(element.name, element.username, element.location, element.id, element.photo)
                         });
+                        fetch('/getNotifications', {method: 'GET'})
+                            .then(response => response.json())
+                            .then(response => {
+                                response.forEach(element => {
+                                    notiContainer.innerHTML += notification(element.id,element.photo,element.name, element.content, element.isseen == 1 ? false : true );
+                                });
+                                document.getElementById('modalLoad').style.display = 'none';
+                            })
+                            .catch(err => window.location.href = '/login');
                     })
                     .catch(err => console.log(err));
-                //TODO: get notifications from api
-                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'mira wow', true );
-                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'visto', false );
-                notiContainer.innerHTML += notification(1,'https://media.licdn.com/dms/image/D4E0BAQHSe0JvdRcKfw/company-logo_100_100/0/1698848115509/banco_ficohsa_logo?e=1707350400&v=beta&t=pGOo0-wyiebdjCq3nGxSY8WhsuuI1DaBXtc6erppNd4','Ficohsa', 'publico algo', false );
+               
     
                 //TODO: get network from api
             })
@@ -520,7 +544,7 @@ const createPost = ()=>{
         
 
     /*
-        fetch('/api/posts', {method: 'GET'})
+        fetch('/getNotifications', {method: 'GET'})
             .then(response => response.json())
             .then(response => {
                 response.forEach(element => {

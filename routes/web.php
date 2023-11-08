@@ -67,6 +67,23 @@ Route::get('/home', function () {
     return view('home', compact('jobs','user'));
 })->name('home');
 
+Route::get('/getNotifications', function () {
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    $notis = DB::select('SELECT notifications.content, notifications_report.isseen, users.photo, users.name, notifications_report.id FROM notifications_report INNER JOIN notifications ON notifications.id = notifications_report.notifications_id inner join posts on posts.id = notifications.posts_id inner join users on users.id = posts.users_id WHERE notifications_report.users_id = '.$id);
+    return $notis;
+});
+
+Route::get('/viewNotification/{id}', function ($id) {
+    $value = session()->get('token');
+    $idUser = JWTAuth::decode(new Token($value))['sub'];
+    $post = DB::select('SELECT posts.id, notifications.id as notiid FROM notifications_report INNER JOIN notifications ON notifications.id = notifications_report.notifications_id inner join posts on posts.id = notifications.posts_id WHERE notifications_report.id = '.$id);
+
+    DB::update('UPDATE notifications_report SET notifications_report.isseen = 1 WHERE notifications_report.users_id = '.$idUser. ' AND notifications_report.notifications_id = '.$post[0]->notiid);
+
+    return redirect()->route('post.ver', $post[0]->id);
+});
+
 //############ USERS ROUTES ############
 Route::get('/in/{id}', [UsersController::class, 'viewProfile'])->name('users.viewProfile');
 

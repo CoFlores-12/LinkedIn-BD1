@@ -73,37 +73,42 @@ class PostController extends Controller
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
 
-        $allowedfileExtension=['mp4','jpg','jpeg','png','pdf'];
-        
-        $file = $request->file('media');
-
-        $filename = $file->getClientOriginalName();
-        $extension = $file->getClientOriginalExtension();
-
-        $check = in_array($extension,$allowedfileExtension);
-
-        if(!$check){
-            return response()->json(['error'=>'Formato de archivo no permitido'],400);
-        }
-        $file->move($destinationPath,$file->getClientOriginalName());
         $type = 'txt';
-        switch ($extension){
-            case'mp4':
-                $type = 'video/mp4';
-                break;
-            case 'jpg':
-                $type = 'image/jpeg';
-                break;
-            case 'jpeg':
-                $type = 'image/jpeg';
-                break;
-            case 'png':
-                $type = 'image/png';
-                break;
-            case 'pdf':
-                $type = 'application/pdf';
-                break;
+        $filename = "txt";
+        if($request->hasFile('media')){
+            $allowedfileExtension=['mp4','jpg','jpeg','png','pdf'];
+            
+            $file = $request->file('media');
+    
+            $filename = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+    
+            $check = in_array($extension,$allowedfileExtension);
+    
+            if(!$check){
+                return response()->json(['error'=>'Formato de archivo no permitido'],400);
+            }
+            $file->move($destinationPath,$file->getClientOriginalName());
+            
+            switch ($extension){
+                case'mp4':
+                    $type = 'video/mp4';
+                    break;
+                case 'jpg':
+                    $type = 'image/jpeg';
+                    break;
+                case 'jpeg':
+                    $type = 'image/jpeg';
+                    break;
+                case 'png':
+                    $type = 'image/png';
+                    break;
+                case 'pdf':
+                    $type = 'application/pdf';
+                    break;
+            }
         }
+        
         $post = new Post();
         $post->users_id = $idUSer;
         $post->content = $request->content;
@@ -111,6 +116,19 @@ class PostController extends Controller
         $post->type = $type;
         $post->datepost = date('Y-m-d H:i:s');
         $post->save();
-        return $post;
+
+        $idPost = $post->id;
+        //noti logic
+        $noti = DB::insert('INSERT INTO notifications(content, posts_id) VALUES (?,?)', array('Ha hecho una nueva publicacion', $idPost));
+        $noti = DB::select('SELECT id FROM notifications WHERE posts_id = '.$idPost);
+        $userToNoti = DB::select('SELECT users.id FROM users INNER JOIN following ON "FOLLOWING"."FROM" = users.id WHERE "FOLLOWING"."TO"='.$idUSer);
+        foreach ($userToNoti as $user) {
+            DB::insert('INSERT INTO notifications_report(notifications_id, isseen, users_id) VALUES(?, 0, ?)',array($noti[0]->id, $user->id));
+        }
+        return response()->json([
+            'status'=> 200,
+            'post'=> $post,
+            'noti' => $noti,
+        ]);
     }
 }
