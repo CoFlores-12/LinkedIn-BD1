@@ -105,7 +105,7 @@
       
 
                     
-          <a class="mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-primary flex-1" href="https://www.linkedin.com/jobs/search?geoId=92000000&amp;f_C=15094191&amp;company=Universidad+Nacional+Aut%C3%B3noma+de+Honduras+%28UNAH%29&amp;trk=top-card_top-card-secondary-button-top-card-secondary-cta" data-tracking-control-name="top-card_top-card-secondary-button-top-card-secondary-cta" data-tracking-will-navigate="">
+          <a class="mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-primary flex-1" href="{{route('jobs.user.view', $user->id)}}" data-tracking-control-name="top-card_top-card-secondary-button-top-card-secondary-cta" data-tracking-will-navigate="">
             Ver empleos
           </a>
       

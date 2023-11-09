@@ -267,6 +267,9 @@ body, html {
   padding: 1.3rem 1.2rem !important;
   font-size: 0.7rem !important;
 }
+.jobItem:hover {
+  background-color: #eee;
+}
 
 #invitaciones, #sugerencias {
   background-color: #fff;

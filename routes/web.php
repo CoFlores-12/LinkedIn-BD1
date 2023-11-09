@@ -128,3 +128,5 @@ Route::post('/jobs/create', [jobsController::class, 'store'])->name('job.create'
 Route::post('/jobs/get', [jobsController::class, 'get'])->name('job.get');
 
 Route::get('/job/{id}', [jobsController::class, 'view'])->name('job.view');
+Route::get('/jobs/user/{id}', [jobsController::class, 'viewByUser'])->name('jobs.user.view');
+Route::get('/jobs/solicitar/{id}', [jobsController::class, 'solicitar'])->name('jobs.solicitar.view');

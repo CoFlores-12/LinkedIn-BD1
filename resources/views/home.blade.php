@@ -296,8 +296,8 @@
 
 const job = (title, farm, location, id, logo)=>{
     return `<a href="/job/${id}" class="w-full">
-                <div class="flex flex-row jobItem">
-                        <img width="48" height="48" src="/storage/${logo}" class="mr-2" alt="">
+                <div class="flex flex-row jobItem items-center">
+                        <img class="w-[48px] h-[48px] mr-2"  src="/storage/${logo}" alt="">
                         <div>
                             <h1 class="titleJob">${title}</h1>
                             <h3 class="mediumJob">${farm}</h3>

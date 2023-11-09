@@ -42,14 +42,45 @@ class jobsController extends Controller
 
     public function view($id){
         $job = DB::table('jobs')->where('jobs.id', $id)
-        ->select('jobs.*', 'users.name as username', 'users.photo')
+        ->select('jobs.*', 'categories.nombre as categorynamejob')
         ->join('users', 'users.id', 'jobs.users_id')
+        ->join('categories', 'categories.id', 'jobs.category')
         ->first();
-        return view('viewJob', compact('job'));
+        $user = DB::select('select photo, name, users.id, followers, categories.nombre, info
+        from users
+        INNER JOIN categories on categories.id = users.categories_id
+        left join (
+            SELECT count("FOLLOWING"."TO") as followers, "FOLLOWING"."TO"  as idUser from following group by "FOLLOWING"."TO"
+        ) on users.id = idUser
+        where users.id='.$job->users_id);
+        $user = $user[0];
+        $applications = DB::select('SELECT
+        count(jobs_id) AS "APPLICATIONS"
+      FROM
+        "APPLICATIONS"
+      WHERE
+        "JOBS_ID" = '.$id);
+        $applications=$applications[0];
+        return view('viewJob', compact('job', 'user', 'applications'));
+    }
+
+    public function viewByUser($id){
+        $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id');
+        return view('viewJobUser', compact('jobs'));
     }
 
     public function get(){
         $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id');
         return $jobs;
+    }
+
+    public function solicitar($idJob){
+        $value = session()->get('token');
+        $idUSer = JWTAuth::decode(new Token($value))['sub'];
+
+        //TOTO: verify no exist in database this user in this job
+        
+        DB::insert('INSERT INTO applications(jobs_id, users_id) VALUES (?,?)',array($idJob, $idUSer));
+        return redirect()->route('home');
     }
 }
