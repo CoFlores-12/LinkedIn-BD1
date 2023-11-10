@@ -272,9 +272,12 @@
         <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;">
             
     </div>
-        <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #FFF;">
-            <div>Empleos para ti</div>
-            <div id="listJobs" class="w-full">
+    <div id="jobsContainer" class="h-full hidden w-full flex items-center flex-col" >
+        <a class="w-full bg-white myapplications" href="/jobs/myApplications">
+            ver mis solicitudes
+        </a>
+        <div id="listJobs" style="background-color: #FFF;" class="w-full">
+            <div class="center">Empleos para ti</div>
                
                
             </div>

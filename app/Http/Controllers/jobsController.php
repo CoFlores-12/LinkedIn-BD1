@@ -11,7 +11,8 @@ class jobsController extends Controller
 {
     public function crear(Request $request){
         $categories = DB::select('SELECT * FROM categories');
-        return view('newJob',compact('categories'));
+        $locations = DB::select('SELECT * FROM locations');
+        return view('newJob',compact('categories', 'locations'));
     }
     public function store(Request $request){
         $value = session()->get('token');
@@ -61,11 +62,13 @@ class jobsController extends Controller
       WHERE
         "JOBS_ID" = '.$id);
         $applications=$applications[0];
-        return view('viewJob', compact('job', 'user', 'applications'));
+        $value = session()->get('token');
+        $myID = JWTAuth::decode(new Token($value))['sub'];
+        return view('viewJob', compact('job', 'user', 'applications', 'myID'));
     }
 
     public function viewByUser($id){
-        $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id');
+        $jobs = DB::select('select jobs.*, users.name as username, users.photo  from jobs inner join users on users.id = jobs.users_id WHERE jobs.users_id = '. $id);
         return view('viewJobUser', compact('jobs'));
     }
 
@@ -78,9 +81,23 @@ class jobsController extends Controller
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
 
-        //TOTO: verify no exist in database this user in this job
+        if(DB::table('applications')->where('jobs_id', $idJob)->where('users_id', $idUSer)->exists()){
+            return redirect()->back();
+        }
         
         DB::insert('INSERT INTO applications(jobs_id, users_id) VALUES (?,?)',array($idJob, $idUSer));
         return redirect()->route('home');
+    }
+
+    public function solicitudes($idJob){
+        $users = DB::select('SELECT users.photo, users.id, users.name, locations.location ,categories.nombre from applications left JOIN users ON users.id = applications.users_id left join locations on locations.id = users.locations_id inner join categories on categories.id = users.categories_id where jobs_id = '. $idJob);
+        return view('applications', compact('users'));
+    }
+
+    public function mysolicitudes(){
+        $value = session()->get('token');
+        $idUSer = JWTAuth::decode(new Token($value))['sub'];
+        $jobs = DB::select('select jobs.*, users.name as username, users.photo  from applications left join users on users.id = applications.users_id inner join jobs on jobs.id = applications.jobs_id WHERE applications.users_id = '. $idUSer);
+        return view('viewJobUser', compact('jobs'));
     }
 }

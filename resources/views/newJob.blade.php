@@ -27,7 +27,12 @@
                     <option value="{{$category->nombre}}">
                 @endforeach
             </datalist>  
-        <input type="text" placeholder="location" name="location" id="location">
+        <input type="text" list="locations" placeholder="location" name="location" id="location">
+        <datalist id="locations">
+                @foreach($locations as $location)
+                    <option value="{{$location->location}}">
+                @endforeach
+            </datalist>  
         <input type="text" placeholder="salary" name="salary" id="salary">
         <button class="btn-prm" type="submit">crear</button>
     </form>

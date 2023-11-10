@@ -112,16 +112,29 @@
               </div>
             </div>
                 @else
-                <a href={{route('jobs.create')}}>
-                  <button class="follow-button__follow w-full  mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-secondary-emphasis  flex flex-row justify-center items-center" >
-                        <svg class="lazy-loaded w-[16px] h-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" width="16" height="16" focusable="false" class="lazy-loaded" aria-busy="false">
-                <path d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"></path>
-              </svg>
-                      <span class="follow-button__follow_text">
-                          Crear Trabajo
-                      </span>
-                    </button>
-                </a>
+                <div class="top-card-layout__cta-container flex flex-wrap mt-0.5 papabear:mt-0 ml-[-12px]">
+    <div class="follow-button inline-flex babybear:flex-auto flex-1" data-entity-urn="urn:li:organization:15094191">
+     <a href={{route('jobs.create')}} class="w-full ml-1.5"> <button class="follow-button__follow w-full  mt-2 ml-1.5 h-auto babybear:flex-auto btn-md btn-secondary-emphasis  flex flex-row justify-center items-center" >
+          <svg class="lazy-loaded w-[16px] h-[16px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" width="16" height="16" focusable="false" class="lazy-loaded" aria-busy="false">
+  <path d="M14 9H9v5H7V9H2V7h5V2h2v5h5z"></path>
+</svg>
+        <span class="follow-button__follow_text">
+            Crear empleo
+        </span>
+      </button>
+      </a>
+    </div>
+  
+  
+      
+
+                    
+          <a class="mt-2 ml-3 h-auto babybear:flex-auto btn-md btn-primary flex-1" href="{{route('jobs.user.view', $myID)}}" data-tracking-control-name="top-card_top-card-secondary-button-top-card-secondary-cta" data-tracking-will-navigate="">
+            Ver mis empleos
+          </a>
+      
+              </div>
+            </div>
                 @endif
               
 

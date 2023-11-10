@@ -87,12 +87,21 @@
         <div class="infojob">
         <a class="username" href="/in/{{$user->id}}">{{$user->name}}</a> | {{$job->location}} | <span class="soli">{{$applications->applications}} solicitudes</span>
         </div>
-        <a href="/jobs/solicitar/{{$job->id}}">
-        <button role="link" id="ember521" class="jobs-apply-button artdeco-button artdeco-button--icon-right artdeco-button--3 artdeco-button--primary ember-view">        
-        <span class="artdeco-button__text">
-            Solicitar
-        </span></button>
-        </a>
+        @if ($myID != $job->users_id)
+            <a href="/jobs/solicitar/{{$job->id}}">
+            <button role="link" id="ember521" class="jobs-apply-button artdeco-button artdeco-button--icon-right artdeco-button--3 artdeco-button--primary ember-view">        
+            <span class="artdeco-button__text">
+                Solicitar 
+            </span></button>
+            </a>
+        @else
+        <a href="/jobs/solicitudes/{{$job->id}}">
+            <button role="link" id="ember521" class="jobs-apply-button artdeco-button artdeco-button--icon-right artdeco-button--3 artdeco-button--primary ember-view">        
+            <span class="artdeco-button__text">
+                ver solicitudes 
+            </span></button>
+            </a>
+        @endif
         <h2>Acerca del empleo</h2>
         {{$job->description}}
         <div class="card mt-5">
