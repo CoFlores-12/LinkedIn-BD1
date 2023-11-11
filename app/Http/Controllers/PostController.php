@@ -164,10 +164,10 @@ class PostController extends Controller
     public function createComment(Request $request){
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
-        //DB::insert('INSERT INTO comments("comment", USERS_ID, POSTS_ID) VALUES (\''.$request->comment.'\', '.$idUSer.','.$request->id.')');
+        DB::insert('INSERT INTO comments("comment", USERS_ID, POSTS_ID) VALUES (\''.$request->comment.'\', '.$idUSer.','.$request->id.')');
         $user = DB::select('SELECT users.photo, users.name, users.id FROM users WHERE id='.$idUSer);
         $userToNoti = DB::select('select users_id from posts where posts.id ='.$request->id)[0]->users_id;
-        //DB::insert('INSERT INTO notifications(CONTENT, posts_id, USERS_ID,USERS_ID1,TYPENOTI,PENNDING ) VALUES (\'comento tu publicacion\','.$request->id.','.$idUSer.','.$userToNoti.'.,\'post\', 1)');
+        DB::insert('INSERT INTO notifications(CONTENT, posts_id, USERS_ID,USERS_ID1,TYPENOTI,PENNDING ) VALUES (\'comento tu publicacion\','.$request->id.','.$idUSer.','.$userToNoti.'.,\'post\', 1)');
         return response()->json([
             'status'=> 200,
             'user'=>$user[0]
