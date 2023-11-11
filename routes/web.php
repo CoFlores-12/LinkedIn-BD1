@@ -186,6 +186,11 @@ Route::get('/posts', [PostController::class, 'getPosts']);
 
 Route::get('/feed/{id}', [PostController::class, 'getPost'])->name('post.ver');
 
+Route::get('/like/{idPost}', [PostController::class,'like'])->name('post.like');
+
+Route::get('/comments/{idPost}', [PostController::class,'comments'])->name('post.comments');
+
+Route::post('/comments', [PostController::class,'createComment'])->name('post.comments.reate');
 
 //############ JOBS ROUTES ############
 Route::get('/jobs/create', [jobsController::class, 'crear'])->name('jobs.create');
