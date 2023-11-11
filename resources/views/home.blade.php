@@ -216,57 +216,6 @@
                 No hay invitaciones pendientes
             </div>
             <div id="sugerencias" class="w-full">
-                <div class="cardUser flex flex-col relative">
-                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
-                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
-                    <span>Alejandra</span>
-                    <span>Lic. en psicologia</span>
-                    <footer class="mt2">
-                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
-                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
-                            </svg></li-icon>
-                            <span class="artdeco-button__text">
-                            Conectar
-                        </span></button>
-                    </footer>
-                </div>
-                <div class="cardUser flex flex-col relative">
-                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
-                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
-                    <span>Alejandra</span>
-                    <span>Lic. en psicologia</span>
-                    <footer class="mt2">
-                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
-                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
-                            </svg></li-icon>
-                        <span class="artdeco-button__text">
-                            Conectar
-                        </span></button>
-                    </footer>
-                </div>
-                <div class="cardUser flex flex-col relative">
-                <div class="bannercard" style="background:url('{{URL::asset('assets/banner.svg')}}')" alt=""></div>
-                    <img id="ppcard" src="{{URL::asset('assets/profile.svg')}}" alt="">
-                    <span>Alejandra</span>
-                    <span>Lic. en psicologia</span>
-                    <footer class="mt2">
-                        <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
-                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
-                            </svg></li-icon>
-                        <span class="artdeco-button__text">
-                            Conectar
-                        </span></button>
-                    </footer>
-                </div>
-
-         
-
-
-
-
-
-
-
             </div>
     </div>
         <div id="notiContainer" class="h-full hidden w-full flex items-center flex-col" style="background-color: #E9E5DF;">
@@ -294,6 +243,7 @@
     const redContainer = document.getElementById('redContainer');
     const notiContainer = document.getElementById('notiContainer');
     const jobsContainer = document.getElementById('jobsContainer');
+    const sugerencias = document.getElementById('sugerencias');
     const jobsList = document.getElementById('listJobs');
     const btnsNav = document.getElementById('btnsNav');
 
@@ -530,9 +480,31 @@ const createPost = ()=>{
                             .then(response => response.json())
                             .then(response => {
                                 response.forEach(element => {
-                                    notiContainer.innerHTML += notification(element.id,element.photo,element.name, element.content, element.isseen == 1 ? false : true );
+                                    notiContainer.innerHTML += notification(element.id,element.photo,element.name, element.content, element.pennding == 0 ? false : true );
+                                });
+                                fetch('/getMyNetwork', {method: 'GET'})
+            .then(response => response.json())
+            .then(response => {
+                response.forEach(element => {
+                    sugerencias.innerHTML += `<div class="cardUser flex flex-col relative">
+                <div class="bannercard" style="background:url('/storage/${element.banner}')" alt=""></div>
+                    <img id="ppcard" src="/storage/${element.photo}" alt="">
+                    <a href="/in/${element.id}"><span>${element.name}</span></a>
+                    <span>${element.nombre == null ? '' : element.nombre}</span>
+                    <footer class="mt-2">
+                    <a href="/seguir/${element.id}"> <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
+                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
+                            </svg></li-icon>
+                        <span class="artdeco-button__text">
+                            Conectar
+                        </span></button></a>
+                    </footer>
+                </div>`
                                 });
                                 document.getElementById('modalLoad').style.display = 'none';
+            })
+            .catch(err => window.location.href = '/login');
+                               
                             })
                             .catch(err => window.location.href = '/login');
                     })

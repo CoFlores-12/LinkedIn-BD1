@@ -119,16 +119,14 @@ class PostController extends Controller
 
         $idPost = $post->id;
         //noti logic
-        $noti = DB::insert('INSERT INTO notifications(content, posts_id) VALUES (?,?)', array('Ha hecho una nueva publicacion', $idPost));
-        $noti = DB::select('SELECT id FROM notifications WHERE posts_id = '.$idPost);
+        
         $userToNoti = DB::select('SELECT users.id FROM users INNER JOIN following ON "FOLLOWING"."FROM" = users.id WHERE "FOLLOWING"."TO"='.$idUSer);
         foreach ($userToNoti as $user) {
-            DB::insert('INSERT INTO notifications_report(notifications_id, isseen, users_id) VALUES(?, 0, ?)',array($noti[0]->id, $user->id));
+            DB::insert('INSERT INTO notifications(CONTENT, posts_id, USERS_ID,USERS_ID1,TYPENOTI,PENNDING ) VALUES (\'publico algo\','.$idPost.','.$idUSer.','.$user->id.'.,\'post\', 1)');
         }
         return response()->json([
             'status'=> 200,
             'post'=> $post,
-            'noti' => $noti,
         ]);
     }
 }

@@ -33,8 +33,10 @@ class UsersController extends Controller{
 
         $value = session()->get('token');
         $id = JWTAuth::decode(new Token($value))['sub'];
+
+        $following = DB::table('following')->where('from', $id)->where('to', $request->id)->exists();
         
-        return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones, 'followers'=> $followers, 'skills' => $ski, 'edu' => $edu, 'exp' => $exp]);
+        return view('profile', ['user' => $user, 'myID' => $id, 'publicaciones' => $publicaciones, 'followers'=> $followers, 'skills' => $ski, 'edu' => $edu, 'exp' => $exp, 'following' => $following]);
     }
     public function update(Request $request){
         if (!DB::table('users')->where('id', $request->id)->exists()){
@@ -43,7 +45,7 @@ class UsersController extends Controller{
                 'message'=> 'Error updating user'
             ]);
         }
-
+        
         //Category logic
         if (!DB::table('categories')->where('nombre', $request->category)->exists()) {
             $category = DB::insert('insert into categories (nombre) values (?)', array($request->category));
@@ -52,11 +54,17 @@ class UsersController extends Controller{
             ->where('nombre', $request->category)->first();
 
         //Location Logic
-        if (!DB::table('locations')->where('location', $request->location)->exists()) {
-                $location = DB::insert("insert into locations (location) values ('?')", array($request->location));
-            }
         $location = DB::table('locations')
-            ->where('location', $request->location)->first();
+                ->where('location', $request->location)->first();
+        if ($request->location != "") {
+            if (!DB::table('locations')->where('location', $request->location)->exists()) {
+                    $location = DB::insert("insert into locations (location) values ('?')", array($request->location));
+                }
+            $location = DB::table('locations')
+                ->where('location', $request->location)->first();
+        }else{
+            $location = (object) array('id' => null);
+        }
 
         //PP & banner logic
         $destinationPath = 'storage';
@@ -115,7 +123,7 @@ class UsersController extends Controller{
         }
 
         //exp logic
-        for ($i=0; $i < $request->countEdu ; $i++) { 
+        for ($i=1; $i < $request->countExp ; $i++) { 
             $tempvar = "id-company-".$i;
             if($request->$tempvar == null){
                 $tempname = "company-".$i;
@@ -124,14 +132,14 @@ class UsersController extends Controller{
                 $tempini = "dateIni-".$i;
                 $tempfin = "datefin-".$i;
                 if (!DB::table('work_experience')->where('company_name', $request->$tempname)->where('location', $request->$templocation)->where('occupation',$request->$tempgrade)->exists()) {
-                    DB::insert("insert into work_experience(company_name, location,occupation) values ('?', '?', '?')", array($request->$tempname,$request->$templocation, $request->$tempgrade));
+                    DB::insert('insert into work_experience("COMPANY_NAME", "LOCATION","OCCUPATION") values (\''.$request->$tempname.'\', \''.$request->$templocation.'\', \''.$request->$tempgrade.'\')');
                 }
                 $comapny = DB::table('work_experience')->where('company_name', $request->$tempname)->where('location', $request->$templocation)->where('occupation',$request->$tempgrade)->first();
 
                 DB::insert('insert into my_experience(users_id,work_experience_id,start_date,finish_date) values (?, ? , ?, ?)', array( $request->id, $comapny->id, $request->$tempini, $request->$tempfin));
             }
         }
-
+        
         $user = DB::table('users')
         ->where('id', $request->id)
         ->update([

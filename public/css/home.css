@@ -341,11 +341,10 @@ body, html {
   transition-property: background-color,box-shadow,color;
   vertical-align: middle;
   margin-bottom: 10px;
+  padding: 7px 0px;
 }
 .artdeco-button, .artdeco-button--2, .peek-carousel-controls__button {
   font-size: 1rem;
-  min-height: 3.2rem;
-  line-height: 2rem;
 }
 .artdeco-button--secondary, .artdeco-button--secondary:visited, .artdeco-button--secondary:visited:hover, .artdeco-carousel__navigation .artdeco-button--circle, .artdeco-carousel__navigation .artdeco-button--circle:visited, .artdeco-carousel__navigation .artdeco-button--circle:visited:hover, .artdeco-carousel__navigation .peek-carousel-controls__button, .peek-carousel-controls__button, .peek-carousel-controls__button:visited, .peek-carousel-controls__button:visited:hover, a.artdeco-button--secondary {
   background-color: hsla(0,0%,100%,0);
@@ -363,4 +362,7 @@ body, html {
 }
 .myapplications:hover {
   background-color: #eee;
+}
+#postContainer , #redContainer, #notiContainer, #jobsContainer {
+  min-height: 84vh !important;
 }

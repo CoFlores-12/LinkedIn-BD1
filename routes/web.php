@@ -67,21 +67,75 @@ Route::get('/home', function () {
     return view('home', compact('jobs','user'));
 })->name('home');
 
+Route::get('/getMyNetwork', function(){
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    $user = DB::table('users')->where('id', $id)->first();
+    $users = DB::select('select 
+    users.id, users.name, users.banner, users.photo, categories.nombre 
+from 
+    users 
+inner join 
+    categories on categories.id = users.categories_id 
+WHERE 
+    ((users.categories_id = '.$user->categories_id.' and users.id != '.$id.') 
+    OR
+    users.id in (
+        select 
+            users_id 
+        from 
+            my_skills 
+        where 
+            skills_id in 
+                (select skills_id from my_skills where users_id = '.$id.')
+            and
+                users_id != '.$id.'
+    )
+    OR
+     users.id in (
+        select 
+            users_id 
+        from 
+            my_education 
+        where 
+            education_id in 
+                (select education_id from my_education where users_id = '.$id.') 
+            and
+                users_id != '.$id.'
+    )
+    OR 
+    users.id in (
+        select 
+            users_id 
+        from 
+            my_experience 
+        where 
+            work_experience_id in 
+                (select work_experience_id from my_experience where users_id = '.$id.') 
+            and
+                users_id != '.$id.'
+    ))
+    AND
+    NOT users.id IN (SELECT following."TO" FROM FOLLOWING where following."FROM" = '.$id.')');
+    return $users;
+});
+
 Route::get('/getNotifications', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
-    $notis = DB::select('SELECT notifications.content, notifications_report.isseen, users.photo, users.name, notifications_report.id FROM notifications_report INNER JOIN notifications ON notifications.id = notifications_report.notifications_id inner join posts on posts.id = notifications.posts_id inner join users on users.id = posts.users_id WHERE notifications_report.users_id = '.$id);
+    $notis = DB::select('SELECT notifications.content, notifications.typenoti, notifications.pennding, users.photo, users.name, notifications.id FROM notifications INNER JOIN users ON users.id = notifications.users_id WHERE notifications.users_id1 = '.$id);
     return $notis;
 });
 
 Route::get('/viewNotification/{id}', function ($id) {
     $value = session()->get('token');
     $idUser = JWTAuth::decode(new Token($value))['sub'];
-    $post = DB::select('SELECT posts.id, notifications.id as notiid FROM notifications_report INNER JOIN notifications ON notifications.id = notifications_report.notifications_id inner join posts on posts.id = notifications.posts_id WHERE notifications_report.id = '.$id);
-
-    DB::update('UPDATE notifications_report SET notifications_report.isseen = 1 WHERE notifications_report.users_id = '.$idUser. ' AND notifications_report.notifications_id = '.$post[0]->notiid);
-
-    return redirect()->route('post.ver', $post[0]->id);
+    $noti = DB::table('notifications')->where('id', $id)->first();
+    DB::update('UPDATE notifications SET pennding = 0');
+    if($noti->typenoti == 'follow'){
+        return redirect()->route('users.viewProfile', $noti->users_id);
+    }
+    return redirect()->route('post.ver', $noti->posts_id);
 });
 
 //############ USERS ROUTES ############
@@ -113,6 +167,17 @@ Route::get('/editMyProfile', function () {
 
 Route::post('/update', [UsersController::class, 'update'])->name('users.update');
 
+Route::get('/seguir/{id}', function($id){
+    $value = session()->get('token');
+    $myid = JWTAuth::decode(new Token($value))['sub'];
+    if(DB::table('following')->where('from', $myid)->where('to', $id)->exists()){
+        return redirect()->back();
+    }
+    DB::insert('INSERT INTO following("FOLLOWING"."FROM","FOLLOWING"."TO") values (?,?)', array($myid, $id));
+    DB::insert('INSERT INTO notifications(CONTENT, USERS_ID,USERS_ID1,TYPENOTI,PENNDING ) VALUES (\'Ha comenzado a seguirte\','.$myid.','.$id.'.,\'follow\', 1)');
+    return redirect()->route('users.viewProfile', $id);
+
+})->name('user.seguir');
 
 //############ POSTS ROUTES ############
 Route::post('/posts/crear', [PostController::class, 'crear']);
