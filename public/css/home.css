@@ -395,3 +395,58 @@ body, html {
       transform: rotate(360deg);
   }
   } 
+
+  .body-medium-bold-open {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.body-xsmall {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Fira Sans', Ubuntu, Oxygen, 'Oxygen Sans', Cantarell, 'Droid Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Lucida Grande', Helvetica, Arial, sans-serif;
+    font-size: 0.7rem;
+    line-height: 1.25;
+}
+.iconMsg {
+  height: 24px;
+  width: 24px;
+}
+
+.text-color-badge-label {
+  background-color: #0a66c23a;
+}
+#msgInput {
+  background: #fafafa;
+  border-radius: 10px;
+  padding: 10px;
+}
+.contentmsg {
+  background-color: #0a66c20c;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid #eee;
+  max-width: 70%;
+}
+.message {
+  position: relative;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px !important;
+}
+.sent { 
+  justify-content: flex-end;
+}
+.sent > div {
+  background-color: #fff !important;
+}
+.sent > .hour {
+  right: 45px !important;
+  left: auto !important;
+}
+.hour {
+  position: absolute;
+  bottom: -8px;
+  left: 45px;
+  font-size: 0.5rem;
+}

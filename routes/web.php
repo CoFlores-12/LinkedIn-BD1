@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\jobsController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,6 +179,92 @@ Route::get('/seguir/{id}', function($id){
     return redirect()->route('users.viewProfile', $id);
 
 })->name('user.seguir');
+
+Route::get('/messaging/compose/', function () {
+
+    // Check for search input
+    if (request('search')) {
+        $busqueda = request('search') ;
+        $users = DB::select("SELECT users.id, users.photo, users.name FROM users INNER JOIN categories on categories.id = users.categories_id WHERE UPPER(users.email) LIKE UPPER('%".$busqueda."%') OR UPPER(users.name) LIKE UPPER('%".$busqueda."%') OR UPPER(users.info) LIKE UPPER('%".$busqueda."%')");
+    } else {
+        $users = DB::table('users')->get();
+    }
+
+    return view('compose')->with('users', $users);
+});
+
+Route::post('/message/compose', function (Request $request) {
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    if(!DB::table('chats')
+        ->where('USERS_ID', $request->id)
+        ->where('USERS_ID1', $id)
+        ->orwhere('USERS_ID', $id)
+        ->where('USERS_ID1', $request->id)
+            ->exists()){
+        DB::insert('INSERT INTO chats("USERS_ID","USERS_ID1") values (?,?)', array($id, $request->id));
+        $chat = DB::table('chats')->where('USERS_ID', $id)->where('USERS_ID1', $request->id)->first();
+
+        return DB::insert('INSERT INTO messages("CHATS_ID","MENSSAGE", "USERS_ID", "DATEMSG", "SEEN") values ('.$chat->id.',\''.$request->msg.'\','.$id.',\''.date('Y-m-d H:i:s').'\',0)');
+    }
+    return redirect()->route('home');
+});
+
+Route::post('/message/send', function (Request $request) {
+    
+    date_default_timezone_set("America/Tegucigalpa");
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    
+    $chat = DB::table('chats')
+    ->where('USERS_ID', $request->id)
+    ->where('USERS_ID1', $id)
+    ->orwhere('USERS_ID', $id)
+    ->where('USERS_ID1', $request->id)
+    ->first();
+
+    DB::insert('INSERT INTO messages("CHATS_ID","MENSSAGE", "USERS_ID", "DATEMSG", "SEEN") values ('.$chat->id.',\''.$request->msg.'\','.$id.',\''.date('Y-m-d H:i:s').'\', 0)');
+
+    return $chat->id;
+});
+
+Route::get('/getChats', function(){
+    $value = session()->get('token');
+    $id = JWTAuth::decode(new Token($value))['sub'];
+    $chats = DB::select('SELECT chats.*, users.name, users.photo, (SELECT * FROM (
+        select messages.menssage from messages where messages.chats_id = chats.id ORDER BY messages.datemsg DESC
+    ) WHERE ROWNUM = 1) as msg, (SELECT * FROM (
+        select messages.datemsg from messages where messages.chats_id = chats.id ORDER BY messages.datemsg DESC
+    ) WHERE ROWNUM = 1) as lastdate, (
+        select count(id) from messages where messages.chats_id = chats.id and messages.seen = 0
+    ) as countPending
+    FROM chats 
+    inner join users on 
+        ((users.id = chats.users_id and users.id != '.$id.') or (users.id = chats.users_id1 and users.id != '.$id.'))
+    
+    where chats.users_id = '.$id.' OR chats.users_id1 = '.$id);
+
+    return $chats;
+});
+
+Route::get('/getChat/{id}', function($id){
+    $value = session()->get('token');
+    $myid = JWTAuth::decode(new Token($value))['sub'];
+    DB::update('update MESSAGES SET messages.seen = 1 WHERE MESSAGES.CHATS_ID = '.$id);
+    $msgs = DB::select('SELECT * FROM messages WHERE MESSAGES.CHATS_ID = '.$id);
+    $user = DB::select('SELECT users.name, users.photo, users.id
+    FROM chats 
+    inner join users on 
+        ((users.id = chats.users_id and users.id != '.$myid.') or (users.id = chats.users_id1 and users.id != '.$myid.'))
+    WHERE chats.id = '.$id);
+    $user1 = DB::select('SELECT id, users.photo FROM users WHERE users.id = '.$myid);
+    return response()->json([
+        'status'=> 200,
+        'user'=>$user[0],
+        'user1'=>$user1[0],
+        'msgs'=>$msgs
+    ]);
+});
 
 //############ POSTS ROUTES ############
 Route::post('/posts/crear', [PostController::class, 'crear']);

@@ -1,11 +1,12 @@
 const container = document.getElementById('container');
-    const postContainer = document.getElementById('postContainer');
-    const redContainer = document.getElementById('redContainer');
-    const notiContainer = document.getElementById('notiContainer');
-    const jobsContainer = document.getElementById('jobsContainer');
-    const sugerencias = document.getElementById('sugerencias');
-    const jobsList = document.getElementById('listJobs');
-    const btnsNav = document.getElementById('btnsNav');
+const postContainer = document.getElementById('postContainer');
+const chatsContainer = document.getElementById('chats');
+const redContainer = document.getElementById('redContainer');
+const notiContainer = document.getElementById('notiContainer');
+const jobsContainer = document.getElementById('jobsContainer');
+const sugerencias = document.getElementById('sugerencias');
+const jobsList = document.getElementById('listJobs');
+const btnsNav = document.getElementById('btnsNav');
 
 const job = (title, farm, location, id, logo)=>{
     return `<a href="/job/${id}" class="w-full">
@@ -146,26 +147,38 @@ const like = (idPost) => {
             isPendding = false;
         });
 }
-const message=(user)=>{
-          container.innerHTML=`<div class="containerMessages">
-        <div class="message">
-            <div class="imageMessage">
-                <img src="https://media.licdn.com/dms/image/C4D03AQHFot31JK1Rhw/profile-displayphoto-shrink_100_100/0/1578354888650?e=1703116800&amp;v=beta&amp;t=3a3ifGcxQxPjDcLMmcMbEkvYstgD2Vh6Q_kxz5kT1Eg" loading="lazy" alt="Franklin Tavarez" id="ember289" class="evi-image rounded-image  lazy-image msg-facepile-grid__img msg-facepile-grid__img--person ember-view">
-            </div>
-            <div class="infoMessage">
-                <div class="authorMessage"><span>
-                    Franklin Tavarez
-                </span></div>
-                <div class="textMessage"><p>
-                    ¡Hola, ${user}!
-                    Me llamo Franklin y formo parte del equipo de LinkedIn Premium. ¡Gracias por tu confianza en LinkedIn! Nos gustaría ofrecerte un mes de prueba gratis para Premium.
-                </p>
-            </div>
-            </div>
-            <div class="hourMessage"><span>10 oct</span>
-            </div>
-        </div>`;
-        }
+const message=(name, id, photo, msg, lastdate, countPending)=>{
+    return `<a onclick="viewChat(${id})" class="profile-image-wrapper flex" data-tracking-control-name="conversation-list" data-tracking-will-navigate="" data-is-sponsored="">
+    <section class="relative inline-flex items-center mr-2 pl-2 py-1" aria-hidden="true">
+      
+<img style="min-width:40px !important;" class="inline-block relative rounded-[50%] h-[40px] w-[40px] lazy-loaded" data-ghost-classes="bg-color-entity-ghost-background" src="/storage/${photo}">
+
+<!---->          </section>
+
+    <section class="grow border-b-1 border-solid border-color-divider py-1 pr-2 break-all">
+
+      <p dir="ltr" class="text-color-text line-clamp-1
+          body-medium-bold-open">
+        ${name}
+      </p>
+
+      <p class="text-color-text-secondary line-clamp-1 body-small-open">
+          
+  <span dir="ltr">${msg}</span>
+
+      </p>
+    </section>
+
+    <section class="text-right border-b-1 border-solid border-color-divider py-1 pr-2 shrink-0">
+      <p class="body-xsmall text-color-text-secondary">
+${lastdate}
+      </p>
+        <span class="rounded-full body-xsmall bg-color-link ${countPending == 0 ? '' : 'text-color-badge-label'}  inline-block text-center min-w-[20px] p-[2px]" aria-label="1 mensaje sin leer">
+          ${countPending == 0 ? '' : countPending}
+        </span>
+    </section>
+  </a>`;
+}
 
 const changeView = (value) => {
     switch (value) {
@@ -195,7 +208,6 @@ const changeView = (value) => {
             redContainer.classList.add('hidden');
             notiContainer.classList.remove('hidden');
             jobsContainer.classList.add('hidden');
-
             break;
         default:
             postContainer.classList.remove('hidden');
@@ -214,6 +226,95 @@ document.getElementById("busquedaInp")
 });
 const toggleModalShare = () => {
     const modal = document.getElementById('modalShare');
+    modal.classList.toggle('hidden');
+    const container = document.getElementById('container');
+    container.classList.toggle('hidden');
+}
+const closeChat = () =>{
+    const modal = document.getElementById('modalChat');
+    modal.classList.toggle('hidden');
+}
+let chatActiveGlobalUser = null;
+let chatActiveGlobal = null;
+const viewChat = (id) =>{
+    const modal = document.getElementById('modalChat');
+    const chatBody = document.getElementById('chatBody');
+    const chatName = document.getElementById('chatName');
+    modal.classList.toggle('hidden');
+    chatBody.innerHTML = '<div class="contloader"><span class="loader2"></span></div>'
+    fetch('/getChat/'+id, {method: 'GET'})
+    .then(response => response.json())
+    .then(response => {
+        chatActiveGlobalUser = response.user.id;
+        chatActiveGlobal = id;
+        chatBody.innerHTML = ''
+        chatName.innerHTML = response.user.name;
+        response.msgs.forEach(msg => {
+                
+                if (msg.users_id != response.user1.id) {
+                    chatBody.innerHTML += `<div class="message">
+                    <img class="inline-block relative rounded-[50%] h-[25px] w-[25px]  mr-2 lazy-loaded" src="/storage/${response.user.photo}" alt="">
+                    <div class="contentmsg">
+                        ${msg.menssage}
+                    </div>
+                    <div class="hour">${msg.datemsg.split(' ')[1]}</div>
+                </div>`
+                }else{
+                    chatBody.innerHTML += `<div class="message sent">
+                    <div class="contentmsg">
+                    ${msg.menssage}
+                    </div>
+                    <div class="hour">${msg.datemsg.split(' ')[1]}</div>
+                    <img class="inline-block relative rounded-[50%] h-[25px] w-[25px]  ml-2 lazy-loaded" src="/storage/${response.user1.photo}" alt="">
+                </div>`
+                }
+            });
+        })
+}
+function enviarmsg() {
+    const msgInput = document.getElementById('msgInput');
+    
+    const chatBody = document.getElementById('chatBody');
+    if (chatActiveGlobalUser == null) {
+        return
+    }
+    let formData = new FormData();
+      formData.append('msg', msgInput.value);
+      formData.append('id', chatActiveGlobalUser);
+      const options = {method: 'POST', body: formData};
+    fetch('/message/send', options)
+            .then((response)=>{
+    fetch('/getChat/'+chatActiveGlobal, {method: 'GET'})
+    .then(response => response.json())
+    .then(response => {
+        chatBody.innerHTML = ''
+        chatName.innerHTML = response.user.name;
+        response.msgs.forEach(msg => {
+                
+                if (msg.users_id != response.user1.id) {
+                    chatBody.innerHTML += `<div class="message">
+                    <img class="inline-block relative rounded-[50%] h-[25px] w-[25px]  mr-2 lazy-loaded" src="/storage/${response.user.photo}" alt="">
+                    <div class="contentmsg">
+                        ${msg.menssage}
+                    </div>
+                    <div class="hour">${msg.datemsg.split(' ')[1]}</div>
+                </div>`
+                }else{
+                    chatBody.innerHTML += `<div class="message sent">
+                    <div class="contentmsg">
+                    ${msg.menssage}
+                    </div>
+                    <div class="hour">${msg.datemsg.split(' ')[1]}</div>
+                    <img class="inline-block relative rounded-[50%] h-[25px] w-[25px]  ml-2 lazy-loaded" src="/storage/${response.user1.photo}" alt="">
+                </div>`
+                }
+            });
+        })
+            })
+            .catch(err => console.log(err));
+}
+const toggleModalMsg = () => {
+    const modal = document.getElementById('modalMsg');
     modal.classList.toggle('hidden');
     const container = document.getElementById('container');
     container.classList.toggle('hidden');
@@ -367,11 +468,11 @@ const createPost = ()=>{
 (()=>{
     //init navbar
     btnsNav.innerHTML = btnNavBar('Inicio', 'homeIcon') + btnNavBar('Mi red', 'redIcon') + btnNavBar('Publicar', 'postIcon') + btnNavBar('Notificaciones', 'notiIcon')+ btnNavBar('Empleos', 'empleosIcon') ;
-
-            //callback cascade
-            fetch('/posts', {method: 'GET'})
-            .then(response => response.json())
-            .then(response => {
+    
+    //callback cascade
+    fetch('/posts', {method: 'GET'})
+    .then(response => response.json())
+    .then(response => {
                 response.forEach(userPost => {
                     postContainer.innerHTML += publicacion(userPost.name, userPost.followers, userPost.datepost, userPost.content, userPost.media, userPost.likes, userPost.photo, userPost.users_id, userPost.id, userPost.type, userPost.liked);
                 });
@@ -395,12 +496,12 @@ const createPost = ()=>{
                 response.forEach(element => {
                     sugerencias.innerHTML += `<div class="cardUser flex flex-col relative">
                 <div class="bannercard" style="background:url('/storage/${element.banner}')" alt=""></div>
-                    <img id="ppcard" src="/storage/${element.photo}" alt="">
-                    <a href="/in/${element.id}"><span>${element.name}</span></a>
+                <img id="ppcard" src="/storage/${element.photo}" alt="">
+                <a href="/in/${element.id}"><span>${element.name}</span></a>
                     <span>${element.nombre == null ? '' : element.nombre}</span>
                     <footer class="mt-2">
                     <a href="/seguir/${element.id}"> <button class="artdeco-button artdeco-button--2 artdeco-button--secondary ember-view full-width">    <li-icon aria-hidden="true" type="connect" class="artdeco-button__icon" size="small"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-supported-dps="16x16" fill="currentColor" class="mercado-match" width="16" height="16" focusable="false">
-                            <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
+                    <path d="M9 4a3 3 0 11-3-3 3 3 0 013 3zM6.75 8h-1.5A2.25 2.25 0 003 10.25V15h6v-4.75A2.25 2.25 0 006.75 8zM13 8V6h-1v2h-2v1h2v2h1V9h2V8z"></path>
                             </svg></li-icon>
                         <span class="artdeco-button__text">
                             Conectar
@@ -408,17 +509,23 @@ const createPost = ()=>{
                     </footer>
                 </div>`
                                 });
-                                document.getElementById('modalLoad').style.display = 'none';
-            })
+                                fetch('/getChats', {method: 'GET'})
+                                    .then(response => response.json())
+                                    .then(response => {
+                                        response.forEach(chat => {
+                                            chatsContainer.innerHTML += message(chat.name, chat.id, chat.photo, chat.msg, chat.lastdate, chat.countpending)
+                                        });
+                                        document.getElementById('modalLoad').style.display = 'none';
+                                    })
+                                    
+                                })
             .catch(err => window.location.href = '/login');
                                
                             })
                             .catch(err => window.location.href = '/login');
                     })
                     .catch(err => console.log(err));
-               
-    
-                //TODO: get network from api
+            
             })
             .catch(err => console.log(err));
 
