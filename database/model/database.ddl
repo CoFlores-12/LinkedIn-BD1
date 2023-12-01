@@ -61,8 +61,8 @@ ALTER TABLE education ADD CONSTRAINT education_pk PRIMARY KEY ( id );
 
 CREATE TABLE following (
     id     INTEGER NOT NULL,
-    "from" INTEGER NOT NULL,
-    "to"   INTEGER NOT NULL
+    "FROM" INTEGER NOT NULL,
+    "TO"   INTEGER NOT NULL
 );
 
 CREATE UNIQUE INDEX following__idx ON
@@ -82,7 +82,9 @@ CREATE TABLE jobs (
     users_id    INTEGER NOT NULL,
     name        VARCHAR2(50),
     description VARCHAR2(255),
-    category    VARCHAR2(50)
+    category    VARCHAR2(50),
+    LOCATION INTEGER,
+    SALARY varchar(50);
 );
 
 ALTER TABLE jobs ADD CONSTRAINT jobs_pk PRIMARY KEY ( id );
@@ -151,7 +153,11 @@ CREATE TABLE my_skills (
 CREATE TABLE notifications (
     id       INTEGER NOT NULL,
     content  VARCHAR2(100),
-    posts_id INTEGER NOT NULL
+    posts_id INTEGER NOT NULL,
+    "USERS_ID" NUMBER(*,0), 
+	"USERS_ID1" NUMBER(*,0), 
+	"TYPENOTI" VARCHAR2(10 BYTE), 
+	"PENNDING" CHAR(1 BYTE) DEFAULT 1
 );
 
 ALTER TABLE notifications ADD CONSTRAINT notifications_pk PRIMARY KEY ( id );
@@ -168,8 +174,8 @@ CREATE TABLE posts (
     id          INTEGER NOT NULL,
     content     VARCHAR2(300),
     media       VARCHAR2(300),
-    type        VARCHAR2(10),
-    "date"      DATE,
+    type        VARCHAR2(20),
+    "DATEPOST"      DATE,
     users_id    INTEGER NOT NULL,
     users_email VARCHAR2(100) NOT NULL
 );

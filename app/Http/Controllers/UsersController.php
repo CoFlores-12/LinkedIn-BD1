@@ -48,7 +48,7 @@ class UsersController extends Controller{
         
         //Category logic
         if (!DB::table('categories')->where('nombre', $request->category)->exists()) {
-            $category = DB::insert('insert into categories (nombre) values (?)', array($request->category));
+            $category = DB::insert('insert into categories (nombre) values (\''.$request->category.'\')');
         }
         $category = DB::table('categories')
             ->where('nombre', $request->category)->first();
@@ -58,7 +58,7 @@ class UsersController extends Controller{
                 ->where('location', $request->location)->first();
         if ($request->location != "") {
             if (!DB::table('locations')->where('location', $request->location)->exists()) {
-                    $location = DB::insert("insert into locations (location) values ('?')", array($request->location));
+                    $location = DB::insert("insert into LOCATIONS (location) values ('".$request->location."')");
                 }
             $location = DB::table('locations')
                 ->where('location', $request->location)->first();
@@ -89,6 +89,9 @@ class UsersController extends Controller{
             if($skill == ""){
                 continue;
             }
+            if(!DB::table('skills')->where('name', $skill)->exists()){
+                DB::connection('oracle')->insert("insert into skills (name) values ('".$skill."')");
+            }
             $skill = DB::table("skills")->where("name", $skill)->first();
             if (!DB::table('my_skills')->where('skills_id', $skill->id)->where('users_id', $request->id)->exists()) {
                 DB::insert("insert into my_skills values (?, ?)", array($request->id,$skill->id));
@@ -114,16 +117,16 @@ class UsersController extends Controller{
                 $tempini = "dateIniinstitute-".$i;
                 $tempfin = "datefininstitute-".$i;
                 if (!DB::table('education')->where('institute', $request->$tempname)->where('location', $request->$templocation)->where('grade',$request->$tempgrade)->exists()) {
-                    DB::insert("insert into education(institute, location, grade) values ('?', '?', '?')", array($request->$tempname,$request->$templocation, $request->$tempgrade));
+                    DB::insert("insert into education(institute, location, grade) values ('".$request->$tempname."', '".$request->$templocation."', '".$request->$tempgrade."')");
                 }
                 $institute = DB::table('education')->where('institute', $request->$tempname)->where('location', $request->$templocation)->where('grade',$request->$tempgrade)->first();
 
-                DB::insert('insert into my_education(users_id,education_id,start_date,finish_date) values (?, ? , ?, ?)', array( $request->id, $institute->id, $request->$tempini, $request->$tempfin));
+                DB::insert('insert into my_education(users_id,education_id,start_date,finish_date) values ('.$request->id.', '.$institute->id.' ,\''.$request->$tempini.'\', \''.$request->$tempfin.'\')');
             }
         }
 
         //exp logic
-        for ($i=1; $i < $request->countExp ; $i++) { 
+        for ($i=0; $i < $request->countExp ; $i++) { 
             $tempvar = "id-company-".$i;
             if($request->$tempvar == null){
                 $tempname = "company-".$i;
@@ -136,7 +139,7 @@ class UsersController extends Controller{
                 }
                 $comapny = DB::table('work_experience')->where('company_name', $request->$tempname)->where('location', $request->$templocation)->where('occupation',$request->$tempgrade)->first();
 
-                DB::insert('insert into my_experience(users_id,work_experience_id,start_date,finish_date) values (?, ? , ?, ?)', array( $request->id, $comapny->id, $request->$tempini, $request->$tempfin));
+                DB::insert('insert into my_experience(users_id,work_experience_id,start_date,finish_date) values ('.$request->id.', '.$comapny->id.' , \''.$request->$tempini.'\', \''.$request->$tempfin.'\')');
             }
         }
         

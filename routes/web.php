@@ -124,7 +124,7 @@ WHERE
 Route::get('/getNotifications', function () {
     $value = session()->get('token');
     $id = JWTAuth::decode(new Token($value))['sub'];
-    $notis = DB::select('SELECT notifications.content, notifications.typenoti, notifications.pennding, users.photo, users.name, notifications.id FROM notifications INNER JOIN users ON users.id = notifications.users_id WHERE notifications.users_id1 = '.$id);
+    $notis = DB::select('SELECT notifications.content, notifications.typenoti, notifications.pennding, users.photo, users.name, notifications.id FROM notifications INNER JOIN users ON users.id = notifications.users_id WHERE notifications.users_id1 = '.$id .'ORDER BY notifications.id DESC ');
     return $notis;
 });
 
@@ -205,7 +205,7 @@ Route::post('/message/compose', function (Request $request) {
         DB::insert('INSERT INTO chats("USERS_ID","USERS_ID1") values (?,?)', array($id, $request->id));
         $chat = DB::table('chats')->where('USERS_ID', $id)->where('USERS_ID1', $request->id)->first();
 
-        return DB::insert('INSERT INTO messages("CHATS_ID","MENSSAGE", "USERS_ID", "DATEMSG", "SEEN") values ('.$chat->id.',\''.$request->msg.'\','.$id.',\''.date('Y-m-d H:i:s').'\',0)');
+        DB::insert('INSERT INTO messages("CHATS_ID","MENSSAGE", "USERS_ID", "DATEMSG", "SEEN") values ('.$chat->id.',\''.$request->msg.'\','.$id.',\''.date('Y-m-d H:i:s').'\',0)');
     }
     return redirect()->route('home');
 });

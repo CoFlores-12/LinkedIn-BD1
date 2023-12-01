@@ -206,7 +206,7 @@
               {{$publicacion->content}}
             </div>
             <div class="imgpubli">
-            @if($publicacion->type == 'image/png' || $publicacion->type == 'image/jpg')
+            @if($publicacion->type == 'image/png' || $publicacion->type == 'image/jpg'  || $publicacion->type == 'image/jpeg')
                 <img src="{{ URL::asset('storage/'.$publicacion->media)}}">
             @endif
             @if($publicacion->type == 'video/mp4')

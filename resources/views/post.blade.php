@@ -40,7 +40,7 @@
         <div  class="pl-3 pr-3 text-sm">
         <span>{{$post->content}}</span>
         </div>
-        @if($post->type == 'image/png' || $post->type == 'image/jpg')
+        @if($post->type == 'image/png' || $post->type == 'image/jpg' || $post->type == 'image/jpeg')
             <img src="{{ URL::asset('storage/'.$post->media)}}">
         @endif
         @if($post->type == 'video/mp4')

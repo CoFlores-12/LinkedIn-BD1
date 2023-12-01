@@ -27,7 +27,7 @@ const job = (title, farm, location, id, logo)=>{
 
 const publicacion = (name, followers, date, content, media, likes, logo, id, idPost, type, liked) => {
     mediaToShow = '';
-    if (type == "image/png") {
+    if (type == "image/png" || type == 'image/jpeg' || type == 'image/jpg') {
         mediaToShow = `<img src="/storage/${media}">`
     }
     if (type == 'video/mp4') {
@@ -519,10 +519,14 @@ const createPost = ()=>{
                                     })
                                     
                                 })
-            .catch(err => window.location.href = '/login');
+            .catch(
+                
+            );
                                
                             })
-                            .catch(err => window.location.href = '/login');
+                            .catch(
+                                
+                            );
                     })
                     .catch(err => console.log(err));
             
@@ -540,7 +544,9 @@ const createPost = ()=>{
                     container.innerHTML += publicacion(element.name, element.followers, element.date, element.content, element.media, element.likes, element.logo);
                 });
             })
-            .catch(err => window.location.href = '/login');
+            .catch(
+                
+            );
     */
 })();
 
