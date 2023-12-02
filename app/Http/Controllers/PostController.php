@@ -40,15 +40,7 @@ class PostController extends Controller
     }
 
     public static function getPosts(Request $request){
-        /* 
-        Forma 1
-        SELECT posts.*, users.name, users.photo FROM posts INNER JOIN users on users.id = posts.user_id WHERE user_id IN (SELECT following.to FROM following WHERE following.from = 11) ORDER BY posts.created_at DESC;
-        */
-
-        /*
-        Forma 2
-        select "POSTS".*, "USERS"."NAME", "USERS"."PHOTO" from "POSTS" inner join "USERS" on "USERS"."ID" = "POSTS"."USERS_ID" where "USERS_ID" in (select "FOLLOWING"."TO" from "FOLLOWING" where "FOLLOWING"."FROM" = ?) order by "POSTS"."DATEPOST" desc
-        */
+        
         $value = session()->get('token');
         $idUSer = JWTAuth::decode(new Token($value))['sub'];
         $post = DB::select('select 
